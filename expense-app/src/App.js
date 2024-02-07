@@ -6,8 +6,8 @@ function App() {
   return (
     <div>
       <NavbarComponent />
-      <AddExpenseComponent></AddExpenseComponent>
-      {/* <AddGroup></AddGroup> */}
+      {/* <AddExpenseComponent></AddExpenseComponent> */}
+      <AddGroup></AddGroup>
 
     </div>
   );

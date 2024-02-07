@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import Select from 'react-select';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 const AddGroup = () => {
@@ -64,43 +67,64 @@ const AddGroup = () => {
 
     return (
         <div>
-            <div>
-                <label htmlFor="groupName">Group Name: </label>
-                <input
-                    type="text"
-                    name="groupName"
-                    onChange={inputsHandler}
-                    placeholder="Group Name"
-                    value={inputField.groupName} />
+            <Container>
+                <Row>
+                    <Col xs={6} md={6} lg={6} >
+                        <div className='my-3'>
+                            <label className="" htmlFor="groupName">Group Name: </label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="groupName"
+                                onChange={inputsHandler}
+                                placeholder="Group Name"
+                                value={inputField.groupName} />
 
-            </div>
-            <div>
-                <label htmlFor="members">Members: </label>
-                <Select
-                    isMulti
-                    name="members"
-                    options={membersList}
-                    onChange={(event) => handleChange(event)}
-                />
-            </div>
-            <div>
-                <p>Add New Member</p>
-
-                {
-                    newMembers.map((e, i) => (
-                        <div key={i}>
-                            <input type="text" placeholder='name' value={userName} onChange={(e) => setUserName(e.target.value)} />
-                            <input type="text" placeholder='email' value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
-                            <button onClick={() => removeNewMember(i)}>Delete</button>
                         </div>
-                    ))
-                }
-            </div>
-            <button onClick={addNewMember}>Add </button>
-            <div>
-                <button onClick={submitButton}>Submit Now</button>
+                        <div className='my-3'>
+                            <label htmlFor="members">Members: </label>
+                            <Select
+                                isMulti
+                                name="members"
+                                options={membersList}
+                                onChange={(event) => handleChange(event)}
+                            />
+                        </div>
+                        <div className='my-3'>
+                            <h6>Add New Member</h6>
 
-            </div>
+                            <Row>
+                                <Col xs={10} md={10} lg={10}>
+                                    {
+                                        newMembers.map((e, i) => (
+                                            <div key={i}>
+                                                <Row>
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <input className="form-control" type="text" placeholder='name' value={userName} onChange={(e) => setUserName(e.target.value)} />
+                                                    </Col>
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <input className="form-control" type="text" placeholder='email' value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+                                                    </Col>
+                                                </Row>
+                                                {/* <button onClick={() => removeNewMember(i)}>Delete</button> */}
+                                            </div>
+                                        ))
+                                    }
+                                </Col>
+                                <Col xs={2} md={2} lg={2}>
+                                    <button className="btn btn-primary" onClick={addNewMember}>Add </button>
+
+                                </Col>
+                            </Row>
+                        </div>
+
+                    </Col>
+                    <div>
+                        <button className="btn btn-primary" onClick={submitButton}>Submit Now</button>
+
+                    </div>
+                </Row>
+            </Container>
         </div >
     )
 }
