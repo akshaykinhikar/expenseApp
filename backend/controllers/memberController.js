@@ -6,7 +6,6 @@ import Member from '../models/memberModel.js';
 // @route POST /api/members
 // @access Public
 const addMember = asyncHandler(async (req, res) => {
-    console.log(req.body);
     const { name, email } = req.body;
 
     //TODO: mapMemberID OR handle login scenario only that groups member should be visible

@@ -4,7 +4,6 @@ const groupSchema = mongoose.Schema(
     {
         groupName: { type: String, required: true },
         members: { type: Array, required: true },
-
     },
     {
         timestamps: true,

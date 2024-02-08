@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 
 
 import memberRoutes from './routes/memberRoutes.js';
+import groupRoutes from './routes/groupRoutes.js';
 
 dotenv.config();
 
@@ -25,6 +26,8 @@ app.use(bodyParser.json());
 //GET POST  /api/members/
 app.use('/api/members/', memberRoutes);
 
+
+app.use('/api/group/', groupRoutes);
 
 const PORT = process.env.PORT || 5000;
 
