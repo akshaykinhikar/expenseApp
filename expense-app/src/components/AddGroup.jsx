@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Select from 'react-select';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import CONSTANTS from '../constants';
 
 
 const AddGroup = () => {
@@ -16,15 +17,23 @@ const AddGroup = () => {
 
     const [newMembers, setNewMembers] = useState([{ name: 'lorem', email: '' }]);
 
+    const [newMemberAdded, setNewMemberAdded] = useState(0)
+
     const [userName, setUserName] = useState();
     const [userEmail, setUserEmail] = useState();
 
-    const [membersList, setMemberList] = useState([
-        { value: "mem1", label: "member 1" },
-        { value: "mem2", label: "member 2" },
-        { value: "mem3", label: "member 3" },
-        { value: "mem4", label: "member 4" }
-    ]);
+    const [membersList, setMemberList] = useState([]);
+
+    useEffect(() => {
+        fetch(CONSTANTS.GET_MEMBERS, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            setMemberList(data);
+        })
+    }, [newMemberAdded])
 
     const handleChange = (ev) => {
         console.log(ev)
@@ -41,16 +50,18 @@ const AddGroup = () => {
 
     const addNewMember = (event) => {
         // event.preventDefault()
-        console.log('addNewMember');
-        setMemberList(prev => (
-            [
-                ...prev,
-                { label: userName, value: userEmail }
-            ]
-        )
-        );
-        setUserName('');
-        setUserEmail('');
+
+        fetch(CONSTANTS.GET_MEMBERS, {
+            method: 'post',
+            body: JSON.stringify({ name: userName, email: userEmail }),
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            setNewMemberAdded(newMemberAdded + 1)
+            // clear fields 
+            setUserName('');
+            setUserEmail('');
+        })
+
     }
 
     const inputsHandler = (e) => {
