@@ -20,8 +20,8 @@ const AddExpenseComponent = () => {
         let shares = [];
         if (expenseList && expenseList.length > 0) {
             expenseList.map(exp => {
-                let splitAmount = exp.amount / exp.selectedMembers.length;
-                exp.selectedMembers.map(mem => {
+                let splitAmount = exp.amount / exp.members.length;
+                exp.members.map(mem => {
                     if (mem !== exp['paidBy']) {
                         let obj = {
                             'owsTo': exp['paidBy'],
@@ -36,6 +36,17 @@ const AddExpenseComponent = () => {
             setTransactions(shares);
         }
     }, [expenseList])
+
+    useEffect(() => {
+        fetch(CONSTANTS.GET_EXPENSES, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            setExpenseList(data);
+        })
+    }, []);
 
     useEffect(() => {
         fetch(CONSTANTS.GET_MEMBERS, {
@@ -74,9 +85,10 @@ const AddExpenseComponent = () => {
 
 
     const onSubmit = (data) => {
-        data.selectedMembers = selectedMembers.map(e => e.value);
-        setExpenseList(prev => ([...prev, data]));
-        setExpenseList(prev => ([...prev, data]));
+        data.members = selectedMembers.map(e => e.value);
+        // data.selectedMembers = selectedMembers.map(e => e.value);
+        // 
+        console.log(data)
 
         fetch(CONSTANTS.ADD_EXPENSE, {
             method: 'post',
@@ -87,6 +99,7 @@ const AddExpenseComponent = () => {
         }).then((data) => {
             console.log('Expense added');
             console.log(data);
+            setExpenseList(prev => ([...prev, data]));
         })
     }
 
@@ -127,6 +140,7 @@ const AddExpenseComponent = () => {
                                 <select {...register("paidBy")}
                                     className="form-control"
                                     name="paidBy" >
+                                    <option key="defValue" value='null' className='disabled'>Select...</option>
                                     {membersList.map(e => {
                                         return (<option key={'___' + e.value} value={e.value}>{e.label}</option>)
                                     })
@@ -140,6 +154,7 @@ const AddExpenseComponent = () => {
                                     name="addedBy"
                                     {...register("addedBy")}
                                 >
+                                    <option key="defValue" value='null' className='disabled'>Select...</option>
                                     {membersList.map(e => {
                                         return (<option key={'__' + e.value} value={e.value}>{e.label}</option>)
                                     })
@@ -151,6 +166,7 @@ const AddExpenseComponent = () => {
                                 <select {...register("groupId")}
                                     className="form-control"
                                     name="groupId">
+                                    <option key="defValue" value='null' className='disabled'>Select...</option>
                                     {groupList.map(e => {
                                         return (<option key={'_' + e.value} value={e.value}>{e.label}</option>)
                                     })
@@ -169,7 +185,7 @@ const AddExpenseComponent = () => {
                 </Row>
 
                 <div>
-                    {expenseList && expenseList.length > 0 && <ExpenseList expenseList={expenseList} transactions={transactions} />}
+                    {expenseList && expenseList.length > 0 && <ExpenseList membersList={membersList} expenseList={expenseList} transactions={transactions} />}
                 </div>
 
             </Container>

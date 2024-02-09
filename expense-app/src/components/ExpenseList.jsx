@@ -5,17 +5,13 @@ import Col from 'react-bootstrap/Col';
 
 const ExpenseList = (props) => {
 
-  const [members, setMembers] = useState([
-    { value: "1", label: "Ram" },
-    { value: "2", label: "Ganesh" },
-    { value: "3", label: "Bhagwan" },
-    { value: "4", label: "Seeta" }
-  ]);
+  const [members, setMembers] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
   const [giveAway, setGiveAway] = useState([]);
 
   useEffect(() => {
+    setMembers(props.membersList);
     setExpenseList(props.expenseList);
     setTransactions(props.transactions);
 
@@ -59,7 +55,7 @@ const ExpenseList = (props) => {
     <div>
       <h3>Transactions</h3>
       {expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
-        <Row key="i">
+        <Row key="i" style={{ backgroundColor: i % 2 ? '#FFF' : '#bebebe' }}>
           <Col xs={12} md={6} lg={6}>
             <p>{expense.expenseName}   || {expense.amount}  ||  {expense.selectedMembers} </p>
           </Col>
