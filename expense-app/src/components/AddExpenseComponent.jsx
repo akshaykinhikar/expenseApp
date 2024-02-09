@@ -5,11 +5,14 @@ import Col from 'react-bootstrap/Col';
 import { useForm } from 'react-hook-form';
 import Select from 'react-select';
 import ExpenseList from './ExpenseList';
+import CONSTANTS from '../constants';
 
 
 const AddExpenseComponent = () => {
 
     const [selectedMembers, setSelectedMembers] = useState();
+    const [membersList, setMembersList] = useState([]);
+    const [groupList, setGroupList] = useState([]);
     const [expenseList, setExpenseList] = useState([]);
     const [transactions, setTransactions] = useState([]);
 
@@ -34,23 +37,36 @@ const AddExpenseComponent = () => {
         }
     }, [expenseList])
 
+    useEffect(() => {
+        fetch(CONSTANTS.GET_MEMBERS, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            setMembersList(data);
+        })
+    }, []);
+
+    useEffect(() => {
+        fetch(CONSTANTS.GET_GROUP, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            console.log('groupList')
+            console.log(data);
+            setGroupList(data);
+        })
+    }, [])
+
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
     } = useForm();
-
-    const membersList = [
-        { value: "1", label: "Ram" },
-        { value: "2", label: "Ganesh" },
-        { value: "3", label: "Bhagwan" },
-        { value: "4", label: "Seeta" }
-    ];
-
-    const groupList = [
-        { groupName: 'recent', id: 1 }
-    ];
 
     const handleChange = (ev) => {
         setSelectedMembers(ev);
@@ -60,6 +76,18 @@ const AddExpenseComponent = () => {
     const onSubmit = (data) => {
         data.selectedMembers = selectedMembers.map(e => e.value);
         setExpenseList(prev => ([...prev, data]));
+        setExpenseList(prev => ([...prev, data]));
+
+        fetch(CONSTANTS.ADD_EXPENSE, {
+            method: 'post',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            console.log('Expense added');
+            console.log(data);
+        })
     }
 
     console.log(watch("example")) // watch input value by passing the name of it
@@ -97,7 +125,8 @@ const AddExpenseComponent = () => {
                             <div>
                                 <label htmlFor="paidBy"> Paid By: </label>
                                 <select {...register("paidBy")}
-                                    className="form-control" >
+                                    className="form-control"
+                                    name="paidBy" >
                                     {membersList.map(e => {
                                         return (<option key={'___' + e.value} value={e.value}>{e.label}</option>)
                                     })
@@ -106,8 +135,11 @@ const AddExpenseComponent = () => {
                             </div>
                             <div>
                                 <label htmlFor="addedBy">Added By: </label>
-                                <select {...register("addedBy")}
-                                    className="form-control">
+                                <select
+                                    className="form-control"
+                                    name="addedBy"
+                                    {...register("addedBy")}
+                                >
                                     {membersList.map(e => {
                                         return (<option key={'__' + e.value} value={e.value}>{e.label}</option>)
                                     })
@@ -115,11 +147,12 @@ const AddExpenseComponent = () => {
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor="groupName">Group</label>
-                                <select {...register("groupName")}
-                                    className="form-control">
+                                <label htmlFor="groupId">Group</label>
+                                <select {...register("groupId")}
+                                    className="form-control"
+                                    name="groupId">
                                     {groupList.map(e => {
-                                        return (<option key={'_' + e.value} value={e.id}>{e.groupName}</option>)
+                                        return (<option key={'_' + e.value} value={e.value}>{e.label}</option>)
                                     })
                                     }
                                 </select>

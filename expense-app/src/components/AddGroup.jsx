@@ -72,8 +72,19 @@ const AddGroup = () => {
     const submitButton = () => {
         const newGroupData = inputField;
 
-        newGroupData.members = selectedMembers;
-        console.log(newGroupData)
+        newGroupData.members = selectedMembers.map(e => e.value);
+        console.log(newGroupData);
+
+        fetch(CONSTANTS.CREATE_GROUP, {
+            method: 'post',
+            body: JSON.stringify(newGroupData),
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            console.log('Group added');
+            console.log(data);
+        })
     }
 
     return (
