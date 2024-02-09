@@ -28,7 +28,7 @@ const addGroup = asyncHandler(async (req, res) => {
     }
 })
 
-const getGroupByID = asyncHandler(async (req, res) => {
+const getGroupById = asyncHandler(async (req, res) => {
     const { id } = req.params.id;
 
     const group = await Group.find({ _id: id })
@@ -47,16 +47,20 @@ const getGroupByID = asyncHandler(async (req, res) => {
 
 
 const getGroups = asyncHandler(async (req, res) => {
-    const { id } = req.body;
 
-    const group = await Group.find({})
+    const group = await Group.aggregate(
+        [
+            {
+                $match: {},
+            },
+            {
+                "$project": { label: '$groupName', value: '$_id' }
+            }
+        ]
+    );
 
     if (group) {
-        res.status(201).json({
-            id: group._id,
-            groupName: group.groupName,
-            members: group.members
-        })
+        res.status(201).json(group)
     } else {
         res.status(400);
         throw new Error('invalid group');
@@ -65,6 +69,6 @@ const getGroups = asyncHandler(async (req, res) => {
 
 export {
     addGroup,
-    getGroupByID,
+    getGroupById,
     getGroups
 }

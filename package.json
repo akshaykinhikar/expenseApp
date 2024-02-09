@@ -5,13 +5,13 @@
     "main": "server.js",
     "type": "module",
     "scripts": {
-        "start": "node server",
-        "server": "nodemon backend/server",
-        "client": "npm start --prefix frontend",
+        "start": "node backend/server.js",
+        "server": "nodemon backend/server.js",
+        "client": "npm start --prefix expense-app",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
         "data:import": "node backend/seeder",
         "data:destroy": "node backend/seeder -d",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+        "build": "npm install && npm install --prefix expense-app && npm run build --prefix expense-app"
     },
     "author": "kinhikar.akshay32@gmail.com",
     "license": "MIT",
