@@ -15,7 +15,6 @@ const ExpenseList = (props) => {
   const [transactions, setTransactions] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
   const [giveAway, setGiveAway] = useState([]);
-  // const [isExpenseDeleted, setIsExpenseDeleted] = useState(0);
 
   useEffect(() => {
     setMembers(props.membersList);

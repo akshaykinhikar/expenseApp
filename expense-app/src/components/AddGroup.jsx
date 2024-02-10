@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CONSTANTS from '../constants';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddGroup = () => {
 
@@ -23,6 +23,8 @@ const AddGroup = () => {
     const [userEmail, setUserEmail] = useState();
 
     const [membersList, setMemberList] = useState([]);
+
+    const notify = (props) => toast(props);
 
     useEffect(() => {
         fetch(CONSTANTS.GET_MEMBERS, {
@@ -57,7 +59,7 @@ const AddGroup = () => {
             headers: { 'Content-Type': 'application/json' }
         }).then((res) => {
             setNewMemberAdded(newMemberAdded + 1)
-            // clear fields 
+            notify('New Memmber added successfully');
             setUserName('');
             setUserEmail('');
         })
@@ -82,8 +84,7 @@ const AddGroup = () => {
         }).then((res) => {
             return res.json();
         }).then((data) => {
-            console.log('Group added');
-            console.log(data);
+            notify('Group created');
         })
     }
 
