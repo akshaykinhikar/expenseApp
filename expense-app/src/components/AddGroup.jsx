@@ -142,7 +142,7 @@ const AddGroup = () => {
 
                     </Col>
                     <div>
-                        <button className="btn btn-primary" onClick={submitButton}>Submit Now</button>
+                        <button className="btn btn-primary" onClick={submitButton}>Create Group</button>
 
                     </div>
                 </Row>

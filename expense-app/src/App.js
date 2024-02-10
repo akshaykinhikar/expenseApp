@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddGroup from "./components/AddGroup";
 import AddExpenseComponent from "./components/AddExpenseComponent";
 import NavbarComponent from "./components/NavbarComponent";
+import './index.css';
 
 function App() {
   return (
@@ -15,14 +16,6 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-    
-
-    // <div>
-    //   <NavbarComponent />
-    //   {/* <AddExpenseComponent></AddExpenseComponent> */}
-    //   {/* <AddGroup></AddGroup> */}
-
-    // </div>
   );
 }
 

@@ -34,8 +34,40 @@ const getExpenseById = asyncHandler(async (req, res) => {
     }
 })
 
+const deleteExpense = asyncHandler(async (req, res) => {
+    // handle delete by groupName
+    const deletedExpenses = await Expense.deleteMany({});
+    if (deleteExpense) {
+        res.status(201).json(deletedExpenses);
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+})
+
+const deleteExpenseById = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    let deletedExpense;
+    // handle delete by groupName
+    if (id) {
+        deletedExpense = await Expense.deleteOne({ _id: id });
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+    if (deleteExpense) {
+        res.status(201).json(deletedExpense);
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+})
+
+
 export {
     addExpense,
     getExpenses,
-    getExpenseById
+    getExpenseById,
+    deleteExpense,
+    deleteExpenseById
 }

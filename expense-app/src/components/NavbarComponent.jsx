@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet, Link, NavLink } from "react-router-dom";
+import Footer from './footer';
 
 function NavbarComponent() {
     return (
@@ -16,7 +17,11 @@ function NavbarComponent() {
                 </Container>
             </Navbar>
 
-            <Outlet />
+            <div className='component-holder'>
+                <Outlet />
+            </div>
+
+            <Footer />
         </>
     );
 }

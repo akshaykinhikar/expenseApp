@@ -4,6 +4,7 @@ const CONSTANTS = {
     GET_GROUP: '/api/group/',
     ADD_EXPENSE: '/api/expense/',
     GET_EXPENSES: '/api/expense/',
+    DELETE_EXPENSEBYID: '/api/expense/delete/',
 }
 
 export default CONSTANTS;

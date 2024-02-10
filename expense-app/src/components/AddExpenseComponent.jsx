@@ -112,7 +112,7 @@ const AddExpenseComponent = () => {
             <Container>
                 <Row>
                     <Col xs={12} md={6} lg={6}>
-                        <h3 className='text-center my-3'>Add Expense</h3>
+                        <h4 className='text-center my-3'>Add Expense</h4>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div>
                                 <label htmlFor="expenseName">Expense Name: </label>
