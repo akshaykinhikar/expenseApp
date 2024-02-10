@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import Select from 'react-select';
 import ExpenseList from './ExpenseList';
 import CONSTANTS from '../constants';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const AddExpenseComponent = () => {
@@ -15,6 +16,8 @@ const AddExpenseComponent = () => {
     const [groupList, setGroupList] = useState([]);
     const [expenseList, setExpenseList] = useState([]);
     const [transactions, setTransactions] = useState([]);
+
+    const notify = (props) => toast(props);
 
     useEffect(() => {
         let shares = [];
@@ -32,7 +35,6 @@ const AddExpenseComponent = () => {
                     }
                 })
             });
-            console.log('shares->', shares);
             setTransactions(shares);
         }
     }, [expenseList])
@@ -66,8 +68,6 @@ const AddExpenseComponent = () => {
         }).then((res) => {
             return res.json();
         }).then((data) => {
-            console.log('groupList')
-            console.log(data);
             setGroupList(data);
         })
     }, [])
@@ -86,9 +86,6 @@ const AddExpenseComponent = () => {
 
     const onSubmit = (data) => {
         data.members = selectedMembers.map(e => e.value);
-        // data.selectedMembers = selectedMembers.map(e => e.value);
-        // 
-        console.log(data)
 
         fetch(CONSTANTS.ADD_EXPENSE, {
             method: 'post',
@@ -97,8 +94,7 @@ const AddExpenseComponent = () => {
         }).then((res) => {
             return res.json();
         }).then((data) => {
-            console.log('Expense added');
-            console.log(data);
+            notify('Expense added: ' + data.expenseName);
             setExpenseList(prev => ([...prev, data]));
         })
     }
@@ -106,23 +102,20 @@ const AddExpenseComponent = () => {
     console.log(watch("example")) // watch input value by passing the name of it
 
     const deleteTransaction = (id) => {
-        console.log("delete recored", id)
         fetch(CONSTANTS.DELETE_EXPENSEBYID + `${id}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).then((res) => {
             return res.json();
         }).then((data) => {
-            console.log('deleted exprense')
-            console.log(data);
-            // setIsExpenseDeleted(() => isExpenseDeleted + 1)
-            // setGroupList(data);
+            notify('Expense deleted');
             setExpenseList(data.availableRecords);
         })
     }
 
     return (
         <>
+            <Toaster />
             <Container>
                 <Row>
                     <Col xs={12} md={6} lg={6}>

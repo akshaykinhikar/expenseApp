@@ -6,9 +6,8 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CONSTANTS from '../constants';
-
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const ExpenseList = (props) => {
 
@@ -44,7 +43,6 @@ const ExpenseList = (props) => {
 
     });
 
-    console.log(_memShares);
     setGiveAway(_memShares);
 
   }, [props.expenseList, props.transactions, transactions]);
@@ -90,7 +88,7 @@ const ExpenseList = (props) => {
                   ))}
                 </td>
                 <td>
-                  <p onClick={() => props.deleteTransaction(expense._id)} >delete</p>
+                  <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} />
                 </td>
               </tr>
             ))
