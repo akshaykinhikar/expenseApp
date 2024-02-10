@@ -105,7 +105,21 @@ const AddExpenseComponent = () => {
 
     console.log(watch("example")) // watch input value by passing the name of it
 
-
+    const deleteTransaction = (id) => {
+        console.log("delete recored", id)
+        fetch(CONSTANTS.DELETE_EXPENSEBYID + `${id}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            console.log('deleted exprense')
+            console.log(data);
+            // setIsExpenseDeleted(() => isExpenseDeleted + 1)
+            // setGroupList(data);
+            setExpenseList(data.availableRecords);
+        })
+    }
 
     return (
         <>
@@ -185,7 +199,11 @@ const AddExpenseComponent = () => {
                 </Row>
 
                 <div>
-                    {expenseList && expenseList.length > 0 && <ExpenseList membersList={membersList} expenseList={expenseList} transactions={transactions} />}
+                    {expenseList && expenseList.length > 0 &&
+                        <ExpenseList deleteTransaction={deleteTransaction}
+                            membersList={membersList}
+                            expenseList={expenseList}
+                            transactions={transactions} />}
                 </div>
 
             </Container>

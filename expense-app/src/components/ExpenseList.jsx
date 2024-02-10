@@ -16,7 +16,7 @@ const ExpenseList = (props) => {
   const [transactions, setTransactions] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
   const [giveAway, setGiveAway] = useState([]);
-  const [isExpenseDeleted, setIsExpenseDeleted] = useState(0);
+  // const [isExpenseDeleted, setIsExpenseDeleted] = useState(0);
 
   useEffect(() => {
     setMembers(props.membersList);
@@ -47,7 +47,7 @@ const ExpenseList = (props) => {
     console.log(_memShares);
     setGiveAway(_memShares);
 
-  }, [props.expenseList, props.transactions, transactions, isExpenseDeleted]);
+  }, [props.expenseList, props.transactions, transactions]);
 
   const GetMemName = ({ id, members, shares }) => {
     let memObj = members.filter(e => e.value == id);
@@ -59,34 +59,12 @@ const ExpenseList = (props) => {
     }
   }
 
-  const deleteTransaction = (id) => {
-    console.log("delete recored", id)
-    fetch(CONSTANTS.DELETE_EXPENSEBYID + `${id}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    }).then((res) => {
-      return res.json();
-    }).then((data) => {
-      console.log('deleted exprense')
-      console.log(data);
-      setIsExpenseDeleted(() => isExpenseDeleted + 1)
-      // setGroupList(data);
-    })
-  }
+
 
   return (
 
     <div>
-      <h4>Transactions</h4>
-      {/* {expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
-        <Row key="i" style={{ backgroundColor: i % 2 ? '#FFF' : '#bebebe' }}>
-          <Col xs={12} md={6} lg={6}>
-            <p>{expense.expenseName}   || {expense.amount}  ||  {expense.selectedMembers} </p>
-          </Col>
-        </Row>
-      ))} */}
-
-
+      <h4>Expense List</h4>
       <>
         < Table striped bordered hover >
           <thead>
@@ -112,7 +90,7 @@ const ExpenseList = (props) => {
                   ))}
                 </td>
                 <td>
-                  <p onClick={() => deleteTransaction(expense._id)} >delete</p>
+                  <p onClick={() => props.deleteTransaction(expense._id)} >delete</p>
                 </td>
               </tr>
             ))
@@ -122,12 +100,12 @@ const ExpenseList = (props) => {
       </>
 
 
-      <h4>Shares of Individual</h4>
+      {/* <h4>Shares of Individual</h4> */}
       <Row>
         {giveAway && giveAway.length > 0 && giveAway.map((shares, i) => (
 
           <>
-            <Col className="my-3" xs={12} md={3} lg={3} key={i} >
+            <Col className="my-3" xs={4} md={3} lg={3} key={i} >
               <Card >
                 {/* <Card.Img variant="top" src="" /> */}
                 <Card.Body>

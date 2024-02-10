@@ -56,6 +56,10 @@ const deleteExpenseById = asyncHandler(async (req, res) => {
         throw new Error('Error in deleting records, Please try again');
     }
     if (deleteExpense) {
+        const availableRecords = await Expense.find({});
+        if (availableRecords) {
+            deletedExpense.availableRecords = availableRecords;
+        }
         res.status(201).json(deletedExpense);
     } else {
         res.status(400);
