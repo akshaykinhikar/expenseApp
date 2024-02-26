@@ -19,8 +19,8 @@ const AddGroup = () => {
 
     const [newMemberAdded, setNewMemberAdded] = useState(0)
 
-    const [userName, setUserName] = useState();
-    const [userEmail, setUserEmail] = useState();
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
 
     const [membersList, setMemberList] = useState([]);
 
@@ -38,12 +38,10 @@ const AddGroup = () => {
     }, [newMemberAdded])
 
     const handleChange = (ev) => {
-        console.log(ev)
         setSelectedMembers(ev);
     }
 
     const removeNewMember = (i) => {
-        console.log('removeNewMember', i);
         const updatedNewMembers = [...newMembers];
         updatedNewMembers.splice(i, 1);
         setNewMembers(updatedNewMembers);
@@ -53,16 +51,29 @@ const AddGroup = () => {
     const addNewMember = (event) => {
         // event.preventDefault()
 
-        fetch(CONSTANTS.GET_MEMBERS, {
-            method: 'post',
-            body: JSON.stringify({ name: userName, email: userEmail }),
-            headers: { 'Content-Type': 'application/json' }
-        }).then((res) => {
-            setNewMemberAdded(newMemberAdded + 1)
-            notify('New Memmber added successfully');
-            setUserName('');
-            setUserEmail('');
-        })
+        try {
+            fetch(CONSTANTS.GET_MEMBERS, {
+                method: 'post',
+                body: JSON.stringify({ name: userName, email: userEmail }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then((res) => {
+                    return res.json();
+                })
+                .then((res) => {
+                    if (res.status === 'error') {
+                        notify(res.message);
+                    } else if (res.status === 'success') {
+                        setNewMemberAdded(newMemberAdded + 1)
+                        notify('New Memmber added successfully');
+                        setUserName('');
+                        setUserEmail('');
+                    }
+                })
+        } catch (err) {
+            console.log(err);
+            notify('Something went wrong');
+        }
 
     }
 
@@ -75,7 +86,6 @@ const AddGroup = () => {
         const newGroupData = inputField;
 
         newGroupData.members = selectedMembers.map(e => e.value);
-        console.log(newGroupData);
 
         fetch(CONSTANTS.CREATE_GROUP, {
             method: 'post',
@@ -91,6 +101,7 @@ const AddGroup = () => {
     return (
         <div>
             <Container>
+                <Toaster />
                 <Row>
                     <Col xs={6} md={6} lg={6} >
                         <div className='my-3'>

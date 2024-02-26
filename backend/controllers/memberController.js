@@ -12,8 +12,8 @@ const addMember = asyncHandler(async (req, res) => {
     const memberExist = await Member.findOne({ email })
 
     if (memberExist) {
-        res.status(400);
-        throw new Error('Member already Exist');
+        return res.status(400).json({ status: 'error', message: "Member with same email already exist" });
+        // throw new Error('Member already Exist');
     }
 
     const member = await Member.create({

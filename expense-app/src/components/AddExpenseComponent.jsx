@@ -185,12 +185,6 @@ const AddExpenseComponent = () => {
                     </Col>
                 </Row>
 
-                <Row>
-                    <Col xs={12} md={6} lg={6}>
-
-                    </Col>
-                </Row>
-
                 <div>
                     {expenseList && expenseList.length > 0 &&
                         <ExpenseList deleteTransaction={deleteTransaction}

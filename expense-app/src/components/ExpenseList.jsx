@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CONSTANTS from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const ExpenseList = (props) => {
 
@@ -87,7 +87,8 @@ const ExpenseList = (props) => {
                   ))}
                 </td>
                 <td>
-                  <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} />
+                  <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp;&nbsp;&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faPencil} />
                 </td>
               </tr>
             ))
