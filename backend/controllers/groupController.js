@@ -7,8 +7,9 @@ const addGroup = asyncHandler(async (req, res) => {
     const groupExists = await Group.findOne({ groupName });
 
     if (groupExists) {
-        res.status(400);
-        throw new Error('Group name already exist')
+        return res.status(400).json({ status: 'error', message: "Group name already exist" });
+        // res.status(400);
+        // throw new Error('Group name already exist')
     }
 
     const group = await Group.create({
@@ -18,6 +19,7 @@ const addGroup = asyncHandler(async (req, res) => {
 
     if (group) {
         res.status(201).json({
+            status: 'success',
             _id: group._id,
             groupName: group.groupName,
             members: group.members
@@ -35,6 +37,7 @@ const getGroupById = asyncHandler(async (req, res) => {
 
     if (group) {
         res.status(201).json({
+            status: 'success',
             id: group._id,
             groupName: group.groupName,
             members: group.members

@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CONSTANTS from '../constants';
 import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddGroup = () => {
 
@@ -12,6 +13,8 @@ const AddGroup = () => {
         groupName: "",
         members: []
     });
+
+    let navigate = useNavigate();
 
     const [selectedMembers, setSelectedMembers] = useState();
 
@@ -87,15 +90,25 @@ const AddGroup = () => {
 
         newGroupData.members = selectedMembers.map(e => e.value);
 
-        fetch(CONSTANTS.CREATE_GROUP, {
-            method: 'post',
-            body: JSON.stringify(newGroupData),
-            headers: { 'Content-Type': 'application/json' }
-        }).then((res) => {
-            return res.json();
-        }).then((data) => {
-            notify('Group created');
-        })
+        try {
+            fetch(CONSTANTS.CREATE_GROUP, {
+                method: 'post',
+                body: JSON.stringify(newGroupData),
+                headers: { 'Content-Type': 'application/json' }
+            }).then((res) => {
+                return res.json();
+            }).then((res) => {
+                if (res.status === 'error') {
+                    notify(res.message);
+                } else if (res.status === 'success') {
+                    notify('Group created');
+                    setTimeout(() => { navigate(`/`); }, 500);
+                }
+            })
+        } catch (err) {
+            console.log(err);
+            notify('Something went wrong');
+        }
     }
 
     return (

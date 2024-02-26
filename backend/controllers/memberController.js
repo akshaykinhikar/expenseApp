@@ -23,6 +23,7 @@ const addMember = asyncHandler(async (req, res) => {
 
     if (member) {
         res.status(201).json({
+            status: 'success',
             _id: member._id,
             name: member.name,
             email: member.email,
