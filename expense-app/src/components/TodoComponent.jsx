@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo, updateTodo, deleteTodo, selectTodoList } from "../app/features/todo/todoSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
+
 
 const TodoComponent = () => {
-    const [todoList, setTodoList] = useState([]);
+    const todoList = useSelector(selectTodoList);
+    const dispatch = useDispatch();
+
     const [todo, setTodo] = useState({
         description: '',
         status: 'pending',
@@ -14,8 +21,7 @@ const TodoComponent = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(JSON.stringify(todo));
-        setTodoList((todoList) => [...todoList, todo])
+        dispatch(addTodo(todo));
     }
     return (
         <>
@@ -28,8 +34,16 @@ const TodoComponent = () => {
 
                             <button className="btn btn-primary my-3" type="submit">Add Todo</button>
                         </form>
-                        <label htmlFor="description">Todo's:</label>
-                        {(todoList && todoList.length > 0) ? todoList.map((todo, i) => (<p key={i}>{i + 1}. {todo.description}</p>)) : <h4>Please add todo</h4>}
+                        {(todoList && todoList.length > 0) ? todoList.map((todo, i) => (
+                            <div className="row">
+                                <div className="col-sm-10 ">
+                                    <p key={i} >{i + 1}. {todo.description}</p>
+                                </div>
+                                <div className="col-sm-2">
+                                    <FontAwesomeIcon onClick={() => dispatch(deleteTodo(i))} icon={faTrash} />
+                                </div>
+                            </div>
+                        )) : <h4>Please add todo</h4>}
 
                     </div>
                 </div>
