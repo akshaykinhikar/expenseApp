@@ -47,8 +47,53 @@ const getMembers = asyncHandler(async (req, res) => {
     res.json(members)
 })
 
+const deleteMemberById = asyncHandler(async (req, res) => {
+    const memberId = req.params.id;
+    let member;
+    if (memberId) {
+        member = await Member.deleteOne({ _id: memberId });
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+
+    if (member) {
+        // const allmembers = await member.find({});
+        const allMembers = await Member.aggregate(
+            [
+                {
+                    $match: {},
+                },
+                {
+                    "$project": { "label": "$name", "value": "$_id" }
+                }
+            ]
+        );
+        if (allMembers) {
+            member.allMembers = allMembers;
+        }
+        res.status(201).json(member);
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+})
+
+const deleteMembers = asyncHandler(async (req, res) => {
+    // handle delete by groupName
+    const deletedMembers = await Member.deleteMany({});
+    if (deletedMembers) {
+        res.status(201).json(deletedMembers);
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+})
+
 
 export {
     addMember,
     getMembers,
+    deleteMemberById,
+    deleteMembers,
 }

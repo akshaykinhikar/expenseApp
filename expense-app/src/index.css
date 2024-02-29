@@ -23,3 +23,7 @@ code {
   grid-row-start: 2;
   grid-row-end: 3;
 }
+
+.todoItem {
+  max-width: '400px'
+}

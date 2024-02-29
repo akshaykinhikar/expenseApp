@@ -75,6 +75,7 @@ const AddExpenseComponent = () => {
     const {
         register,
         handleSubmit,
+        reset,
         watch,
         formState: { errors },
     } = useForm();
@@ -96,6 +97,7 @@ const AddExpenseComponent = () => {
         }).then((data) => {
             notify('Expense added: ' + data.expenseName);
             setExpenseList(prev => ([...prev, data]));
+            reset({ expenseName: '', amount: '', paidBy: '', addedBy: '', groupId: '' })
         })
     }
 

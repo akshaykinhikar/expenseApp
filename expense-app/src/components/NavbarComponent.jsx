@@ -13,6 +13,7 @@ function NavbarComponent() {
                     <Nav className="me-auto">
                         <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                         <Nav.Link as={NavLink} to="/group">Group</Nav.Link>
+                        <Nav.Link as={NavLink} to="/todo">Todo</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

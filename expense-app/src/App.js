@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './index.css';
 import AddGroup from "./components/AddGroup";
 import AddExpenseComponent from "./components/AddExpenseComponent";
 import NavbarComponent from "./components/NavbarComponent";
-import './index.css';
+import TodoComponent from "./components/TodoComponent";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<NavbarComponent />}>
           <Route index element={<AddExpenseComponent />} />
           <Route path="group" element={<AddGroup />} />
+          <Route path="todo" element={<TodoComponent />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
