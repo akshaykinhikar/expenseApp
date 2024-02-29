@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo, updateTodo, deleteTodo, selectTodoList } from "../app/features/todo/todoSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 const TodoComponent = () => {

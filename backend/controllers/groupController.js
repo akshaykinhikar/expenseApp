@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import Group from '../models/groupModel.js';
+import { deleteExpense } from './expenseController.js';
 
 const addGroup = asyncHandler(async (req, res) => {
     const { groupName, members } = req.body;
@@ -70,8 +71,54 @@ const getGroups = asyncHandler(async (req, res) => {
     }
 });
 
+const deleteGroupById = asyncHandler(async (req, res) => {
+    const groupId = req.params.id;
+    let group;
+    if (groupId) {
+        group = await Group.deleteOne({ _id: groupId });
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+
+    if (group) {
+        // const allGroups = await Group.find({});
+        const allGroups = await Group.aggregate(
+            [
+                {
+                    $match: {},
+                },
+                {
+                    "$project": { label: '$groupName', value: '$_id' }
+                }
+            ]
+        );
+        if (allGroups) {
+            group.allGroups = allGroups;
+        }
+        res.status(201).json(group);
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+})
+
+const deleteGroup = asyncHandler(async (req, res) => {
+    // handle delete by groupName
+    const deletedGroup = await Group.deleteMany({});
+    if (deletedGroup) {
+        res.status(201).json(deletedGroup);
+    } else {
+        res.status(400);
+        throw new Error('Error in deleting records, Please try again');
+    }
+})
+
+
 export {
     addGroup,
     getGroupById,
-    getGroups
+    getGroups,
+    deleteGroupById,
+    deleteGroup
 }
