@@ -101,7 +101,7 @@ const AddExpenseComponent = () => {
         })
     }
 
-    console.log(watch("example")) // watch input value by passing the name of it
+    // console.log(watch("example")) // watch input value by passing the name of it
 
     const deleteTransaction = (id) => {
         fetch(CONSTANTS.DELETE_EXPENSEBYID + `${id}`, {
