@@ -68,7 +68,7 @@ const AddGroup = () => {
                         notify(res.message);
                     } else if (res.status === 'success') {
                         setNewMemberAdded(newMemberAdded + 1)
-                        notify('New Memmber added successfully');
+                        notify('New Member added');
                         setUserName('');
                         setUserEmail('');
                     }
