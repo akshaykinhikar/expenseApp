@@ -75,14 +75,14 @@ const ExpenseList = (props) => {
           </thead>
           <tbody>
             {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
-              <tr>
+              <tr key={'tr' + i}>
                 <td>{i + 1}</td>
                 <td>{expense.expenseName} </td>
                 <td>{expense.amount} </td>
                 <td>
                   {members && members.length > 0 && expense.members && expense.members.map(e => (
                     // <p>{e}</p>
-                    <GetMemName id={e} members={members} />
+                    <GetMemName key={e} id={e} members={members} />
 
                   ))}
                 </td>
