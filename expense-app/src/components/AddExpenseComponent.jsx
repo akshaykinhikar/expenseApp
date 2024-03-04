@@ -7,11 +7,12 @@ import Select from 'react-select';
 import ExpenseList from './ExpenseList';
 import CONSTANTS from '../constants';
 import toast, { Toaster } from 'react-hot-toast';
+import ExpenseService from '../services/common-services';
 
 
 const AddExpenseComponent = () => {
 
-    const [selectedMembers, setSelectedMembers] = useState();
+    const [selectedMembers, setSelectedMembers] = useState([]);
     const [membersList, setMembersList] = useState([]);
     const [groupList, setGroupList] = useState([]);
     const [expenseList, setExpenseList] = useState([]);
@@ -40,23 +41,14 @@ const AddExpenseComponent = () => {
     }, [expenseList])
 
     useEffect(() => {
-        fetch(CONSTANTS.GET_EXPENSES, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        }).then((res) => {
-            return res.json();
-        }).then((data) => {
+        ExpenseService.getExpenses().then((data) => {
             setExpenseList(data);
         })
     }, []);
 
     useEffect(() => {
-        fetch(CONSTANTS.GET_MEMBERS, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        }).then((res) => {
-            return res.json();
-        }).then((data) => {
+        ExpenseService.getMembers().then((data) => {
+            console.log(data);
             setMembersList(data);
         })
     }, []);
@@ -88,20 +80,22 @@ const AddExpenseComponent = () => {
     const onSubmit = (data) => {
         data.members = selectedMembers.map(e => e.value);
 
-        fetch(CONSTANTS.ADD_EXPENSE, {
-            method: 'post',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' }
-        }).then((res) => {
-            return res.json();
-        }).then((data) => {
-            notify('Expense added: ' + data.expenseName);
-            setExpenseList(prev => ([...prev, data]));
-            reset({ expenseName: '', amount: '', paidBy: '', addedBy: '', groupId: '' })
-        })
+        if (data.members && data.members.length > 0) {
+            fetch(CONSTANTS.ADD_EXPENSE, {
+                method: 'post',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            }).then((res) => {
+                return res.json();
+            }).then((data) => {
+                notify('Expense added: ' + data.expenseName);
+                setExpenseList(prev => ([...prev, data]));
+                reset({ expenseName: '', amount: '', paidBy: '', addedBy: '', groupId: '' })
+            })
+        }
     }
 
-    console.log(watch("example")) // watch input value by passing the name of it
+    // console.log(watch("example")) // watch input value by passing the name of it
 
     const deleteTransaction = (id) => {
         fetch(CONSTANTS.DELETE_EXPENSEBYID + `${id}`, {
@@ -122,16 +116,16 @@ const AddExpenseComponent = () => {
                 <Row>
                     <Col xs={12} md={6} lg={6}>
                         <h4 className='text-center my-3'>Add Expense</h4>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <form onSubmit={handleSubmit(onSubmit)} aria-label='add-expense'>
                             <div>
                                 <label htmlFor="expenseName">Expense Name: </label>
-                                <input className="form-control" name="expenseName" defaultValue="test expense" {...register("expenseName", { required: true })} />
+                                <input placeholder="Add expense name" className="form-control" name="expenseName" defaultValue="" {...register("expenseName", { required: true })} />
                                 {errors.expenseName && <span>This field is required</span>}
                             </div>
 
                             <div>
                                 <label htmlFor="amount">Amount: </label>
-                                <input className="form-control" defaultValue="100" {...register("amount", { required: true })} />
+                                <input placeholder="Amount" className="form-control" defaultValue="100" {...register("amount", { required: true })} />
                                 {errors.amount && <span>This field is required</span>}
                             </div>
 
@@ -148,7 +142,8 @@ const AddExpenseComponent = () => {
                                 <label htmlFor="paidBy"> Paid By: </label>
                                 <select {...register("paidBy")}
                                     className="form-control"
-                                    name="paidBy" >
+                                    name="paidBy"
+                                    placeholder="Paid By">
                                     <option key="defValue" value='null' className='disabled'>Select...</option>
                                     {membersList.map(e => {
                                         return (<option key={'___' + e.value} value={e.value}>{e.label}</option>)
@@ -161,6 +156,7 @@ const AddExpenseComponent = () => {
                                 <select
                                     className="form-control"
                                     name="addedBy"
+                                    placeholder="Added By"
                                     {...register("addedBy")}
                                 >
                                     <option key="defValue" value='null' className='disabled'>Select...</option>
@@ -174,6 +170,7 @@ const AddExpenseComponent = () => {
                                 <label htmlFor="groupId">Group</label>
                                 <select {...register("groupId")}
                                     className="form-control"
+                                    placeholder="Group"
                                     name="groupId">
                                     <option key="defValue" value='null' className='disabled'>Select...</option>
                                     {groupList.map(e => {
@@ -182,7 +179,7 @@ const AddExpenseComponent = () => {
                                     }
                                 </select>
                             </div>
-                            <input type="submit" className='btn btn-primary my-3' />
+                            <input type="submit" aria-label="submit" className='btn btn-primary my-3' />
                         </form>
                     </Col>
                 </Row>
