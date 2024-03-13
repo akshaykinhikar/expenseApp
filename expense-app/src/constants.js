@@ -7,6 +7,7 @@ const CONSTANTS = {
     ADD_EXPENSE: '/api/expense/',
     GET_EXPENSES: '/api/expense/',
     DELETE_EXPENSEBYID: '/api/expense/delete/',
+    IMAGE_UPLOAD: '/images',
 }
 
 export default CONSTANTS;
