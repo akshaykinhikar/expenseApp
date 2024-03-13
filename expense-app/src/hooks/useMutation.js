@@ -12,11 +12,14 @@ const useMutation = () => {
             isLoading: true,
         }));
 
-        fetch(url,
-            {
-                method: method,
-                body: data ? JSON.stringify(data) : null,
-            })
+        fetch(url, {
+            method: method,
+            body: data ? data : null,
+            headers: {
+                'x-user-id': 123
+            }
+        },
+        )
             .then((res) => {
                 if (!res.ok) {
                     throw new Error("Something went wrong, please try after sometime");

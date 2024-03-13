@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useMutation from '../hooks/useMutation';
 import CONSTANTS from '../constants';
+import useQuery from '../hooks/useQuery';
 
 
 const GalleryComponent = () => {
@@ -13,8 +14,16 @@ const GalleryComponent = () => {
         isLoading: uploading,
         error: uploadError } = useMutation();
 
+
+    const {
+        data: imageUrls = [],
+        isLoading: imagesLoading,
+        error: fetchError } = useQuery(CONSTANTS.IMAGE_UPLOAD);
+
     const updateResp = (data) => {
-        console.log('res data', data)
+        data.then((data) => {
+            console.log('res data', data);
+        })
     }
 
     const handleImage = async (e) => {
@@ -30,7 +39,7 @@ const GalleryComponent = () => {
         form.append('image', file);
 
         await uploadImage({
-            url: CONSTANTS.IMAGE_UPLOAD, method: 'POST', form, updateResp
+            url: CONSTANTS.IMAGE_UPLOAD, method: 'POST', data: form, action: updateResp
         });
 
     }
@@ -45,6 +54,15 @@ const GalleryComponent = () => {
                     {uploadError ? <p>{uploadError}</p> : ''}
                     {uploading ? <p>uploading</p> : ''}
                 </div>
+                {imageUrls && imageUrls.length > 0 ?
+                    imageUrls.map(img => (
+                        <div className="col-sm-12">
+                            <img src={img} alt="" />
+                        </div>
+                    ))
+                    : <p>Please upload image</p>
+
+                }
             </div>
         </div>
     </>)
