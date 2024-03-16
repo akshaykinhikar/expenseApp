@@ -1,6 +1,6 @@
 # REACT & NodeJS Application to add and split expenses among different members 
 
-<a href="https://expense-app-i2th.onrender.com"> Live Application </a>
+<a href="https://expense-app-i2th.onrender.com"> Live Application </a> - Note: Due to Free-host provider delay, application will take 3-4min detay for initial loading  
 
 This MERN Application is  used to add user expenses manually for a trip/Group based. You can add add new expenses, edit(WIP), delete expenses, create group and members. 
 Also able to view split expenses (shares) individual to contribute. 
