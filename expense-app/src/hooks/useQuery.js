@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useQuery = url => {
+const useQuery = (url, count) => {
     const [state, setState] = useState({
         data: null,
         isLoading: true,
@@ -20,7 +20,6 @@ const useQuery = url => {
                         throw new Error("Something went wrong, please try after sometime");
                     }
                     let data = res.json();
-                    console.log(data);
                     data.then(data => {
                         setState({ data, isLoading: false, error: '' });
                     })
@@ -31,7 +30,7 @@ const useQuery = url => {
                 })
         }
         fetchData();
-    }, [url]);
+    }, [url, count]);
     return state;
 }
 
