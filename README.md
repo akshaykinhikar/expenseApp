@@ -51,6 +51,7 @@ sudo systemctl enable mongod   // optionally ensure that MongoDB will start foll
 sudo systemctl stop mongod
 sudo systemctl restart mongod // You can follow the state of the process for errors or important messages by watching the output in the /var/log/mongodb/mongod.log file.
 mongosh
+
 ```
 
 To start the nodeJS application run the following command in expenseApp directory:
@@ -75,4 +76,7 @@ cd expense-app && npm run start
 
 This will launch the application on a local development server. Open your web browser and visit `http://localhost:3000` to see the application in action.
 
+## References: 
 
+### Upload Images with React & Node JS to AWS S3
+https://www.youtube.com/watch?v=vVBqEYNXxy8&t=403s
