@@ -92,7 +92,7 @@ const AddExpenseComponent = () => {
             }).then((data) => {
                 notify('Expense added: ' + data.expenseName);
                 setExpenseList(prev => ([...prev, data]));
-                reset({ expenseName: '', amount: '', paidBy: '', addedBy: '', groupId: '' })
+                reset({ expenseName: '', amount: '', paidBy: '', addedBy: '' })
             })
         }
     }
@@ -127,7 +127,7 @@ const AddExpenseComponent = () => {
 
                             <div>
                                 <label htmlFor="amount">Amount: </label>
-                                <input placeholder="Amount" className="form-control" defaultValue="100" {...register("amount", { required: true })} />
+                                <input placeholder="Amount" className="form-control" defaultValue="" {...register("amount", { required: true })} />
                                 {errors.amount && <span>This field is required</span>}
                             </div>
 

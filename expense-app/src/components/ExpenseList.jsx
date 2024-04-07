@@ -18,6 +18,14 @@ const ExpenseList = (props) => {
   const [groupTotal, setGroupTotal] = useState(0);
 
   useEffect(() => {
+    let groupTtl = giveAway.reduce((acc, ele) => {
+      return acc += (ele?.totalExpenseByMember ? ele.totalExpenseByMember : 0);
+    }, 0);
+    console.log(groupTtl);
+    setGroupTotal(groupTtl);
+  }, [giveAway])
+
+  useEffect(() => {
     setMembers(props.membersList);
     setExpenseList(props.expenseList);
     setTransactions(props.transactions);
@@ -37,6 +45,7 @@ const ExpenseList = (props) => {
             acc['amount'][ele['owsTo']] = ele['amount'];
 
           }
+
         }
 
         // total expense by individual
@@ -46,8 +55,7 @@ const ExpenseList = (props) => {
 
         acc.member = mem;
 
-        // group total
-        _groupTotal += ele['amount'];
+
 
         return acc
       }, { amount: {} }) || [];
