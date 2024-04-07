@@ -30,7 +30,9 @@ const AddExpenseComponent = () => {
                         let obj = {
                             'owsTo': exp['paidBy'],
                             'amount': splitAmount,
-                            'owsBy': mem
+                            'owsBy': mem,
+                            'transactionTotalAmt': exp.amount,
+                            'transactionOwner': exp['paidBy']
                         }
                         shares.push(obj);
                     }

@@ -15,6 +15,7 @@ const ExpenseList = (props) => {
   const [transactions, setTransactions] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
   const [giveAway, setGiveAway] = useState([]);
+  const [groupTotal, setGroupTotal] = useState(0);
 
   useEffect(() => {
     setMembers(props.membersList);
@@ -22,6 +23,8 @@ const ExpenseList = (props) => {
     setTransactions(props.transactions);
 
     // calcuculate individual shares
+    // TODO: Add check for Group Name in future
+    let _groupTotal = 0;
     let _memShares = members.map((mem, i) => {
       return transactions && transactions.length > 0 && transactions.reduce((acc, ele) => {
         if (ele['owsBy'] == mem['value']) {
@@ -35,7 +38,17 @@ const ExpenseList = (props) => {
 
           }
         }
+
+        // total expense by individual
+        if (ele['owsTo'] == mem['value']) {
+          acc.totalExpenseByMember = ele['transactionTotalAmt'] + (acc?.totalExpenseByMember ? acc.totalExpenseByMember : 0);
+        }
+
         acc.member = mem;
+
+        // group total
+        _groupTotal += ele['amount'];
+
         return acc
       }, { amount: {} }) || [];
 
@@ -43,6 +56,8 @@ const ExpenseList = (props) => {
     });
 
     setGiveAway(_memShares);
+    setGroupTotal(_groupTotal);
+
 
   }, [props.expenseList, props.transactions, transactions]);
 
@@ -76,17 +91,17 @@ const ExpenseList = (props) => {
           <tbody>
             {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
               <tr key={'tr' + i}>
-                <td>{i + 1}</td>
-                <td>{expense.expenseName} </td>
-                <td>{expense.amount} </td>
-                <td>
-                  {members && members.length > 0 && expense.members && expense.members.map(e => (
+                <td key={'td1' + i}>{i + 1}</td>
+                <td key={'td2' + i}>{expense.expenseName} </td>
+                <td key={'td3' + i}>{expense.amount} </td>
+                <td key={'td4' + i}>
+                  {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
                     // <p>{e}</p>
-                    <GetMemName key={e} id={e} members={members} />
+                    <GetMemName key={'mem' + i} id={e} members={members} />
 
                   ))}
                 </td>
-                <td>
+                <td key={'td5' + i}>
                   <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp;&nbsp;&nbsp;&nbsp;
                   <FontAwesomeIcon icon={faPencil} />
                 </td>
@@ -107,7 +122,9 @@ const ExpenseList = (props) => {
               <Card >
                 {/* <Card.Img variant="top" src="" /> */}
                 <Card.Body>
-                  <Card.Title>{shares?.member && shares.member.label}</Card.Title>
+                  <Card.Title>{shares?.member && shares.member.label}
+                    {members && members.length > 0 && shares?.amount && <span style={{ fontSize: "0.5em" }}> Ows to </span>}
+                  </Card.Title>
                   {members && members.length > 0 && shares?.amount && (Object.keys(shares.amount)).map(((ele, i) => (
                     <Card.Text>
                       <div key={i}>
@@ -115,6 +132,12 @@ const ExpenseList = (props) => {
                       </div>
                     </Card.Text>
                   )))}
+                  <Card.Title>
+                    Total Expense
+                  </Card.Title>
+                  <Card.Text>
+                    {shares?.totalExpenseByMember}
+                  </Card.Text>
                   <Button variant="primary">Pay</Button>
                 </Card.Body>
               </Card>
@@ -122,6 +145,11 @@ const ExpenseList = (props) => {
           </>
         ))
         }
+      </Row>
+      <Row>
+        <Col className="my-3" xs={4} md={3} lg={3} >
+          <h3>Group Total: {groupTotal}</h3>
+        </Col>
       </Row>
       <div>
       </div>
