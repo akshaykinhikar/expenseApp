@@ -14,6 +14,7 @@ function NavbarComponent() {
                         <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                         <Nav.Link as={NavLink} to="/group">Group</Nav.Link>
                         <Nav.Link as={NavLink} to="/todo">Todo</Nav.Link>
+                        <Nav.Link as={NavLink} to="/gallery">Gallery</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

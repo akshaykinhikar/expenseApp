@@ -9,6 +9,8 @@ import connectDB from './config/db.js';
 import memberRoutes from './routes/memberRoutes.js';
 import groupRoutes from './routes/groupRoutes.js';
 import expenseRoutes from './routes/expenseRoutes.js';
+import { memoryStorage } from 'multer';
+import imageUploadRoutes from './routes/imageUploadRoutes.js';
 
 dotenv.config();
 
@@ -19,9 +21,13 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
+console.log("-----------------------------------------")
+console.log(process.env.BUCKET);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+
 
 app.use(bodyParser.json());
 
@@ -32,6 +38,8 @@ app.use('/api/members/', memberRoutes);
 app.use('/api/group/', groupRoutes);
 
 app.use('/api/expense/', expenseRoutes);
+
+app.use('/api/images', imageUploadRoutes);
 
 const PORT = process.env.PORT || 5000;
 
