@@ -126,7 +126,7 @@ const ExpenseList = (props) => {
         {giveAway && giveAway.length > 0 && giveAway.map((shares, i) => (
 
           <>
-            <Col className="my-3" xs={4} md={3} lg={3} key={i} >
+            <Col className="my-3" xs={12} md={3} lg={3} key={i} >
               <Card >
                 {/* <Card.Img variant="top" src="" /> */}
                 <Card.Body>
@@ -155,7 +155,7 @@ const ExpenseList = (props) => {
         }
       </Row>
       <Row>
-        <Col className="my-3" xs={4} md={3} lg={3} >
+        <Col className="my-3" xs={12} md={3} lg={3} >
           <h3>Group Total: {groupTotal}</h3>
         </Col>
       </Row>
