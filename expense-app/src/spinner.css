@@ -2,56 +2,48 @@
 .loader {
     width: 48px;
     height: 48px;
-    display: inline-block;
+    border-radius: 50%;
     position: relative;
-    top: 50%;
-    left: 50%;
-    border: 2px solid #BEBEBE;
-    box-sizing: border-box;
-    animation: rotation 2s linear infinite;
+    animation: rotate 1s linear infinite
 }
 
-.loader::after,
-.loader::before {
-    content: '';
+.loader::before,
+.loader::after {
+    content: "";
     box-sizing: border-box;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    border: 2px solid #FF3D00;
-    width: 38px;
-    height: 38px;
-    animation: rotationBack 1.5s linear infinite;
-    transform-origin: center center;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    animation: prixClipFix 2s linear infinite;
 }
 
-.loader::before {
-    width: 28px;
-    height: 28px;
-    border-color: #BEBEBE;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+.loader::after {
+    transform: rotate3d(90, 90, 0, 180deg);
+    border-color: #FF3D00;
 }
 
-@keyframes rotation {
+@keyframes rotate {
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0deg)
     }
 
     100% {
-        transform: rotate(360deg);
+        transform: rotate(360deg)
     }
 }
 
-@keyframes rotationBack {
+@keyframes prixClipFix {
     0% {
-        transform: rotate(0deg);
+        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
     }
 
+    50% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+    }
+
+    75%,
     100% {
-        transform: rotate(-360deg);
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
     }
 }

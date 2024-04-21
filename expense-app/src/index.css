@@ -74,3 +74,26 @@ code {
 }
 
 /* ************** GRID CSS ENDS ********************* */
+
+/* ************** FOOTER CSS STARTS ********************* */
+.triangle {
+  width: auto;
+  height: 0;
+  border-left: 48vw solid #000000;
+  border-right: 49.4vw solid #000000;
+  border-top: 80px solid #FFFFFF;
+  padding-top: 30px;
+}
+
+.Footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #f3ebff;
+  background-color: #000000;
+}
+
+/* REF:https: //codepen.io/CompSciLauren/pen/zYvbgVa */
+
+/* ************** FOOTER CSS ENDS ********************* */
