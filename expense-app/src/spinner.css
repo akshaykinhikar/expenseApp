@@ -4,7 +4,9 @@
     height: 48px;
     border-radius: 50%;
     position: relative;
-    animation: rotate 1s linear infinite
+    animation: rotate 1s linear infinite;
+    top: 45vh;
+    left: 45%;
 }
 
 .loader::before,
