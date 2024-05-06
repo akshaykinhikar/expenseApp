@@ -8,9 +8,11 @@ import Card from 'react-bootstrap/Card';
 import CONSTANTS from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
+import EditExpenseModal from './EditExpenseModal';
+
 
 const ExpenseList = (props) => {
-
+  console.info('ExpenseList props-------> ', props.recordEdited);
   const [members, setMembers] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
@@ -21,7 +23,6 @@ const ExpenseList = (props) => {
     let groupTtl = giveAway.reduce((acc, ele) => {
       return acc += (ele?.totalExpenseByMember ? ele.totalExpenseByMember : 0);
     }, 0);
-    console.log(groupTtl);
     setGroupTotal(groupTtl);
   }, [giveAway])
 
@@ -55,8 +56,6 @@ const ExpenseList = (props) => {
 
         acc.member = mem;
 
-
-
         return acc
       }, { amount: {} }) || [];
 
@@ -67,7 +66,7 @@ const ExpenseList = (props) => {
     setGroupTotal(_groupTotal);
 
 
-  }, [props.expenseList, props.transactions, transactions]);
+  }, [props.expenseList, props.transactions, transactions, props.recordEdited]);
 
   const GetMemName = ({ id, members, shares }) => {
     let memObj = members.filter(e => e.value == id);
@@ -79,10 +78,7 @@ const ExpenseList = (props) => {
     }
   }
 
-
-
   return (
-
     <div>
       <h4>Expense List</h4>
       <>
@@ -111,7 +107,7 @@ const ExpenseList = (props) => {
                 </td>
                 <td key={'td5' + i}>
                   <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp;&nbsp;&nbsp;&nbsp;
-                  <FontAwesomeIcon icon={faPencil} />
+                  <FontAwesomeIcon icon={faPencil} onClick={() => props.handleShow(expense)} />
                 </td>
               </tr>
             ))
@@ -161,7 +157,11 @@ const ExpenseList = (props) => {
       </Row>
       <div>
       </div>
-    </div >
+      <EditExpenseModal show={props.show}
+        recordEdited={props.recordEdited}
+        setRecordEdited={props.setRecordEdited}
+        handleClose={props.handleClose} transaction={props.editTransaction} />
+    </div>
   )
 }
 

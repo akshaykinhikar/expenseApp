@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,8 +10,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import ExpenseService from '../services/common-services';
 import LoadingSpinner from './LoadingSpinner';
 
-
-const AddExpenseComponent = () => {
+const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecordUpdated }) => {
 
     const [selectedMembers, setSelectedMembers] = useState([]);
     const [membersList, setMembersList] = useState([]);
@@ -19,7 +18,12 @@ const AddExpenseComponent = () => {
     const [expenseList, setExpenseList] = useState([]);
     const [transactions, setTransactions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [editTransaction, setEditTransaction] = useState({});
+    const [show, setShow] = useState(false);
+    const [membersAvailable, setMembersAvailable] = useState(false);
+    const formRef = useRef();
     const notify = (props) => toast(props);
+    const [recordEdited, setRecordEdited] = useState(0);
 
     useEffect(() => {
         let shares = [];
@@ -41,25 +45,45 @@ const AddExpenseComponent = () => {
             });
             setTransactions(shares);
         }
-    }, [expenseList])
+    }, [expenseList, recordUpdated]);
+
 
     useEffect(() => {
-        setIsLoading(true);
-        ExpenseService.getExpenses().then((data) => {
-            setIsLoading(false);
-            setExpenseList(data);
-        })
-    }, []);
+        if (membersList.length > 0) {
+            setMembersAvailable(true)
+        } else {
+            setMembersAvailable(false)
+        }
+    }, [membersList])
+
 
     useEffect(() => {
+        console.log('calling effect expenseList')
         setIsLoading(true);
-
-        ExpenseService.getMembers().then((data) => {
+        Promise.all([ExpenseService.getExpenses(),
+        ExpenseService.getMembers(),
+        ]).then(res => {
+            setExpenseList(res[0]);
+            setMembersList(res[1]);
             setIsLoading(false);
-            console.log(data);
-            setMembersList(data);
+        }).catch(err => {
+            setIsLoading(false);
         })
-    }, []);
+    }, [recordEdited]);
+
+    useEffect(() => {
+        if (transaction?._id) {
+            reset({
+                expenseName: transaction?.expenseName,
+                amount: transaction?.amount,
+                paidBy: transaction?.paidBy,
+                addedBy: transaction?.addedBy,
+                groupId: transaction?.groupId
+            });
+            const memList = getMembersObj(transaction.members);
+            handleChange(memList);
+        }
+    }, [transaction?._id, membersList]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -75,38 +99,47 @@ const AddExpenseComponent = () => {
     }, [])
 
     const {
-        register,
-        handleSubmit,
-        reset,
-        watch,
-        formState: { errors },
+        register, handleSubmit, reset, setValue, getValues, errors, formState, watch
     } = useForm();
 
     const handleChange = (ev) => {
         setSelectedMembers(ev);
-    }
-
+    };
 
     const onSubmit = (data) => {
-        data.members = selectedMembers.map(e => e.value);
-        if (data.members && data.members.length > 0) {
-            setIsLoading(true);
-            fetch(CONSTANTS.ADD_EXPENSE, {
-                method: 'post',
-                body: JSON.stringify(data),
-                headers: { 'Content-Type': 'application/json' }
-            }).then((res) => {
-                setIsLoading(false);
-                return res.json();
-            }).then((data) => {
-                notify('Expense added: ' + data.expenseName);
-                setExpenseList(prev => ([...prev, data]));
-                reset({ expenseName: '', amount: '', paidBy: '', addedBy: '' })
-            })
+        console.info('data ', data);
+        if (data) {
+            data.members = selectedMembers.map(e => e.value);
+            console.info('data ', data);
+
+            if (transaction) {
+                data._id = transaction._id;
+            }
+            if (data.members && data.members.length > 0) {
+                setIsLoading(true);
+                fetch(CONSTANTS.ADD_EXPENSE, {
+                    method: 'post',
+                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json' }
+                }).then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    setIsLoading(false);
+                    notify('Expense ' + (transaction ? 'updated:' : 'added:') + data.expenseName);
+                    setExpenseList(prev => ([...prev, data]));
+                    reset({ expenseName: '', amount: '', paidBy: '', addedBy: '' });
+                    if (transaction?._id) {
+                        setRecordUpdated(recordUpdated + 1);
+                        closeModal();
+                    }
+                })
+
+            }
+
         }
     }
 
-    // console.log(watch("example")) // watch input value by passing the name of it
+    console.log(watch("example")) // watch input value by passing the name of it
 
     const deleteTransaction = (id) => {
         setIsLoading(true);
@@ -122,25 +155,45 @@ const AddExpenseComponent = () => {
         })
     }
 
+    const handleShow = useCallback((id) => {
+        console.log('in  --->');
+        setEditTransaction(id);
+        setShow(true)
+    }, [show]);
+
+    const handleClose = () => {
+        console.log("in handle close");
+        setShow(false);
+    };
+
+    const getMembersObj = (members) => {
+        let _selectedMembers = [];
+        if (membersList.length)
+            _selectedMembers = membersList?.filter(e => {
+                return ([...members]).indexOf(e._id) > -1
+            });
+        return _selectedMembers
+    }
+
     return (
         <>
             <Toaster />
-            {isLoading ? <LoadingSpinner /> :
-                <Container>
+            {isLoading ? <LoadingSpinner /> : (
+                membersAvailable && <Container>
                     <Row>
                         <Col xs={12} md={6} lg={6}>
-                            <h4 className='text-center my-3'>Add Expense</h4>
-                            <form onSubmit={handleSubmit(onSubmit)} aria-label='add-expense'>
+                            {!transaction?._id && <h4 className='text-center my-3'>Add Expense</h4>}
+                            <form onSubmit={handleSubmit(onSubmit)} aria-label='add-expense' ref={formRef}>
                                 <div>
                                     <label htmlFor="expenseName">Expense Name: </label>
-                                    <input placeholder="Add expense name" className="form-control" name="expenseName" defaultValue="" {...register("expenseName", { required: true })} />
-                                    {errors.expenseName && <span>This field is required</span>}
+                                    <input placeholder="Add expense name" className="form-control" name="expenseName" defaultValue="" {...register('expenseName', { required: true })} />
+                                    {/* {errors.expenseName && <span>This field is required</span>} */}
                                 </div>
 
                                 <div>
                                     <label htmlFor="amount">Amount: </label>
                                     <input placeholder="Amount" className="form-control" defaultValue="" {...register("amount", { required: true })} />
-                                    {errors.amount && <span>This field is required</span>}
+                                    {/* {errors.amount && <span>This field is required</span>} */}
                                 </div>
 
                                 <div>
@@ -149,6 +202,7 @@ const AddExpenseComponent = () => {
                                         isMulti
                                         name="members"
                                         options={membersList}
+                                        defaultValue={transaction?.members ? getMembersObj(transaction?.members) : []}
                                         onChange={(event) => handleChange(event)}
                                     />
                                 </div>
@@ -193,20 +247,31 @@ const AddExpenseComponent = () => {
                                         }
                                     </select>
                                 </div>
-                                <input type="submit" aria-label="submit" className='btn btn-primary my-3' />
+                                <input type="submit" aria-label="submit" className='btn btn-primary my-3'
+                                />
                             </form>
                         </Col>
                     </Row>
 
-                    <div>
-                        {expenseList && expenseList.length > 0 &&
-                            <ExpenseList deleteTransaction={deleteTransaction}
-                                membersList={membersList}
-                                expenseList={expenseList}
-                                transactions={transactions} />}
-                    </div>
+                    {!transaction?._id &&
+                        <div>
+                            {expenseList && expenseList.length && membersList && membersList.length > 0 &&
+                                <ExpenseList deleteTransaction={deleteTransaction}
+                                    membersList={membersList}
+                                    expenseList={expenseList}
+                                    transactions={transactions}
+                                    handleShow={handleShow}
+                                    handleClose={handleClose}
+                                    show={show}
+                                    editTransaction={editTransaction}
+                                    recordEdited={recordEdited}
+                                    setRecordEdited={setRecordEdited}
+                                />}
+                        </div>
+                    }
 
                 </Container>
+            )
             }
         </>
     )

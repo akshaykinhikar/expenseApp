@@ -3,14 +3,27 @@ import asyncHandler from 'express-async-handler';
 import Expense from '../models/expenseModel.js';
 
 const addExpense = asyncHandler(async (req, res) => {
-    const expense = await Expense.create(req.body);
-    //'[{"expenseName":"test expense","amount":"100","paidBy":"","addedBy":"","groupId":"","selectedMembers":["65c4e7065d63f06fb8566be9"]}]'
+    console.log("req.body._id", req.body)
+    if (req.body._id) {
+        const expense = await Expense.findOneAndUpdate({ _id: req.body._id }, { $set: req.body }, { useFindAndModify: false });
 
-    if (expense) {
-        res.status(201).json(expense)
+        //'[{"expenseName":"test expense","amount":"100","paidBy":"","addedBy":"","groupId":"","selectedMembers":["65c4e7065d63f06fb8566be9"]}]'
+        if (expense) {
+            res.status(201).json(expense)
+        } else {
+            res.status(400);
+            throw new Error('Error in adding expense');
+        }
     } else {
-        res.status(400);
-        throw new Error('Error in adding expense');
+        const expense = await Expense.create(req.body);
+        //'[{"expenseName":"test expense","amount":"100","paidBy":"","addedBy":"","groupId":"","selectedMembers":["65c4e7065d63f06fb8566be9"]}]'
+
+        if (expense) {
+            res.status(201).json(expense)
+        } else {
+            res.status(400);
+            throw new Error('Error in adding expense');
+        }
     }
 });
 
