@@ -260,7 +260,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                     <Container fluid className="background-exp-list">
                         <Container>
                             <Row>
-                                <Col xs={12} md={6} lg={6}>
+                                <Col xs={12} md={12} lg={12}>
                                     {!transaction?._id &&
                                         <div>
                                             {expenseList && expenseList.length && membersList && membersList.length > 0 &&

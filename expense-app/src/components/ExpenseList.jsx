@@ -99,7 +99,6 @@ const ExpenseList = (props) => {
               <td key={'td3' + i}>{expense.amount} </td>
               <td key={'td4' + i}>
                 {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
-                  // <p>{e}</p>
                   <GetMemName key={'mem' + i} id={e} members={members} />
 
                 ))}
