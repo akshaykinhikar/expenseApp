@@ -79,43 +79,40 @@ const ExpenseList = (props) => {
   }
 
   return (
-    <div>
+    <>
       <h4>Expense List</h4>
-      <>
-        < Table striped bordered hover >
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Expense Name</th>
-              <th>Amount</th>
-              <th>Members</th>
-              <th>Action</th>
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Expense Name</th>
+            <th>Amount</th>
+            <th>Members</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
+            <tr key={'tr' + i}>
+              <td key={'td1' + i}>{i + 1}</td>
+              <td key={'td2' + i}>{expense.expenseName} </td>
+              <td key={'td3' + i}>{expense.amount} </td>
+              <td key={'td4' + i}>
+                {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
+                  // <p>{e}</p>
+                  <GetMemName key={'mem' + i} id={e} members={members} />
+
+                ))}
+              </td>
+              <td key={'td5' + i}>
+                <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <FontAwesomeIcon icon={faPencil} onClick={() => props.handleShow(expense)} />
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
-              <tr key={'tr' + i}>
-                <td key={'td1' + i}>{i + 1}</td>
-                <td key={'td2' + i}>{expense.expenseName} </td>
-                <td key={'td3' + i}>{expense.amount} </td>
-                <td key={'td4' + i}>
-                  {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
-                    // <p>{e}</p>
-                    <GetMemName key={'mem' + i} id={e} members={members} />
-
-                  ))}
-                </td>
-                <td key={'td5' + i}>
-                  <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp;&nbsp;&nbsp;&nbsp;
-                  <FontAwesomeIcon icon={faPencil} onClick={() => props.handleShow(expense)} />
-                </td>
-              </tr>
-            ))
-            }
-          </tbody>
-        </Table >
-      </>
-
+          ))
+          }
+        </tbody>
+      </Table >
 
       {/* <h4>Shares of Individual</h4> */}
       <Row>
@@ -155,13 +152,11 @@ const ExpenseList = (props) => {
           <h3>Group Total: {groupTotal}</h3>
         </Col>
       </Row>
-      <div>
-      </div>
       <EditExpenseModal show={props.show}
         recordEdited={props.recordEdited}
         setRecordEdited={props.setRecordEdited}
         handleClose={props.handleClose} transaction={props.editTransaction} />
-    </div>
+    </>
   )
 }
 

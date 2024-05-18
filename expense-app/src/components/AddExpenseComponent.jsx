@@ -259,23 +259,26 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                     </Container>
                     <Container fluid className="background-exp-list">
                         <Container>
-
-                            {!transaction?._id &&
-                                <div>
-                                    {expenseList && expenseList.length && membersList && membersList.length > 0 &&
-                                        <ExpenseList deleteTransaction={deleteTransaction}
-                                            membersList={membersList}
-                                            expenseList={expenseList}
-                                            transactions={transactions}
-                                            handleShow={handleShow}
-                                            handleClose={handleClose}
-                                            show={show}
-                                            editTransaction={editTransaction}
-                                            recordEdited={recordEdited}
-                                            setRecordEdited={setRecordEdited}
-                                        />}
-                                </div>
-                            }
+                            <Row>
+                                <Col xs={12} md={6} lg={6}>
+                                    {!transaction?._id &&
+                                        <div>
+                                            {expenseList && expenseList.length && membersList && membersList.length > 0 &&
+                                                <ExpenseList deleteTransaction={deleteTransaction}
+                                                    membersList={membersList}
+                                                    expenseList={expenseList}
+                                                    transactions={transactions}
+                                                    handleShow={handleShow}
+                                                    handleClose={handleClose}
+                                                    show={show}
+                                                    editTransaction={editTransaction}
+                                                    recordEdited={recordEdited}
+                                                    setRecordEdited={setRecordEdited}
+                                                />}
+                                        </div>
+                                    }
+                                </Col>
+                            </Row>
                         </Container>
                     </Container>
                 </>
