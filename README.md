@@ -57,7 +57,7 @@ mongosh
 To start the nodeJS application run the following command in expenseApp directory:
 
 ```js
-npm run server
+npm run dev
 ```
 This will start backend node server on PORT `5000` and you will get message 
 
