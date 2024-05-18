@@ -179,98 +179,106 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         <>
             <Toaster />
             {isLoading ? <LoadingSpinner /> : (
-                membersAvailable && <Container>
-                    <Row>
-                        <Col xs={12} md={6} lg={6}>
-                            {!transaction?._id && <h4 className='text-center my-3'>Add Expense</h4>}
-                            <form onSubmit={handleSubmit(onSubmit)} aria-label='add-expense' ref={formRef}>
-                                <div>
-                                    <label htmlFor="expenseName">Expense Name: </label>
-                                    <input placeholder="Add expense name" className="form-control" name="expenseName" defaultValue="" {...register('expenseName', { required: true })} />
-                                    {/* {errors.expenseName && <span>This field is required</span>} */}
-                                </div>
+                membersAvailable && <>
 
-                                <div>
-                                    <label htmlFor="amount">Amount: </label>
-                                    <input placeholder="Amount" className="form-control" defaultValue="" {...register("amount", { required: true })} />
-                                    {/* {errors.amount && <span>This field is required</span>} */}
-                                </div>
+                    <Container fluid className='background-add-exp'>
+                        <Container>
+                            <Row>
+                                <Col xs={12} md={6} lg={6} className="back-form-add-exp">
+                                    {!transaction?._id && <h4 className='text-center my-3'>Add Expense</h4>}
+                                    <form className="add-exp-form" onSubmit={handleSubmit(onSubmit)} aria-label='add-expense' ref={formRef}>
+                                        <div className='mb-2'>
+                                            <label htmlFor="expenseName">Expense Name: </label>
+                                            <input placeholder="Add expense name" className="form-control" name="expenseName" defaultValue="" {...register('expenseName', { required: true })} />
+                                            {/* {errors.expenseName && <span>This field is required</span>} */}
+                                        </div>
 
-                                <div>
-                                    <label htmlFor="members">Members: </label>
-                                    <Select
-                                        isMulti
-                                        name="members"
-                                        options={membersList}
-                                        defaultValue={transaction?.members ? getMembersObj(transaction?.members) : []}
-                                        onChange={(event) => handleChange(event)}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="paidBy"> Paid By: </label>
-                                    <select {...register("paidBy")}
-                                        className="form-control"
-                                        name="paidBy"
-                                        placeholder="Paid By">
-                                        <option key="defValue" value='null' className='disabled'>Select...</option>
-                                        {membersList.map(e => {
-                                            return (<option key={'___' + e.value} value={e.value}>{e.label}</option>)
-                                        })
-                                        }
-                                    </select>
-                                </div>
-                                <div>
-                                    <label htmlFor="addedBy">Added By: </label>
-                                    <select
-                                        className="form-control"
-                                        name="addedBy"
-                                        placeholder="Added By"
-                                        {...register("addedBy")}
-                                    >
-                                        <option key="defValue" value='null' className='disabled'>Select...</option>
-                                        {membersList.map(e => {
-                                            return (<option key={'__' + e.value} value={e.value}>{e.label}</option>)
-                                        })
-                                        }
-                                    </select>
-                                </div>
-                                <div>
-                                    <label htmlFor="groupId">Group</label>
-                                    <select {...register("groupId")}
-                                        className="form-control"
-                                        placeholder="Group"
-                                        name="groupId">
-                                        <option key="defValue" value='null' className='disabled'>Select...</option>
-                                        {groupList.map(e => {
-                                            return (<option key={'_' + e.value} value={e.value}>{e.label}</option>)
-                                        })
-                                        }
-                                    </select>
-                                </div>
-                                <input type="submit" aria-label="submit" className='btn btn-primary my-3'
-                                />
-                            </form>
-                        </Col>
-                    </Row>
+                                        <div className='mb-2'>
+                                            <label htmlFor="amount">Amount: </label>
+                                            <input placeholder="Amount" className="form-control" defaultValue="" {...register("amount", { required: true })} />
+                                            {/* {errors.amount && <span>This field is required</span>} */}
+                                        </div>
 
-                    {!transaction?._id &&
-                        <div>
-                            {expenseList && expenseList.length && membersList && membersList.length > 0 &&
-                                <ExpenseList deleteTransaction={deleteTransaction}
-                                    membersList={membersList}
-                                    expenseList={expenseList}
-                                    transactions={transactions}
-                                    handleShow={handleShow}
-                                    handleClose={handleClose}
-                                    show={show}
-                                    editTransaction={editTransaction}
-                                    recordEdited={recordEdited}
-                                    setRecordEdited={setRecordEdited}
-                                />}
-                        </div>
-                    }
+                                        <div className='mb-2'>
+                                            <label htmlFor="members">Members: </label>
+                                            <Select
+                                                isMulti
+                                                name="members"
+                                                options={membersList}
+                                                defaultValue={transaction?.members ? getMembersObj(transaction?.members) : []}
+                                                onChange={(event) => handleChange(event)}
+                                            />
+                                        </div>
+                                        <div className='mb-2'>
+                                            <label htmlFor="paidBy"> Paid By: </label>
+                                            <select {...register("paidBy")}
+                                                className="form-control"
+                                                name="paidBy"
+                                                placeholder="Paid By">
+                                                <option key="defValue" value='null' className='disabled'>Select...</option>
+                                                {membersList.map(e => {
+                                                    return (<option key={'___' + e.value} value={e.value}>{e.label}</option>)
+                                                })
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className='mb-2'>
+                                            <label htmlFor="addedBy">Added By: </label>
+                                            <select
+                                                className="form-control"
+                                                name="addedBy"
+                                                placeholder="Added By"
+                                                {...register("addedBy")}
+                                            >
+                                                <option key="defValue" value='null' className='disabled'>Select...</option>
+                                                {membersList.map(e => {
+                                                    return (<option key={'__' + e.value} value={e.value}>{e.label}</option>)
+                                                })
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className='mb-2'>
+                                            <label htmlFor="groupId">Group</label>
+                                            <select {...register("groupId")}
+                                                className="form-control"
+                                                placeholder="Group"
+                                                name="groupId">
+                                                <option key="defValue" value='null' className='disabled'>Select...</option>
+                                                {groupList.map(e => {
+                                                    return (<option key={'_' + e.value} value={e.value}>{e.label}</option>)
+                                                })
+                                                }
+                                            </select>
+                                        </div>
+                                        <input type="submit" aria-label="submit" className='btn btn-primary my-3'
+                                            style={{ width: '100%' }} />
+                                    </form>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Container>
+                    <Container fluid className="background-exp-list">
+                        <Container>
 
-                </Container>
+                            {!transaction?._id &&
+                                <div>
+                                    {expenseList && expenseList.length && membersList && membersList.length > 0 &&
+                                        <ExpenseList deleteTransaction={deleteTransaction}
+                                            membersList={membersList}
+                                            expenseList={expenseList}
+                                            transactions={transactions}
+                                            handleShow={handleShow}
+                                            handleClose={handleClose}
+                                            show={show}
+                                            editTransaction={editTransaction}
+                                            recordEdited={recordEdited}
+                                            setRecordEdited={setRecordEdited}
+                                        />}
+                                </div>
+                            }
+                        </Container>
+                    </Container>
+                </>
             )
             }
         </>

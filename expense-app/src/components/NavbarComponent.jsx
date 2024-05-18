@@ -8,15 +8,15 @@ function NavbarComponent() {
     return (
         <>
             <Navbar bg="dark" data-bs-theme="dark">
-                <Container>
-                    <Navbar.Brand as={NavLink} to="/">Expense App</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                        <Nav.Link as={NavLink} to="/group">Group</Nav.Link>
-                        <Nav.Link as={NavLink} to="/todo">Todo</Nav.Link>
-                        <Nav.Link as={NavLink} to="/gallery">Gallery</Nav.Link>
-                    </Nav>
-                </Container>
+                {/* <Container> */}
+                <Navbar.Brand as={NavLink} to="/">Expense App</Navbar.Brand>
+                <Nav className="me-auto">
+                    <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+                    <Nav.Link as={NavLink} to="/group">Group</Nav.Link>
+                    <Nav.Link as={NavLink} to="/todo">Todo</Nav.Link>
+                    <Nav.Link as={NavLink} to="/gallery">Gallery</Nav.Link>
+                </Nav>
+                {/* </Container> */}
             </Navbar>
 
             <div className='component-holder'>
