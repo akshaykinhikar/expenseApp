@@ -28,19 +28,44 @@ const addExpense = asyncHandler(async (req, res) => {
 });
 
 const getExpenses = asyncHandler(async (req, res) => {
-    const expenseList = await Expense.find({});
+
+    const expenseList = await Expense.find();
+
+    let { page, size, sort } = req.body;
+
+    if (!page) {
+        page = 1;
+    }
+
+    if (!size) {
+        size = 10;
+    }
+
+    const pageCount = Math.ceil(expenseList.length / size);
+
+
     if (expenseList) {
-        res.status(201).json(expenseList);
+        res.status(201).json({
+            "page": page,
+            "pageCount": pageCount,
+            "totalPages": expenseList.length,
+            "data": expenseList.slice(page * size - size, page * size)
+        });
     } else {
         res.status(400);
         throw new Error('Error in retriving expense');
     }
-})
+});
 
 const getExpenseById = asyncHandler(async (req, res) => {
-    const expenseList = await Expense.find({ _id: req.params.id });
-    if (expenseList) {
-        res.status(201).json(expenseList);
+    if (req.params.id) {
+        const expenseList = await Expense.find({ _id: req.params.id });
+        if (expenseList) {
+            res.status(201).json(expenseList);
+        } else {
+            res.status(400);
+            throw new Error('Error in retriving expense');
+        }
     } else {
         res.status(400);
         throw new Error('Error in retriving expense');

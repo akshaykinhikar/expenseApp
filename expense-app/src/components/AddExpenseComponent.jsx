@@ -24,6 +24,10 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
     const formRef = useRef();
     const notify = (props) => toast(props);
     const [recordEdited, setRecordEdited] = useState(0);
+    const [page, setPage] = useState(1);
+    const [size, setSize] = useState(10);
+    const [pageCount, setPageCount] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
         let shares = [];
@@ -60,16 +64,20 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
     useEffect(() => {
         console.log('calling effect expenseList')
         setIsLoading(true);
-        Promise.all([ExpenseService.getExpenses(),
-        ExpenseService.getMembers(),
+        Promise.all([
+            ExpenseService.getExpenses({ page: page, size: size }),
+            ExpenseService.getMembers(),
         ]).then(res => {
-            setExpenseList(res[0]);
+            setExpenseList(res[0].data);
+            setPage(res[0].page);
+            setPageCount(res[0].pageCount);
+            setTotalPages(res[0].totalPages)
             setMembersList(res[1]);
             setIsLoading(false);
         }).catch(err => {
             setIsLoading(false);
         })
-    }, [recordEdited]);
+    }, [recordEdited, page]);
 
     useEffect(() => {
         if (transaction?._id) {
@@ -274,6 +282,11 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                                     editTransaction={editTransaction}
                                                     recordEdited={recordEdited}
                                                     setRecordEdited={setRecordEdited}
+                                                    page={page}
+                                                    setPage={setPage}
+                                                    size={size}
+                                                    pageCount={pageCount}
+                                                    totalPages={totalPages}
                                                 />}
                                         </div>
                                     }

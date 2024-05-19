@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,7 +9,7 @@ import CONSTANTS from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
 import EditExpenseModal from './EditExpenseModal';
-
+import Pagination from './Pagination';
 
 const ExpenseList = (props) => {
   console.info('ExpenseList props-------> ', props.recordEdited);
@@ -18,6 +18,13 @@ const ExpenseList = (props) => {
   const [expenseList, setExpenseList] = useState([]);
   const [giveAway, setGiveAway] = useState([]);
   const [groupTotal, setGroupTotal] = useState(0);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (props.page - 1) * props.size;
+    const lastPageIndex = firstPageIndex + props.size;
+    return props.expenseList.slice(firstPageIndex, lastPageIndex);
+  }, [props.page]);
+
 
   useEffect(() => {
     let groupTtl = giveAway.reduce((acc, ele) => {
@@ -94,7 +101,7 @@ const ExpenseList = (props) => {
         <tbody>
           {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
             <tr key={'tr' + i}>
-              <td key={'td1' + i}>{i + 1}</td>
+              <td key={'td1' + i}>{((props.page - 1) * props.size) + i + 1}</td>
               <td key={'td2' + i}>{expense.expenseName} </td>
               <td key={'td3' + i}>{expense.amount} </td>
               <td key={'td4' + i}>
@@ -112,6 +119,14 @@ const ExpenseList = (props) => {
           }
         </tbody>
       </Table >
+
+      <Pagination
+        className="pagination-bar"
+        currentPage={props.page}
+        totalCount={props.totalPages}
+        pageSize={props.size}
+        onPageChange={page => props.setPage(page)}
+      />
 
       {/* <h4>Shares of Individual</h4> */}
       <Row>
