@@ -1,9 +1,10 @@
 import CONSTANTS from "../constants";
 
 const ExpenseService = {
-    getExpenses: async () => {
+    getExpenses: async (data) => {
         const expenses = await fetch(CONSTANTS.GET_EXPENSES, {
-            method: 'GET',
+            method: 'post',
+            body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
         });
         return expenses.json();

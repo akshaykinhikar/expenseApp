@@ -119,3 +119,10 @@ code {
 /* REF:https: //codepen.io/CompSciLauren/pen/zYvbgVa */
 
 /* ************** FOOTER CSS ENDS ********************* */
+
+
+.pagination-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

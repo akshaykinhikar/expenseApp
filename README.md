@@ -80,3 +80,6 @@ This will launch the application on a local development server. Open your web br
 
 ### Upload Images with React & Node JS to AWS S3
 https://www.youtube.com/watch?v=vVBqEYNXxy8&t=403s
+
+### Pagination
+https://stackblitz.com/edit/react-1zaeqk?file=src%2Fexamples%2FApp.js
