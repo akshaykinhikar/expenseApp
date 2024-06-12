@@ -2,7 +2,6 @@
 import asyncHandler from 'express-async-handler';
 import Expense from '../models/expenseModel.js';
 import { retrieveMembers } from './memberController.js';
-import fetch from 'node-fetch';
 
 
 const addExpense = asyncHandler(async (req, res) => {
