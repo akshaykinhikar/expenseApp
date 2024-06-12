@@ -16,8 +16,6 @@ const ExpenseList = (props) => {
   const [members, setMembers] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
-  const [giveAway, setGiveAway] = useState([]);
-  const [groupTotal, setGroupTotal] = useState(0);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (props.page - 1) * props.size;
@@ -25,53 +23,10 @@ const ExpenseList = (props) => {
     return props.expenseList.slice(firstPageIndex, lastPageIndex);
   }, [props.page]);
 
-
-  useEffect(() => {
-    let groupTtl = giveAway.reduce((acc, ele) => {
-      return acc += (ele?.totalExpenseByMember ? ele.totalExpenseByMember : 0);
-    }, 0);
-    setGroupTotal(groupTtl);
-  }, [giveAway])
-
   useEffect(() => {
     setMembers(props.membersList);
     setExpenseList(props.expenseList);
     setTransactions(props.transactions);
-
-    // calcuculate individual shares
-    // TODO: Add check for Group Name in future
-    let _groupTotal = 0;
-    let _memShares = members.map((mem, i) => {
-      return transactions && transactions.length > 0 && transactions.reduce((acc, ele) => {
-        if (ele['owsBy'] == mem['value']) {
-          acc['owsBy'] = mem['value'];
-
-          if (acc['amount'][ele['owsTo']]) {
-            acc['amount'][ele['owsTo']] = acc['amount'][ele['owsTo']] + ele['amount'];
-
-          } else {
-            acc['amount'][ele['owsTo']] = ele['amount'];
-
-          }
-
-        }
-
-        // total expense by individual
-        if (ele['owsTo'] == mem['value']) {
-          acc.totalExpenseByMember = ele['transactionTotalAmt'] + (acc?.totalExpenseByMember ? acc.totalExpenseByMember : 0);
-        }
-
-        acc.member = mem;
-
-        return acc
-      }, { amount: {} }) || [];
-
-
-    });
-
-    setGiveAway(_memShares);
-    setGroupTotal(_groupTotal);
-
 
   }, [props.expenseList, props.transactions, transactions, props.recordEdited]);
 
@@ -79,7 +34,7 @@ const ExpenseList = (props) => {
     let memObj = members.filter(e => e.value == id);
     if (id && members && (!shares)) {
       const mem = members.filter(e => e.value == id)
-      return mem.length > 0 && <p>{mem[0]['label']}</p>;
+      return mem.length > 0 && <span>{mem[0]['label']}, </span>;
     } else {
       return <span>{memObj[0]['label']}: {shares}</span>;
     }
@@ -130,7 +85,8 @@ const ExpenseList = (props) => {
 
       {/* <h4>Shares of Individual</h4> */}
       <Row>
-        {giveAway && giveAway.length > 0 && giveAway.map((shares, i) => (
+
+        {props.expenseSummary.memShares && props.expenseSummary.memShares.length > 0 && props.expenseSummary.memShares.map((shares, i) => (
 
           <>
             <Col className="my-3" xs={12} md={3} lg={3} key={i} >
@@ -163,7 +119,7 @@ const ExpenseList = (props) => {
       </Row>
       <Row>
         <Col className="my-3" xs={12} md={3} lg={3} >
-          <h3>Group Total: {groupTotal}</h3>
+          <h3>Group Total: {JSON.stringify(props.expenseSummary.groupTotalExpense[0]['groupTotalExpense'])}</h3>
         </Col>
       </Row>
       <EditExpenseModal show={props.show}
