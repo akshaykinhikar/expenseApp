@@ -91,9 +91,19 @@ const deleteMembers = asyncHandler(async (req, res) => {
 })
 
 
+const getMembersMethod = async (req, res) => {
+    const members = await Member.aggregate([{
+        $match: {}
+    },
+    { "$project": { "label": "$name", "value": "$_id" } }
+    ])
+    return members
+}
+
 export {
     addMember,
     getMembers,
     deleteMemberById,
     deleteMembers,
+    getMembersMethod
 }

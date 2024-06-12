@@ -18,6 +18,15 @@ const ExpenseService = {
             return res.json();
         });
         return members;
+    },
+
+    getExpenseSummary: async(data) => {
+        const expenseSummary = await fetch(CONSTANTS.EXPENSE_SUMMARY, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        })
+        return expenseSummary.json();
     }
 
 
