@@ -1,6 +1,8 @@
 
 import asyncHandler from 'express-async-handler';
 import Expense from '../models/expenseModel.js';
+import { retrieveMembers } from './memberController.js';
+
 
 const addExpense = asyncHandler(async (req, res) => {
     console.log("req.body._id", req.body)
@@ -105,11 +107,93 @@ const deleteExpenseById = asyncHandler(async (req, res) => {
     }
 })
 
+const getExpenseSummary = asyncHandler(async (req, res) => {
+
+    const expenseList = await Expense.find();
+
+
+    // TODO: Need to add group and memberID check in future
+
+    // const groupId = req.body.groupId;
+    const memberList = await retrieveMembers();
+
+
+
+    let shares = [];
+    if (expenseList && expenseList.length > 0) {
+        expenseList.map((exp, i) => {
+            let splitAmount = exp.amount / exp.members.length;
+            let primaryTransaction = true;
+            exp.members.map(mem => {
+                if (mem !== exp['paidBy']) {
+                    let obj = {
+                        'owsTo': exp['paidBy'],
+                        'amount': splitAmount,
+                        'owsBy': mem,
+                        'transactionTotalAmt': exp.amount,
+                        'transactionOwner': exp['paidBy']
+                    }
+                    if (primaryTransaction) {
+                        obj.primaryTransaction = primaryTransaction;
+                    }
+
+                    shares.push(obj);
+                    primaryTransaction = false;
+                }
+            })
+        });
+
+        // changes for calculating total group expenses
+        const groupTotalExpense = await Expense.aggregate([{ $group: { _id: null, groupTotalExpense: { $sum: "$amount" } } }]);
+        const expenseSummary = {};
+        expenseSummary.shares = shares;
+        expenseSummary.groupTotalExpense = groupTotalExpense;
+
+
+        // changes to calculate individual shares
+        let _memShares = memberList.map((mem, i) => {
+            console.log("expenseList", expenseList);
+            return shares && shares.length > 0 && shares.reduce((acc, ele) => {
+                if (ele['owsBy'] == mem['value']) {
+                    acc['owsBy'] = mem['value'];
+
+                    if (acc['amount'][ele['owsTo']]) {
+                        acc['amount'][ele['owsTo']] = acc['amount'][ele['owsTo']] + ele['amount'];
+
+                    } else {
+                        acc['amount'][ele['owsTo']] = ele['amount'];
+
+                    }
+
+                }
+
+                // total expense by individual
+                if (ele['owsTo'] == mem['value']) {
+                    acc.totalExpenseByMember = ((ele['primaryTransaction'] && ele['transactionTotalAmt']) ? ele['transactionTotalAmt'] : 0)
+                        + (acc?.totalExpenseByMember ? acc.totalExpenseByMember : 0);
+                }
+
+                acc.member = mem;
+
+                return acc
+            }, { amount: {} }) || [];
+
+
+        });
+
+        expenseSummary.memShares = _memShares;
+
+        return res.status(201).json(expenseSummary);
+    }
+
+})
+
 
 export {
     addExpense,
     getExpenses,
     getExpenseById,
     deleteExpense,
-    deleteExpenseById
+    deleteExpenseById,
+    getExpenseSummary
 }

@@ -19,6 +19,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
     const [transactions, setTransactions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [editTransaction, setEditTransaction] = useState({});
+    const [expenseSummary, setExpenseSummary] = useState({});
+
     const [show, setShow] = useState(false);
     const [membersAvailable, setMembersAvailable] = useState(false);
     const formRef = useRef();
@@ -67,12 +69,14 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         Promise.all([
             ExpenseService.getExpenses({ page: page, size: size }),
             ExpenseService.getMembers(),
+            ExpenseService.getExpenseSummary({}),
         ]).then(res => {
             setExpenseList(res[0].data);
             setPage(res[0].page);
             setPageCount(res[0].pageCount);
             setTotalPages(res[0].totalPages)
             setMembersList(res[1]);
+            setExpenseSummary(res[2])
             setIsLoading(false);
         }).catch(err => {
             setIsLoading(false);
@@ -287,6 +291,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                                     size={size}
                                                     pageCount={pageCount}
                                                     totalPages={totalPages}
+                                                    expenseSummary={expenseSummary}
                                                 />}
                                         </div>
                                     }

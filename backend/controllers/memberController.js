@@ -39,11 +39,7 @@ const addMember = asyncHandler(async (req, res) => {
 // @route POST /api/members
 // @access Public
 const getMembers = asyncHandler(async (req, res) => {
-    const members = await Member.aggregate([{
-        $match: {}
-    },
-    { "$project": { "label": "$name", "value": "$_id" } }
-    ])
+    const members = await retrieveMembers();
     res.json(members)
 })
 
@@ -91,9 +87,19 @@ const deleteMembers = asyncHandler(async (req, res) => {
 })
 
 
+const retrieveMembers = async () => {
+    const members = await Member.aggregate([{
+        $match: {}
+    },
+    { "$project": { "label": "$name", "value": "$_id" } }
+    ])
+    return members
+}
+
 export {
     addMember,
     getMembers,
     deleteMemberById,
     deleteMembers,
+    retrieveMembers
 }
