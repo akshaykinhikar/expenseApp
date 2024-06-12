@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CONSTANTS from '../constants';
@@ -43,7 +43,8 @@ const ExpenseList = (props) => {
   return (
     <>
       <h4>Expense List</h4>
-      <Table striped bordered hover responsive>
+      <Row>
+      <Table striped bordered hover responsive="xs">
         <thead>
           <tr>
             <th>#</th>
@@ -66,7 +67,7 @@ const ExpenseList = (props) => {
                 ))}
               </td>
               <td key={'td5' + i}>
-                <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp; &nbsp; &nbsp;
                 <FontAwesomeIcon icon={faPencil} onClick={() => props.handleShow(expense)} />
               </td>
             </tr>
@@ -74,6 +75,8 @@ const ExpenseList = (props) => {
           }
         </tbody>
       </Table >
+
+      </Row>
 
       <Pagination
         className="pagination-bar"
@@ -109,7 +112,7 @@ const ExpenseList = (props) => {
                   <Card.Text>
                     {shares?.totalExpenseByMember}
                   </Card.Text>
-                  <Button variant="primary">Pay</Button>
+                  <Button className="w-100" variant="primary">Pay</Button>
                 </Card.Body>
               </Card>
             </Col>
