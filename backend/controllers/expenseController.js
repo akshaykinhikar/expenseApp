@@ -1,7 +1,7 @@
 
 import asyncHandler from 'express-async-handler';
 import Expense from '../models/expenseModel.js';
-import { getMembers, getMembersMethod } from './memberController.js';
+import { retrieveMembers } from './memberController.js';
 import fetch from 'node-fetch';
 
 
@@ -116,7 +116,7 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
     // TODO: Need to add group and memberID check in future
 
     // const groupId = req.body.groupId;
-    const memberList = await getMembersMethod();
+    const memberList = await retrieveMembers();
 
 
 
