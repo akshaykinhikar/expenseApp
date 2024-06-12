@@ -7,15 +7,18 @@ import Footer from './footer';
 function NavbarComponent() {
     return (
         <>
-            <Navbar bg="dark" data-bs-theme="dark">
+            <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
                     <Navbar.Brand as={NavLink} to="/">Expense App</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                        <Nav.Link as={NavLink} to="/group">Group</Nav.Link>
-                        <Nav.Link as={NavLink} to="/todo">Todo</Nav.Link>
-                        <Nav.Link as={NavLink} to="/gallery">Gallery</Nav.Link>
-                    </Nav>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+                            <Nav.Link as={NavLink} to="/group">Group</Nav.Link>
+                            <Nav.Link as={NavLink} to="/todo">Todo</Nav.Link>
+                            <Nav.Link as={NavLink} to="/gallery">Gallery</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
 
