@@ -12,7 +12,6 @@ import EditExpenseModal from './EditExpenseModal';
 import Pagination from './Pagination';
 
 const ExpenseList = (props) => {
-  console.info('ExpenseList props-------> ', props.recordEdited);
   const [members, setMembers] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
@@ -40,11 +39,26 @@ const ExpenseList = (props) => {
     }
   }
 
+  const searchExapense = (e) => {
+    console.log(e);
+    if (e.length > 2 || e == "") {
+      console.log("setSearchString", e)
+      props.setSearchString(e);
+    }
+  }
+
   return (
     <>
-      <h4>Expense List</h4>
-      <Row>
-      <Table striped bordered hover responsive="xs">
+
+      <input type="text" className='search-expense form-control' placeholder='Type to search expense' onChange={(e) => searchExapense(e.target.value)} />
+
+      {props.groupList && props.groupList.map(group => (
+        <span class="badge text-bg-primary">{group.label}</span>
+      ))}
+
+      <h4 className='mt-3'>Expense List</h4>
+
+      <Table responsive="sm" striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
@@ -76,7 +90,6 @@ const ExpenseList = (props) => {
         </tbody>
       </Table >
 
-      </Row>
 
       <Pagination
         className="pagination-bar"

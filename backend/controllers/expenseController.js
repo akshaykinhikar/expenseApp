@@ -31,9 +31,10 @@ const addExpense = asyncHandler(async (req, res) => {
 
 const getExpenses = asyncHandler(async (req, res) => {
 
-    const expenseList = await Expense.find();
+    let { page, size, sort, searchString } = req.body;
 
-    let { page, size, sort } = req.body;
+    const expenseList = await Expense.find({ expenseName: { $regex: searchString } });
+
 
     if (!page) {
         page = 1;
@@ -47,12 +48,14 @@ const getExpenses = asyncHandler(async (req, res) => {
 
 
     if (expenseList) {
-        res.status(201).json({
-            "page": page,
-            "pageCount": pageCount,
-            "totalPages": expenseList.length,
-            "data": expenseList.slice(page * size - size, page * size)
-        });
+        setTimeout(() => {
+            res.status(201).json({
+                "page": page,
+                "pageCount": pageCount,
+                "totalPages": expenseList.length,
+                "data": expenseList.slice(page * size - size, page * size)
+            });
+        }, 2000)
     } else {
         res.status(400);
         throw new Error('Error in retriving expense');
@@ -116,8 +119,6 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
 
     // const groupId = req.body.groupId;
     const memberList = await retrieveMembers();
-
-
 
     let shares = [];
     if (expenseList && expenseList.length > 0) {

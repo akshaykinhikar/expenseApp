@@ -9,6 +9,7 @@ const CONSTANTS = {
     DELETE_EXPENSEBYID: '/api/expense/delete/',
     IMAGE_UPLOAD: '/api/images',
     EXPENSE_SUMMARY: '/api/expense/getExpenseSummary',
+    GET_SEARCH_RESULT: '/api/expense/search'
 }
 
 export default CONSTANTS;

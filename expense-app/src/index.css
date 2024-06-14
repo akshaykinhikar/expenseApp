@@ -126,3 +126,12 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.search-expense {
+  width: 300px !important;
+  height: 50px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+
+}

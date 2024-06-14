@@ -30,6 +30,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
     const [size, setSize] = useState(10);
     const [pageCount, setPageCount] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [searchString, setSearchString] = useState('');
 
     useEffect(() => {
         let shares = [];
@@ -67,7 +68,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         console.log('calling effect expenseList')
         setIsLoading(true);
         Promise.all([
-            ExpenseService.getExpenses({ page: page, size: size }),
+            ExpenseService.getExpenses({ page: page, size: size, searchString: '' }),
             ExpenseService.getMembers(),
             ExpenseService.getExpenseSummary({}),
         ]).then(res => {
@@ -187,6 +188,29 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         return _selectedMembers
     }
 
+    // fetch search result
+    useEffect(() => {
+        const getData = setTimeout(async () => {
+            // setIsLoading(true);
+            const payload = { page: 1, size: 10, searchString: searchString }
+            const api = await fetch(CONSTANTS.GET_EXPENSES, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            const data = api.json();
+            console.log(data);
+            data.then(res => {
+                setExpenseList(res?.data);
+                setPageCount(res.pageCount);
+                setTotalPages(res.totalPages)
+                // setIsLoading(false);
+            })
+        }, 500);
+        return () => clearTimeout(getData)
+    }, [searchString]);
+
     return (
         <>
             <Toaster />
@@ -292,6 +316,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                                     pageCount={pageCount}
                                                     totalPages={totalPages}
                                                     expenseSummary={expenseSummary}
+                                                    groupList={groupList}
+                                                    setSearchString={setSearchString}
                                                 />}
                                         </div>
                                     }
