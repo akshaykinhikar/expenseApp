@@ -93,6 +93,10 @@ code {
     flex: 100%;
     max-width: 100%;
   }
+
+  .table-scroll {
+    overflow-x: scroll;
+  }
 }
 
 /* ************** GRID CSS ENDS ********************* */
@@ -139,8 +143,4 @@ code {
 
 .mr-1 {
   margin-right: 10px;
-}
-
-.table-scroll {
-  overflow-x: scroll;
 }
