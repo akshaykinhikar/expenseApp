@@ -225,10 +225,10 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
             {isLoading ? <LoadingSpinner /> : (
                 membersAvailable && <>
 
-                    <Container fluid className='background-add-exp'>
+                    <Container fluid className={transaction?._id ? '' : 'background-add-exp'}>
                         <Container>
                             <Row>
-                                <Col xs={12} md={6} lg={6} className="back-form-add-exp">
+                                <Col className={!transaction?._id ? 'col-xs-12 col-md-6 col-lg-6 back-form-add-exp' : ''}>
                                     {!transaction?._id && <h4 className='text-center my-3'>Add Expense</h4>}
                                     <form className="add-exp-form" onSubmit={handleSubmit(onSubmit)} aria-label='add-expense' ref={formRef}>
                                         <div className='mb-2'>
@@ -301,10 +301,10 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                             </Row>
                         </Container>
                     </Container>
-                    <Container fluid className="background-exp-list">
+                    <Container fluid className={!transaction?._id ? 'background-exp-list' : ''}>
                         <Container>
                             <Row>
-                                <Col xs={12} md={12} lg={12}>
+                                <Col xs={12} md={12} lg={12} >
                                     {!transaction?._id &&
                                         <div>
                                             <input type="text" className='search-expense form-control' placeholder='Type to search expense' onChange={(e) => searchExapense(e.target.value)} />

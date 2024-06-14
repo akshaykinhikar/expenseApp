@@ -54,37 +54,41 @@ const ExpenseList = (props) => {
 
       <h4 className='mt-3'>Expense List</h4>
 
-      <Table responsive="sm" striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Expense Name</th>
-            <th>Amount</th>
-            <th>Members</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
-            <tr key={'tr' + i}>
-              <td key={'td1' + i}>{((props.page - 1) * props.size) + i + 1}</td>
-              <td key={'td2' + i}>{expense.expenseName} </td>
-              <td key={'td3' + i}>{expense.amount} </td>
-              <td key={'td4' + i}>
-                {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
-                  <GetMemName key={'mem' + i} id={e} members={members} />
+      <Row>
+        <Col xs={12} className="table-scroll">
+          <Table striped bordered hover >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Expense Name</th>
+                <th>Amount</th>
+                <th>Members</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
+                <tr key={'tr' + i}>
+                  <td key={'td1' + i}>{((props.page - 1) * props.size) + i + 1}</td>
+                  <td key={'td2' + i}>{expense.expenseName} </td>
+                  <td key={'td3' + i}>{expense.amount} </td>
+                  <td key={'td4' + i}>
+                    {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
+                      <GetMemName key={'mem' + i} id={e} members={members} />
 
-                ))}
-              </td>
-              <td key={'td5' + i}>
-                <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp; &nbsp; &nbsp;
-                <FontAwesomeIcon icon={faPencil} onClick={() => props.handleShow(expense)} />
-              </td>
-            </tr>
-          ))
-          }
-        </tbody>
-      </Table >
+                    ))}
+                  </td>
+                  <td key={'td5' + i}>
+                    <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp;
+                    <FontAwesomeIcon icon={faPencil} onClick={() => props.handleShow(expense)} />
+                  </td>
+                </tr>
+              ))
+              }
+            </tbody>
+          </Table >
+        </Col>
+      </Row>
 
 
       <Pagination

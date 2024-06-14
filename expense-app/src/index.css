@@ -140,3 +140,7 @@ code {
 .mr-1 {
   margin-right: 10px;
 }
+
+.table-scroll {
+  overflow-x: scroll;
+}
