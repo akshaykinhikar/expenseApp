@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CONSTANTS from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencil, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import EditExpenseModal from './EditExpenseModal';
 import Pagination from './Pagination';
 
@@ -42,9 +42,15 @@ const ExpenseList = (props) => {
 
   return (
     <>
-      {props.groupList && props.groupList.map(group => (
-        <span class="badge text-bg-primary mr-1">{group.label}</span>
-      ))}
+      <Row>
+        <Col xs={12} md={12} lg={12} >
+          <div className='mx-auto' style={{ 'width': '300px' }}>
+            {props.groupList && props.groupList.map(group => (
+              <span class="badge text-bg-primary mr-1"><FontAwesomeIcon icon={faPeopleGroup} />  {group.label}</span>
+            ))}
+          </div>
+        </Col>
+      </Row >
 
       <h4 className='mt-3'>Expense List</h4>
 
