@@ -39,21 +39,11 @@ const ExpenseList = (props) => {
     }
   }
 
-  const searchExapense = (e) => {
-    console.log(e);
-    if (e.length > 2 || e == "") {
-      console.log("setSearchString", e)
-      props.setSearchString(e);
-    }
-  }
 
   return (
     <>
-
-      <input type="text" className='search-expense form-control' placeholder='Type to search expense' onChange={(e) => searchExapense(e.target.value)} />
-
       {props.groupList && props.groupList.map(group => (
-        <span class="badge text-bg-primary">{group.label}</span>
+        <span class="badge text-bg-primary mr-1">{group.label}</span>
       ))}
 
       <h4 className='mt-3'>Expense List</h4>

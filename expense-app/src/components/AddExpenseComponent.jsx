@@ -211,6 +211,14 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         return () => clearTimeout(getData)
     }, [searchString]);
 
+    const searchExapense = (e) => {
+        console.log(e);
+        if (e.length > 2 || e == "") {
+            setSearchString(e);
+        }
+    }
+
+
     return (
         <>
             <Toaster />
@@ -299,7 +307,9 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                 <Col xs={12} md={12} lg={12}>
                                     {!transaction?._id &&
                                         <div>
-                                            {expenseList && expenseList.length && membersList && membersList.length > 0 &&
+                                            <input type="text" className='search-expense form-control' placeholder='Type to search expense' onChange={(e) => searchExapense(e.target.value)} />
+
+                                            {expenseList && expenseList.length && membersList && membersList.length > 0 ?
                                                 <ExpenseList deleteTransaction={deleteTransaction}
                                                     membersList={membersList}
                                                     expenseList={expenseList}
@@ -318,7 +328,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                                     expenseSummary={expenseSummary}
                                                     groupList={groupList}
                                                     setSearchString={setSearchString}
-                                                />}
+                                                /> : <h3>No expense found</h3>
+                                            }
                                         </div>
                                     }
                                 </Col>
