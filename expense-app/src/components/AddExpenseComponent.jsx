@@ -9,6 +9,7 @@ import CONSTANTS from '../constants';
 import toast, { Toaster } from 'react-hot-toast';
 import ExpenseService from '../services/common-services';
 import LoadingSpinner from './LoadingSpinner';
+import AnalyticsComponent from './AnalyticsComponent';
 
 const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecordUpdated }) => {
 
@@ -56,6 +57,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
 
 
     useEffect(() => {
+        console.info('membersList useEffect', membersAvailable, membersList);
         if (membersList.length > 0) {
             setMembersAvailable(true)
         } else {
@@ -298,6 +300,16 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                             style={{ width: '100%' }} />
                                     </form>
                                 </Col>
+                                <Col className={!transaction?._id ? 'col-xs-12 col-md-6 col-lg-6' : ''}>
+                                    <div className="row justify-content-md-center">
+                                        <div className="col-md-auto">
+                                            {/* <p>{JSON.stringify(expenseSummary)}</p> */}
+                                            {!transaction?._id && expenseList && expenseSummary && expenseList.length && membersList && membersList.length > 0 && <AnalyticsComponent
+                                                expenseSummary={expenseSummary} />}
+                                        </div>
+                                    </div>
+                                </Col>
+
                             </Row>
                         </Container>
                     </Container>
