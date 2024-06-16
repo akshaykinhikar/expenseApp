@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -68,6 +68,7 @@ const AnalyticsComponent = (props) => {
         <>
             <h4 className='mt-5'>Analytics component</h4>
             {data?.datasets[0]?.data?.length > 0 && <Doughnut data={data} />}
+            {/* {data?.datasets[0]?.data?.length > 0 && <Pie data={data} />} */}
         </>
     )
 }

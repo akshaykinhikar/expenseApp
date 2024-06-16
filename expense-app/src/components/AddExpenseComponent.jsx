@@ -21,6 +21,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
     const [isLoading, setIsLoading] = useState(false);
     const [editTransaction, setEditTransaction] = useState({});
     const [expenseSummary, setExpenseSummary] = useState({});
+    const [selectedGroupId, setSelectedGroupId] = useState('');
 
     const [show, setShow] = useState(false);
     const [membersAvailable, setMembersAvailable] = useState(false);
@@ -70,7 +71,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         console.log('calling effect expenseList')
         setIsLoading(true);
         Promise.all([
-            ExpenseService.getExpenses({ page: page, size: size, searchString: '' }),
+            ExpenseService.getExpenses({ page: page, size: size, searchString: '', groupId: selectedGroupId }),
             ExpenseService.getMembers(),
             ExpenseService.getExpenseSummary({}),
         ]).then(res => {
@@ -84,7 +85,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         }).catch(err => {
             setIsLoading(false);
         })
-    }, [recordEdited, page]);
+    }, [recordEdited, page, selectedGroupId]);
 
     useEffect(() => {
         if (transaction?._id) {
@@ -127,6 +128,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
             data.members = selectedMembers.map(e => e.value);
             console.info('data ', data);
 
+            data.groupId = selectedGroupId;
+
             if (transaction) {
                 data._id = transaction._id;
             }
@@ -166,7 +169,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
             return res.json();
         }).then((data) => {
             notify('Expense deleted');
-            setExpenseList(data.availableRecords);
+            // setExpenseList(data.availableRecords);
+            setRecordEdited(recordEdited + 1);
         })
     }
 
@@ -194,7 +198,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
     useEffect(() => {
         const getData = setTimeout(async () => {
             // setIsLoading(true);
-            const payload = { page: 1, size: 10, searchString: searchString }
+            const payload = { page: 1, size: 10, searchString: searchString, groupId: selectedGroupId }
             const api = await fetch(CONSTANTS.GET_EXPENSES, {
                 method: 'POST',
                 body: JSON.stringify(payload),
@@ -340,6 +344,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                                     expenseSummary={expenseSummary}
                                                     groupList={groupList}
                                                     setSearchString={setSearchString}
+                                                    setSelectedGroupId={setSelectedGroupId}
+                                                    selectedGroupId={selectedGroupId}
                                                 /> : <h3>No expense found</h3>
                                             }
                                         </div>

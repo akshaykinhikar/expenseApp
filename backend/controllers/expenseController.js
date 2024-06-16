@@ -31,9 +31,19 @@ const addExpense = asyncHandler(async (req, res) => {
 
 const getExpenses = asyncHandler(async (req, res) => {
 
-    let { page, size, sort, searchString } = req.body;
+    let { page, size, sort, searchString, groupId } = req.body;
 
-    const expenseList = await Expense.find({ expenseName: { $regex: searchString } });
+    const searchQuery = {
+        expenseName: { $regex: searchString },
+    }
+
+    if (groupId) {
+        searchQuery.groupId = groupId;
+
+    }
+
+
+    const expenseList = await Expense.find(searchQuery);
 
 
     if (!page) {
@@ -116,6 +126,7 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
 
 
     // TODO: Need to add group and memberID check in future
+    
 
     // const groupId = req.body.groupId;
     const memberList = await retrieveMembers();

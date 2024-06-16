@@ -144,3 +144,10 @@ code {
 .mr-1 {
   margin-right: 10px;
 }
+
+
+.text-bg-primary-ext {
+  border: 1px solid RGBA(var(--bs-primary-rgb), var(--bs-bg-opacity, 1)) !important;
+  color: RGBA(var(--bs-primary-rgb), var(--bs-bg-opacity, 1)) !important;
+  cursor: pointer;
+}
