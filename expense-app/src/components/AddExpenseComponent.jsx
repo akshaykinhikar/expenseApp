@@ -144,7 +144,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                 }).then((data) => {
                     setIsLoading(false);
                     notify('Expense ' + (transaction ? 'updated:' : 'added:') + data.expenseName);
-                    setExpenseList(prev => ([...prev, data]));
+                    // setExpenseList(prev => ([...prev, data]));
+                    setRecordEdited(() => recordEdited + 1)
                     reset({ expenseName: '', amount: '', paidBy: '', addedBy: '' });
                     if (transaction?._id) {
                         setRecordUpdated(recordUpdated + 1);
