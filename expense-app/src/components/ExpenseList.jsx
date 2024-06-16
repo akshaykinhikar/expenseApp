@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CONSTANTS from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPencil, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencil, faPeopleGroup, faIndianRupeeSign } from '@fortawesome/free-solid-svg-icons';
 import EditExpenseModal from './EditExpenseModal';
 import Pagination from './Pagination';
 
@@ -73,7 +73,7 @@ const ExpenseList = (props) => {
                 <tr key={'tr' + i}>
                   <td key={'td1' + i}>{((props.page - 1) * props.size) + i + 1}</td>
                   <td key={'td2' + i}>{expense.expenseName} </td>
-                  <td key={'td3' + i}>{expense.amount} </td>
+                  <td key={'td3' + i}>{expense.amount.toFixed(2)} </td>
                   <td key={'td3' + i}>
                     <GetMemName key={'mem' + i} id={expense.paidBy} members={members} />
                   </td>
@@ -93,7 +93,7 @@ const ExpenseList = (props) => {
             </tbody>
           </Table >
         </Col>
-      </Row>
+      </Row >
 
 
       <Pagination
@@ -120,7 +120,7 @@ const ExpenseList = (props) => {
                   {members && members.length > 0 && shares?.amount && (Object.keys(shares.amount)).map(((ele, i) => (
                     <Card.Text>
                       <div key={i}>
-                        {ele && <GetMemName id={ele} members={members} shares={shares.amount[ele]} />}
+                        {ele && <GetMemName id={ele} members={members} shares={shares.amount[ele].toFixed(2)} />}
                       </div>
                     </Card.Text>
                   )))}
@@ -128,7 +128,7 @@ const ExpenseList = (props) => {
                     Total Expense
                   </Card.Title>
                   <Card.Text>
-                    {shares?.totalExpenseByMember}
+                    {shares?.totalExpenseByMember.toFixed(2)}
                   </Card.Text>
                   <Button className="w-100" variant="primary">Pay</Button>
                 </Card.Body>
