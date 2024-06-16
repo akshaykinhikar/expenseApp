@@ -121,12 +121,19 @@ const deleteExpenseById = asyncHandler(async (req, res) => {
 })
 
 const getExpenseSummary = asyncHandler(async (req, res) => {
+    let { groupId } = req.body;
+    const queryString = {}
 
-    const expenseList = await Expense.find();
+    if (groupId) {
+        queryString.groupId = groupId;
+
+    }
+
+    const expenseList = await Expense.find(queryString);
 
 
     // TODO: Need to add group and memberID check in future
-    
+
 
     // const groupId = req.body.groupId;
     const memberList = await retrieveMembers();
@@ -156,7 +163,19 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
         });
 
         // changes for calculating total group expenses
-        const groupTotalExpense = await Expense.aggregate([{ $group: { _id: null, groupTotalExpense: { $sum: "$amount" } } }]);
+        const aggragateGpTtlQuery = [];
+        if (groupId) {
+            let filterByGroupId = {
+                "$match": {
+                    groupId: groupId
+                }
+            }
+            aggragateGpTtlQuery.push(filterByGroupId);
+        }
+
+        aggragateGpTtlQuery.push({ $group: { _id: null, groupTotalExpense: { $sum: "$amount" } } })
+
+        const groupTotalExpense = await Expense.aggregate(aggragateGpTtlQuery);
         const expenseSummary = {};
         expenseSummary.shares = shares;
         expenseSummary.groupTotalExpense = groupTotalExpense;

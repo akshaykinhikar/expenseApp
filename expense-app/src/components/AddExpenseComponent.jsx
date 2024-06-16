@@ -73,7 +73,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         Promise.all([
             ExpenseService.getExpenses({ page: page, size: size, searchString: '', groupId: selectedGroupId }),
             ExpenseService.getMembers(),
-            ExpenseService.getExpenseSummary({}),
+            ExpenseService.getExpenseSummary({ groupId: selectedGroupId }),
         ]).then(res => {
             setExpenseList(res[0].data);
             setPage(res[0].page);

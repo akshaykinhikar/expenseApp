@@ -15,7 +15,7 @@ const AnalyticsComponent = (props) => {
         labels: [],
         datasets: [
             {
-                label: '# of Votes',
+                label: 'Contributed',
                 data: [],
                 backgroundColor: [],
                 borderColor: [],
@@ -66,7 +66,7 @@ const AnalyticsComponent = (props) => {
 
     return (
         <>
-            <h4 className='mt-5'>Analytics component</h4>
+            <h4 className='mt-5'>Summary</h4>
             {data?.datasets[0]?.data?.length > 0 && <Doughnut data={data} />}
             {/* {data?.datasets[0]?.data?.length > 0 && <Pie data={data} />} */}
         </>
