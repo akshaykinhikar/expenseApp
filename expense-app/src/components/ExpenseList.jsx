@@ -47,7 +47,7 @@ const ExpenseList = (props) => {
           <div className='mx-auto' style={{ 'width': '300px' }}>
             {props.groupList && props.groupList.map(group => (
               // <span className="badge text-bg-primary-ext mr-1" onClick={() => props.setSelectedGroupId(group.value)}><FontAwesomeIcon icon={faPeopleGroup} />{group.label}</span>
-              <span className={`badge mr-1 ${props.selectedGroupId === group.value ? "text-bg-primary" : "text-bg-primary-ext"}`} onClick={() => props.setSelectedGroupId(group.value)}><FontAwesomeIcon icon={faPeopleGroup} />{group.label}</span>
+              <span className={`badge mr-1 ${props.selectedGroupId === group.value ? "text-bg-primary" : "text-bg-primary-ext"}`} onClick={() => props.setSelectedGroupId(group.value)}><FontAwesomeIcon icon={faPeopleGroup} /> {group.label}</span>
             ))}
           </div>
         </Col>
@@ -63,6 +63,7 @@ const ExpenseList = (props) => {
                 <th>#</th>
                 <th>Expense Name</th>
                 <th>Amount</th>
+                <th>Paid By</th>
                 <th>Members</th>
                 <th>Action</th>
               </tr>
@@ -73,6 +74,9 @@ const ExpenseList = (props) => {
                   <td key={'td1' + i}>{((props.page - 1) * props.size) + i + 1}</td>
                   <td key={'td2' + i}>{expense.expenseName} </td>
                   <td key={'td3' + i}>{expense.amount} </td>
+                  <td key={'td3' + i}>
+                    <GetMemName key={'mem' + i} id={expense.paidBy} members={members} />
+                  </td>
                   <td key={'td4' + i}>
                     {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
                       <GetMemName key={'mem' + i} id={e} members={members} />
@@ -136,7 +140,7 @@ const ExpenseList = (props) => {
       </Row>
       <Row>
         <Col className="my-3" xs={12} md={3} lg={3} >
-          <h3>Group Total: {JSON.stringify(props.expenseSummary.groupTotalExpense[0]['groupTotalExpense'])}</h3>
+          <h3>Group Total: {JSON.stringify(props.expenseSummary?.groupTotalExpense && props.expenseSummary?.groupTotalExpense[0] && props.expenseSummary?.groupTotalExpense[0]['groupTotalExpense'])}</h3>
         </Col>
       </Row>
       <EditExpenseModal show={props.show}

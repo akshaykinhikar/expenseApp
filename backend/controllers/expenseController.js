@@ -215,6 +215,8 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
         expenseSummary.memShares = _memShares;
 
         return res.status(201).json(expenseSummary);
+    } else {
+        return res.status(201).json({});
     }
 
 })
