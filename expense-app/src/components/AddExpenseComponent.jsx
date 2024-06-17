@@ -321,9 +321,9 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                     <Container fluid className={!transaction?._id ? 'background-exp-list' : ''}>
                         <Container>
                             <Row>
-                                <Col xs={12} md={12} lg={12} >
+                                <div className="col-xs-12 col-md-12 col-lg-6 ">
                                     {!transaction?._id &&
-                                        <div>
+                                        <>
                                             <input type="text" className='search-expense form-control' placeholder='Type to search expense' onChange={(e) => searchExapense(e.target.value)} />
 
                                             {expenseList && expenseList.length && membersList && membersList.length > 0 ?
@@ -349,9 +349,9 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                                     selectedGroupId={selectedGroupId}
                                                 /> : <h3>No expense found</h3>
                                             }
-                                        </div>
+                                        </>
                                     }
-                                </Col>
+                                </div>
                             </Row>
                         </Container>
                     </Container>

@@ -56,7 +56,7 @@ const ExpenseList = (props) => {
       <h4 className='mt-3'>Expense List</h4>
 
       <Row>
-        <Col xs={12} className="table-scroll">
+        <div className="table-scroll col-sm-12">
           <Table striped bordered hover >
             <thead>
               <tr>
@@ -92,7 +92,7 @@ const ExpenseList = (props) => {
               }
             </tbody>
           </Table >
-        </Col>
+        </div>
       </Row >
 
 
