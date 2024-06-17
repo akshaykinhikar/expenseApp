@@ -128,7 +128,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
             data.members = selectedMembers.map(e => e.value);
             console.info('data ', data);
 
-            data.groupId = selectedGroupId;
+            // data.groupId = selectedGroupId;
 
             if (transaction) {
                 data._id = transaction._id;
@@ -235,7 +235,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                     <Container fluid className={transaction?._id ? '' : 'background-add-exp'}>
                         <Container>
                             <Row>
-                                <Col className={!transaction?._id ? 'col-xs-12 col-md-6 col-lg-6 back-form-add-exp' : ''}>
+                                <div className={!transaction?._id ? 'col-xs-12 col-md-12 col-lg-6 back-form-add-exp' : ''}>
                                     {!transaction?._id && <h4 className='text-center my-3'>Add Expense</h4>}
                                     <form className="add-exp-form" onSubmit={handleSubmit(onSubmit)} aria-label='add-expense' ref={formRef}>
                                         <div className='mb-2'>
@@ -304,8 +304,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                         <input type="submit" aria-label="submit" className='btn btn-primary my-3'
                                             style={{ width: '100%' }} />
                                     </form>
-                                </Col>
-                                <Col className={!transaction?._id ? 'col-xs-12 col-md-6 col-lg-6' : ''}>
+                                </div>
+                                <div className={!transaction?._id ? 'col-xs-12 col-md-6 col-lg-6' : ''}>
                                     <div className="row justify-content-md-center">
                                         <div className="col-md-auto">
                                             {/* <p>{JSON.stringify(expenseSummary)}</p> */}
@@ -313,7 +313,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                                 expenseSummary={expenseSummary} />}
                                         </div>
                                     </div>
-                                </Col>
+                                </div>
 
                             </Row>
                         </Container>
