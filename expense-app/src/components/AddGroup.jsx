@@ -163,11 +163,12 @@ const AddGroup = () => {
     }
 
     return (
-        <div>
+        <div style={{ 'background-color': 'silver', 'min-height': '100vh' }}>
             <Container>
                 <Toaster />
-                <Row>
-                    <Col xs={6} md={6} lg={6} >
+                <Row className="justify-content-md-center pt-4">
+                    <Col xs={6} md={6} lg={6} className='back-form-add-exp'>
+                        <h3 className='text-center'>Create new group</h3>
                         <div className='my-3'>
                             <label className="" htmlFor="groupName">Group Name: </label>
                             <input
@@ -216,18 +217,17 @@ const AddGroup = () => {
                             </Row>
                         </div>
 
+                        <div>
+                            <button className="btn btn-primary" onClick={submitButton}>Create Group</button>
+                        </div>
                     </Col>
-                    <div>
-                        <button className="btn btn-primary" onClick={submitButton}>Create Group</button>
-
-                    </div>
                 </Row>
 
                 <h4 className='my-3'>Group List</h4>
 
                 {groupList.length > 0 ? groupList.map((group, i) => (
                     <Row key={i}>
-                        <Col xs={6} md={6} lg={6} >
+                        <Col xs={4} md={4} lg={4} >
                             <p>{group.label}</p>
                         </Col>
                         <Col xs={1} md={1} lg={1} >
@@ -242,7 +242,7 @@ const AddGroup = () => {
 
                 {membersList.length > 0 ? membersList.map((member, i) => (
                     <Row key={i}>
-                        <Col xs={6} md={6} lg={6} >
+                        <Col xs={4} md={4} lg={4} >
                             <p>{member.label}</p>
                         </Col>
                         <Col xs={1} md={1} lg={1} >

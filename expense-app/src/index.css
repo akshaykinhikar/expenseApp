@@ -152,3 +152,10 @@ code {
   color: RGBA(var(--bs-primary-rgb), var(--bs-bg-opacity, 1)) !important;
   cursor: pointer;
 }
+
+/* ++++++++++++++++++++++++++++++++++ */
+
+.create-grp {
+  background-color: #fff;
+  padding: 20px;
+}
