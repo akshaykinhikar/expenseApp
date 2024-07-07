@@ -321,7 +321,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                     <Container fluid className={!transaction?._id ? 'background-exp-list' : ''}>
                         <Container>
                             <Row>
-                                <div className="col-xs-12 col-md-12 col-lg-6 ">
+                                <div className="col-xs-12 col-md-12 col-lg-12 ">
                                     {!transaction?._id &&
                                         <>
                                             <input type="text" className='search-expense form-control' placeholder='Type to search expense' onChange={(e) => searchExapense(e.target.value)} />

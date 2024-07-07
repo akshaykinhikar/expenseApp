@@ -46,7 +46,6 @@ const ExpenseList = (props) => {
         <Col xs={12} md={12} lg={12} >
           <div className='mx-auto' style={{ 'width': '300px' }}>
             {props.groupList && props.groupList.map(group => (
-              // <span className="badge text-bg-primary-ext mr-1" onClick={() => props.setSelectedGroupId(group.value)}><FontAwesomeIcon icon={faPeopleGroup} />{group.label}</span>
               <span className={`badge mr-1 ${props.selectedGroupId === group.value ? "text-bg-primary" : "text-bg-primary-ext"}`} onClick={() => props.setSelectedGroupId(group.value)}><FontAwesomeIcon icon={faPeopleGroup} /> {group.label}</span>
             ))}
           </div>
