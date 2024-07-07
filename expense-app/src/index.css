@@ -14,7 +14,8 @@ code {
 }
 
 .component-holder {
-  /* min-height: calc(100vh - 107px);
+  min-height: calc(100vh - 107px);
+  /* 
   display: grid;
   grid-template-rows: 1fr auto; */
 }
