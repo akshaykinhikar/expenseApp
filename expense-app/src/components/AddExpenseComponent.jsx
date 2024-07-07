@@ -132,6 +132,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
 
             if (transaction) {
                 data._id = transaction._id;
+                data.createdAt = transaction.createdAt
             }
             if (data.members && data.members.length > 0) {
                 setIsLoading(true);

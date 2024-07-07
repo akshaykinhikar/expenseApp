@@ -7,7 +7,7 @@ import { retrieveMembers } from './memberController.js';
 const addExpense = asyncHandler(async (req, res) => {
     console.log("req.body._id", req.body)
     if (req.body._id) {
-        const expense = await Expense.findOneAndUpdate({ _id: req.body._id }, { $set: req.body }, { useFindAndModify: false });
+        const expense = await Expense.findOneAndUpdate({ _id: req.body._id }, { $set: { ...req.body, updatedAt: new Date() } }, { useFindAndModify: false });
 
         //'[{"expenseName":"test expense","amount":"100","paidBy":"","addedBy":"","groupId":"","selectedMembers":["65c4e7065d63f06fb8566be9"]}]'
         if (expense) {
@@ -17,7 +17,7 @@ const addExpense = asyncHandler(async (req, res) => {
             throw new Error('Error in adding expense');
         }
     } else {
-        const expense = await Expense.create(req.body);
+        const expense = await Expense.create({ ...req.body, createdAt: new Date() });
         //'[{"expenseName":"test expense","amount":"100","paidBy":"","addedBy":"","groupId":"","selectedMembers":["65c4e7065d63f06fb8566be9"]}]'
 
         if (expense) {
@@ -43,7 +43,7 @@ const getExpenses = asyncHandler(async (req, res) => {
     }
 
 
-    const expenseList = await Expense.find(searchQuery);
+    const expenseList = await Expense.find(searchQuery).sort({ createdAt: -1 });
 
 
     if (!page) {
@@ -129,7 +129,7 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
 
     }
 
-    const expenseList = await Expense.find(queryString);
+    const expenseList = await Expense.find(queryString).sort({});
 
 
     // TODO: Need to add group and memberID check in future

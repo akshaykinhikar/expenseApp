@@ -8,6 +8,8 @@ const expenseSchema = mongoose.Schema(
         paidBy: { type: String, required: true },
         addedBy: { type: String, required: true },
         groupId: { type: String, required: true },
+        createdAt: { type: Date, required: true },
+        updatedAt: { type: Date, required: false },
     }
 );
 
