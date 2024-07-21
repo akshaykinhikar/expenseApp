@@ -1,51 +1,69 @@
-/* REF: https: //cssloaders.github.io/ */
 .loader {
     width: 48px;
     height: 48px;
-    border-radius: 50%;
-    position: relative;
-    animation: rotate 1s linear infinite;
-    top: 45vh;
+    position: absolute;
+    top: 45%;
     left: 45%;
 }
 
 .loader::before,
 .loader::after {
-    content: "";
-    box-sizing: border-box;
+    content: '';
     position: absolute;
-    inset: 0px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 48em;
+    height: 48em;
+    background-image:
+        radial-gradient(circle 10px, #EE4E4E 100%, transparent 0),
+        radial-gradient(circle 10px, #FFC700 100%, transparent 0),
+        radial-gradient(circle 10px, #FFF455 100%, transparent 0),
+        radial-gradient(circle 10px, #219C90 100%, transparent 0),
+        radial-gradient(circle 10px, #81A263 100%, transparent 0),
+        radial-gradient(circle 10px, #77E4C8 100%, transparent 0),
+        radial-gradient(circle 10px, #405D72 100%, transparent 0),
+        radial-gradient(circle 10px, #F4CE14 100%, transparent 0);
+    background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+        13em -13em, -13em -13em, 13em 13em, -13em 13em;
+    background-repeat: no-repeat;
+    font-size: 0.5px;
     border-radius: 50%;
-    border: 5px solid #FFF;
-    animation: prixClipFix 2s linear infinite;
+    animation: blast 1s ease-in infinite;
 }
 
 .loader::after {
-    transform: rotate3d(90, 90, 0, 180deg);
-    border-color: #FF3D00;
+    font-size: 1px;
+    background: #c7436f;
+    animation: bounce 1s ease-in infinite;
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg)
-    }
+@keyframes bounce {
 
+    0%,
     100% {
-        transform: rotate(360deg)
-    }
-}
-
-@keyframes prixClipFix {
-    0% {
-        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+        font-size: 0.75px
     }
 
     50% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+        font-size: 1.5px
+    }
+}
+
+@keyframes blast {
+
+    0%,
+    40% {
+        font-size: 0.5px;
     }
 
-    75%,
+    70% {
+        opacity: 1;
+        font-size: 4px;
+    }
+
     100% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+        font-size: 6px;
+        opacity: 0;
     }
 }
