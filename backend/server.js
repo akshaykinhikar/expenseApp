@@ -43,17 +43,21 @@ app.use('/api/images', imageUploadRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV === 'production') {
-    const __dirname = path.resolve();
-    app.use(express.static(path.join(__dirname, '/expense-app/build')));
+try {
+    if (process.env.NODE_ENV === 'production') {
+        const __dirname = path.resolve();
+        app.use(express.static(path.join(__dirname, '/expense-app/build')));
 
-    app.get('*', (req, res) =>
-        res.sendFile(path.resolve(__dirname, 'expense-app', 'build', 'index.html')));
-} else {
-    app.get('/', (req, res) => {
-        res.send('App is Running....')
-    })
+        app.get('*', (req, res) =>
+            res.sendFile(path.resolve(__dirname, 'expense-app', 'build', 'index.html')));
+    } else {
+        app.get('/', (req, res) => {
+            res.send('App is Running....')
+        })
 
+    }
+} catch (err) {
+    console.log("got error", err);
 }
 
 app.listen(

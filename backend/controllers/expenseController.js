@@ -3,6 +3,14 @@ import asyncHandler from 'express-async-handler';
 import Expense from '../models/expenseModel.js';
 import { retrieveMembers } from './memberController.js';
 
+// type ExpenseModel = {
+//     "expenseName": String,
+//     "amount": String,
+//     "paidBy": String,
+//     "addedBy": String,
+//     "groupId": String,
+//     "selectedMembers": String[]
+// }
 
 const addExpense = asyncHandler(async (req, res) => {
     console.log("req.body._id", req.body)
