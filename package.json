@@ -5,7 +5,7 @@
     "main": "server.js",
     "type": "module",
     "scripts": {
-        "start": "node backend/server.js",
+        "start": "node backend/dist/server.js",
         "server": "nodemon backend/server.js",
         "client": "npm start --prefix expense-app",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -27,11 +27,16 @@
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.10.6",
         "morgan": "^1.10.0",
-        "multer": "^1.4.2"
+        "multer": "^1.4.5-lts.1"
     },
     "devDependencies": {
+        "@types/express": "^4.17.21",
+        "@types/morgan": "^1.9.9",
+        "@types/multer": "^1.4.11",
+        "@types/node": "^22.2.0",
         "concurrently": "^5.3.0",
         "nodemon": "^2.0.4",
-        "sass": "^1.77.2"
+        "sass": "^1.77.2",
+        "typescript": "^5.5.4"
     }
 }
