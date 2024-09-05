@@ -6,15 +6,10 @@ import bodyParser from 'body-parser';
 import connectDB from './config/db';
 // const dbConfig = require('./config/db');
 
-// import memberRoutes from './routes/memberRoutes';
-// import groupRoutes from './routes/groupRoutes';
-// import expenseRoutes from './routes/expenseRoutes';
-// import imageUploadRoutes from './routes/imageUploadRoutes';
-
-const memberRoutes = require('./routes/memberRoutes');
-const groupRoutes = require('./routes/groupRoutes');
-const expenseRoutes = require('./routes/expenseRoutes');
-const imageUploadRoutes = require('./routes/imageUploadRoutes');
+import memberRoutes from './routes/memberRoutes';
+import groupRoutes from './routes/groupRoutes';
+import expenseRoutes from './routes/expenseRoutes';
+import imageUploadRoutes from './routes/imageUploadRoutes';
 
 dotenv.config();
 
@@ -35,15 +30,15 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-//GET POST  /api/members/
-app.use('/api/members/', memberRoutes.memberRoutes);
+// GET POST  /api/members/
+app.use('/api/members/', memberRoutes);
 
 
-app.use('/api/group/', groupRoutes.groupRoutes);
+app.use('/api/group/', groupRoutes);
 
-app.use('/api/expense/', expenseRoutes.expenseRoutes);
+app.use('/api/expense/', expenseRoutes);
 
-app.use('/api/images', imageUploadRoutes.imageUploadRoutes);
+app.use('/api/images', imageUploadRoutes);
 
 const PORT = process.env.PORT || 5000;
 
@@ -60,11 +55,13 @@ if (process.env.NODE_ENV === 'production') {
 
 }
 app.listen(
-    PORT,
+    PORT, ()=> {
+        return console.log(`Server Running on ${process.env.NODE_ENV} mode on port ${PORT}`);
+    }
 );
 // app.listen(
 //     PORT,
 //     console.log(
 //         `Server Running on ${process.env.NODE_ENV} mode on port ${PORT}`
 //     )
-// );
+// )

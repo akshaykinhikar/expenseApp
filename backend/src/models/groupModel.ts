@@ -1,5 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
-
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
 export type Group =
     {
@@ -19,7 +19,7 @@ const groupSchema = new Schema(
     }
 );
 
-const Group = mongoose.model<Group & Document>('Group', groupSchema);
+const Group = mongoose.model<Group & mongoose.Document>('Group', groupSchema);
 
 export default Group;
 

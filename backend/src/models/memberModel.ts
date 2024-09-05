@@ -1,5 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 export type Member = {
     _id: string,
@@ -18,6 +18,6 @@ const memberSchema = new Schema(
     }
 );
 
-const Member = mongoose.model<Member & Document>('Member', memberSchema);
+const Member = mongoose.model<Member & mongoose.Document>('Member', memberSchema);
 
 export default Member;

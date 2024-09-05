@@ -1,5 +1,6 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
+const { Schema } = mongoose;
 
 type Expense = {
     id?: string,
@@ -24,7 +25,7 @@ const expenseSchema = new Schema({
     updatedAt: { type: Date, required: false },
 });
 
-const Expense = mongoose.model<Expense & Document>('Expense', expenseSchema);
+const Expense = mongoose.model<Expense & mongoose.Document>('Expense', expenseSchema);
 export default Expense;
 // const expenseSchema = mongoose.Schema(
 //     {
