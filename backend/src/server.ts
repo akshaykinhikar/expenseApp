@@ -3,7 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import connectDB from './config/db';
+import *  as connectDB from './config/db';
 // const dbConfig = require('./config/db');
 
 import memberRoutes from './routes/memberRoutes';
@@ -13,7 +13,7 @@ import imageUploadRoutes from './routes/imageUploadRoutes';
 
 dotenv.config();
 
-connectDB();
+connectDB.default();
 
 const app = express();
 
