@@ -1,0 +1,1742 @@
+{
+endpoint: 'https: //expense-app-i2th.onrender.com/api/expense/',
+method: 'POST',
+payload: {
+        "expenseName": "testtttt",
+        "amount": "1000",
+        "paidBy": "6612b4e26e07050066ceb342",
+        "addedBy": "6612b4e26e07050066ceb342",
+        "groupId": "6683861c6e234f00544d5292",
+        "members": [
+            "65f3f99a94fec800457f7894",
+            "666f1895e1b5da00685a9cf0"
+        ]
+    },
+    response: {
+        "members": [
+            "65f3f99a94fec800457f7894",
+            "666f1895e1b5da00685a9cf0"
+        ],
+        "_id": "66ad1b2d8de867005346fb49",
+        "expenseName": "testtttt",
+        "amount": 1000,
+        "paidBy": "6612b4e26e07050066ceb342",
+        "addedBy": "6612b4e26e07050066ceb342",
+        "groupId": "6683861c6e234f00544d5292",
+        "createdAt": "2024-08-02T17:45:17.071Z",
+        "__v": 0
+    }
+},
+{
+    endpoint: 'https: //expense-app-i2th.onrender.com/api/expense/getExpenses',
+    method: 'POST',
+    payload: {
+        "page": 1,
+        "size": 10,
+        "searchString": "",
+        "groupId": "6683861c6e234f00544d5292"
+    },
+    response: {
+        "page": 1,
+        "pageCount": 2,
+        "totalPages": 18,
+        "data": [
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "666f1895e1b5da00685a9cf0"
+                ],
+                "_id": "66ad1b2d8de867005346fb49",
+                "expenseName": "testtttt",
+                "amount": 1000,
+                "paidBy": "6612b4e26e07050066ceb342",
+                "addedBy": "6612b4e26e07050066ceb342",
+                "groupId": "6683861c6e234f00544d5292",
+                "createdAt": "2024-08-02T17:45:17.071Z",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386446e234f00544d529b",
+                "expenseName": "In cash",
+                "amount": 2700,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386866e234f00544d52a2",
+                "expenseName": "Highway dinner return",
+                "amount": 1305,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386a76e234f00544d52a9",
+                "expenseName": "Disel",
+                "amount": 1000,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386d96e234f00544d52b0",
+                "expenseName": "Temple breakfast",
+                "amount": 225,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387436e234f00544d52c1",
+                "expenseName": "Mahabaleshwar stay breakfast",
+                "amount": 675,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "6683876b6e234f00544d52c8",
+                "expenseName": "Anusaya hotel",
+                "amount": 110,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387886e234f00544d52cf",
+                "expenseName": "Unknown ",
+                "amount": 110,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387c16e234f00544d52db",
+                "expenseName": "Unknown ",
+                "amount": 925,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387d96e234f00544d52e2",
+                "expenseName": "Unknown ",
+                "amount": 120,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            }
+        ]
+    }
+},
+{
+    endpoint: '
+https: //expense-app-i2th.onrender.com/api/members/'
+    method: 'GET',
+    response: {
+        [
+            {
+                "_id": "65f3f99a94fec800457f7894",
+                "label": "Akshay",
+                "value": "65f3f99a94fec800457f7894"
+            },
+            {
+                "_id": "65f3f9b494fec800457f789e",
+                "label": "Person1",
+                "value": "65f3f9b494fec800457f789e"
+            },
+            {
+                "_id": "6612b4e26e07050066ceb342",
+                "label": "Nisha",
+                "value": "6612b4e26e07050066ceb342"
+            },
+            {
+                "_id": "666f1895e1b5da00685a9cf0",
+                "label": "Aditya",
+                "value": "666f1895e1b5da00685a9cf0"
+            },
+            {
+                "_id": "666f18afe1b5da00685a9cf5",
+                "label": "Amit",
+                "value": "666f18afe1b5da00685a9cf5"
+            }
+        ]
+    }
+},
+{
+    endpoint: '
+https: //expense-app-i2th.onrender.com/api/expense/getExpenseSummary',
+method: 'post',
+payload: {
+        "groupId": "6683861c6e234f00544d5292"
+    },
+response: {
+        {
+            "shares": [
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 2700,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 2700,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 1305,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 1305,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 1000,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 1000,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 225,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 225,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 675,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 675,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 110,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 110,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 110,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 110,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 925,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 925,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 120,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 120,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 1300,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 1300,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 645,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 645,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 3500,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 3500,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 680,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 680,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 11128,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 11128,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 2400,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 2400,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 2000,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 2000,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "65f3f99a94fec800457f7894",
+                    "amount": 350,
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "transactionTotalAmt": 350,
+                    "transactionOwner": "65f3f99a94fec800457f7894",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "6612b4e26e07050066ceb342",
+                    "amount": 500,
+                    "owsBy": "65f3f99a94fec800457f7894",
+                    "transactionTotalAmt": 1000,
+                    "transactionOwner": "6612b4e26e07050066ceb342",
+                    "primaryTransaction": true
+                },
+                {
+                    "owsTo": "6612b4e26e07050066ceb342",
+                    "amount": 500,
+                    "owsBy": "666f1895e1b5da00685a9cf0",
+                    "transactionTotalAmt": 1000,
+                    "transactionOwner": "6612b4e26e07050066ceb342"
+                }
+            ],
+            "groupTotalExpense": [
+                {
+                    "_id": null,
+                    "groupTotalExpense": 30173
+                }
+            ],
+            "memShares": [
+                {
+                    "amount": {
+                        "6612b4e26e07050066ceb342": 500
+                    },
+                    "totalExpenseByMember": 29173,
+                    "member": {
+                        "_id": "65f3f99a94fec800457f7894",
+                        "label": "Akshay",
+                        "value": "65f3f99a94fec800457f7894"
+                    },
+                    "owsBy": "65f3f99a94fec800457f7894"
+                },
+                {
+                    "amount": {},
+                    "member": {
+                        "_id": "65f3f9b494fec800457f789e",
+                        "label": "Person1",
+                        "value": "65f3f9b494fec800457f789e"
+                    }
+                },
+                {
+                    "amount": {
+                        "65f3f99a94fec800457f7894": 29173
+                    },
+                    "owsBy": "6612b4e26e07050066ceb342",
+                    "member": {
+                        "_id": "6612b4e26e07050066ceb342",
+                        "label": "Nisha",
+                        "value": "6612b4e26e07050066ceb342"
+                    },
+                    "totalExpenseByMember": 1000
+                },
+                {
+                    "amount": {
+                        "6612b4e26e07050066ceb342": 500
+                    },
+                    "member": {
+                        "_id": "666f1895e1b5da00685a9cf0",
+                        "label": "Aditya",
+                        "value": "666f1895e1b5da00685a9cf0"
+                    },
+                    "owsBy": "666f1895e1b5da00685a9cf0"
+                },
+                {
+                    "amount": {},
+                    "member": {
+                        "_id": "666f18afe1b5da00685a9cf5",
+                        "label": "Amit",
+                        "value": "666f18afe1b5da00685a9cf5"
+                    }
+                }
+            ]
+        }
+    }
+},
+{
+    endpoint: 'https: //expense-app-i2th.onrender.com/api/expense/delete/66ad1b2d8de867005346fb49',
+    method: 'get',
+    response: {
+        "n": 1,
+        "electionId": "7fffffff0000000000000082",
+        "opTime": {
+            "ts": "7398607150529904644",
+            "t": 130
+        },
+        "ok": 1,
+        "$clusterTime": {
+            "clusterTime": "7398607150529904644",
+            "signature": {
+                "hash": "LJycAvNPvYp60QdH+hLEsHkKdO0=",
+                "keyId": "7340746235881455620"
+            }
+        },
+        "operationTime": "7398607150529904644",
+        "deletedCount": 1,
+        "availableRecords": [
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099414f677ed0045ff5eb5",
+                "expenseName": "Kalyan to pune",
+                "amount": 713,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099452f677ed0045ff5eb7",
+                "expenseName": "Rishi 28 mar pay1",
+                "amount": 306,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099489f677ed0045ff5eb9",
+                "expenseName": "Rishi olt 24 mar",
+                "amount": 210,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "660994acf677ed0045ff5ebb",
+                "expenseName": "Udhar train ticket",
+                "amount": 2000,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660994ddf677ed0045ff5ebd",
+                "expenseName": "Joshi stay",
+                "amount": 4107,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099515f677ed0045ff5ebf",
+                "expenseName": "Hari to mumb",
+                "amount": 7617,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609953cf677ed0045ff5ec1",
+                "expenseName": "Mum to rish train tick",
+                "amount": 9543,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609955ff677ed0045ff5ec3",
+                "expenseName": "Pune to delhi",
+                "amount": 8363,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609958af677ed0045ff5ec5",
+                "expenseName": "Cance charge",
+                "amount": 548,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660995a9f677ed0045ff5ec7",
+                "expenseName": "Can charge",
+                "amount": 283,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660995c1f677ed0045ff5ec9",
+                "expenseName": "Dinner @bandra",
+                "amount": 611,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660995e1f677ed0045ff5ecb",
+                "expenseName": "Bandra to bandra",
+                "amount": 100,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660995f7f677ed0045ff5ecd",
+                "expenseName": "Fruits",
+                "amount": 100,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099612f677ed0045ff5ecf",
+                "expenseName": "Pattice",
+                "amount": 120,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609962df677ed0045ff5ed1",
+                "expenseName": "Pune to mum",
+                "amount": 360,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099674f677ed0045ff5ed3",
+                "expenseName": "Pune cance",
+                "amount": 492,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660996eef677ed0045ff5ed5",
+                "expenseName": "Pune to nizamuddin",
+                "amount": 8363,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099723f677ed0045ff5ed7",
+                "expenseName": "Tatkal bandra to hari",
+                "amount": 11075,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609974ff677ed0045ff5ed9",
+                "expenseName": "Auli stay",
+                "amount": 3000,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099764f677ed0045ff5edb",
+                "expenseName": "Rice",
+                "amount": 562,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660997acf677ed0045ff5edd",
+                "expenseName": "500 cash + kachori",
+                "amount": 560,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660997d7f677ed0045ff5edf",
+                "expenseName": "Misc cash ",
+                "amount": 200,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660997fbf677ed0045ff5ee1",
+                "expenseName": "Hari to rish",
+                "amount": 120,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609981af677ed0045ff5ee3",
+                "expenseName": "Rishi auto",
+                "amount": 150,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609983ef677ed0045ff5ee5",
+                "expenseName": "Rishi breakfast",
+                "amount": 490,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099858f677ed0045ff5ee7",
+                "expenseName": "Rishi chai",
+                "amount": 120,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099876f677ed0045ff5ee9",
+                "expenseName": "Nasta",
+                "amount": 220,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099894f677ed0045ff5eeb",
+                "expenseName": "Split req 24 mar",
+                "amount": 1205,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660998b3f677ed0045ff5eed",
+                "expenseName": "Cab ",
+                "amount": 2500,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660998d1f677ed0045ff5eef",
+                "expenseName": "Cab ",
+                "amount": 4700,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "660998f7f677ed0045ff5ef1",
+                "expenseName": "Samosa",
+                "amount": 136,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099920f677ed0045ff5ef3",
+                "expenseName": "Chips",
+                "amount": 55,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099936f677ed0045ff5ef5",
+                "expenseName": "Joshi dinner",
+                "amount": 617,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "6609995bf677ed0045ff5ef7",
+                "expenseName": "Joshi samosa",
+                "amount": 165,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099a6ef677ed0045ff5ef9",
+                "expenseName": "Auli ticket",
+                "amount": 2000,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f9b494fec800457f789e",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099a89f677ed0045ff5efb",
+                "expenseName": "Maggi",
+                "amount": 200,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66099adcf677ed0045ff5f01",
+                "expenseName": "Sticks",
+                "amount": 200,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099af8f677ed0045ff5f03",
+                "expenseName": "Shoes",
+                "amount": 400,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66099b14f677ed0045ff5f05",
+                "expenseName": "Guide",
+                "amount": 1500,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124b785820b500458064b3",
+                "expenseName": "cofee",
+                "amount": 250,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66124bb75820b500458064b5",
+                "expenseName": "manoj",
+                "amount": 200,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124be05820b500458064b7",
+                "expenseName": "Auli room booking",
+                "amount": 1000,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124bfa5820b500458064b9",
+                "expenseName": "ticket",
+                "amount": 80,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124c225820b500458064bb",
+                "expenseName": "Auli food",
+                "amount": 3370,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124c425820b500458064bd",
+                "expenseName": "chair",
+                "amount": 1000,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124c635820b500458064bf",
+                "expenseName": "entry fee 2",
+                "amount": 80,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124c805820b500458064c1",
+                "expenseName": "coffee",
+                "amount": 100,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124ca35820b500458064c3",
+                "expenseName": "breakfast",
+                "amount": 280,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124cc85820b500458064c5",
+                "expenseName": "stay Lunch breakfast",
+                "amount": 900,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124ce55820b500458064c7",
+                "expenseName": "stay vedVilla",
+                "amount": 1000,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124d3f5820b500458064cc",
+                "expenseName": "tip luggage",
+                "amount": 200,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124d5e5820b500458064ce",
+                "expenseName": "Auli to rishikesh",
+                "amount": 2100,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124d7f5820b500458064d0",
+                "expenseName": "Auli to joshimath",
+                "amount": 140,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124d985820b500458064d2",
+                "expenseName": "tea",
+                "amount": 80,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124dbb5820b500458064d4",
+                "expenseName": "room rishi",
+                "amount": 1881,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124dd95820b500458064d6",
+                "expenseName": "Bike",
+                "amount": 600,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124df15820b500458064d8",
+                "expenseName": "Petrol",
+                "amount": 420,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124ecd5820b500458064da",
+                "expenseName": "entry fee",
+                "amount": 40,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124ee95820b500458064dc",
+                "expenseName": "aarti",
+                "amount": 80,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f9b494fec800457f789e",
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66124f2e5820b500458064de",
+                "expenseName": "Eishi lunch",
+                "amount": 740,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894"
+                ],
+                "_id": "66124f445820b500458064e0",
+                "expenseName": "lassi",
+                "amount": 80,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124f5c5820b500458064e2",
+                "expenseName": "chai pani",
+                "amount": 75,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124f795820b500458064e4",
+                "expenseName": "morning view breakfast",
+                "amount": 514,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124f925820b500458064e6",
+                "expenseName": "nimbuu pani",
+                "amount": 120,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124fb05820b500458064e8",
+                "expenseName": "Auto to Hari",
+                "amount": 500,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124fc75820b500458064ea",
+                "expenseName": "Auto to Hari",
+                "amount": 300,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "66124ffa5820b500458064ec",
+                "expenseName": "Kachori + paani",
+                "amount": 200,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "6612500f5820b500458064ee",
+                "expenseName": "clock room",
+                "amount": 180,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "6612502c5820b500458064f0",
+                "expenseName": "sattion to motibazar",
+                "amount": 160,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "6612504e5820b500458064f2",
+                "expenseName": "water bottle",
+                "amount": 40,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "661250695820b500458064f4",
+                "expenseName": "Dinner",
+                "amount": 930,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "661250975820b500458064f6",
+                "expenseName": "mathura sweats",
+                "amount": 670,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "661250b85820b500458064f8",
+                "expenseName": "Dinner@return train",
+                "amount": 300,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "661251005820b500458064fa",
+                "expenseName": "Lunch@train ",
+                "amount": 480,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "6612511c5820b500458064fc",
+                "expenseName": "snacs",
+                "amount": 105,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "661251385820b500458064fe",
+                "expenseName": "kalyan to pune",
+                "amount": 130,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "661251515820b50045806500",
+                "expenseName": "Tea Special",
+                "amount": 70,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "65f3f9b494fec800457f789e"
+                ],
+                "_id": "661251735820b50045806502",
+                "expenseName": "train petha",
+                "amount": 220,
+                "paidBy": "65f3f9b494fec800457f789e",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6609928af677ed0045ff5ea6",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "666f1895e1b5da00685a9cf0",
+                    "666f18afe1b5da00685a9cf5"
+                ],
+                "_id": "666fe350a57592005527d094",
+                "expenseName": "morning breakfast",
+                "amount": 200,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "666f18bce1b5da00685a9cfa",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "666f1895e1b5da00685a9cf0"
+                ],
+                "_id": "666fe3f8a57592005527d0a9",
+                "expenseName": "vadapav",
+                "amount": 40,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "666f18bce1b5da00685a9cfa",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "666f1895e1b5da00685a9cf0"
+                ],
+                "_id": "666fe437a57592005527d0b0",
+                "expenseName": "lunch",
+                "amount": 230,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "666f18bce1b5da00685a9cfa",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "666f18afe1b5da00685a9cf5"
+                ],
+                "_id": "666fe44fa57592005527d0b7",
+                "expenseName": "lunch",
+                "amount": 290,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "666f18bce1b5da00685a9cfa",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "666f1895e1b5da00685a9cf0",
+                    "666f18afe1b5da00685a9cf5"
+                ],
+                "_id": "666fe82ea57592005527d101",
+                "expenseName": "Parking",
+                "amount": 150,
+                "paidBy": "666f1895e1b5da00685a9cf0",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "666f18bce1b5da00685a9cfa",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "65f3f99a94fec800457f7894",
+                    "666f1895e1b5da00685a9cf0",
+                    "666f18afe1b5da00685a9cf5"
+                ],
+                "_id": "66705fe5e9a5800054ddb30e",
+                "expenseName": "Nimbu pani",
+                "amount": 75,
+                "paidBy": "666f18afe1b5da00685a9cf5",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "666f18bce1b5da00685a9cfa",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386446e234f00544d529b",
+                "expenseName": "In cash",
+                "amount": 2700,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386866e234f00544d52a2",
+                "expenseName": "Highway dinner return",
+                "amount": 1305,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386a76e234f00544d52a9",
+                "expenseName": "Disel",
+                "amount": 1000,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668386d96e234f00544d52b0",
+                "expenseName": "Temple breakfast",
+                "amount": 225,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387436e234f00544d52c1",
+                "expenseName": "Mahabaleshwar stay breakfast",
+                "amount": 675,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "6683876b6e234f00544d52c8",
+                "expenseName": "Anusaya hotel",
+                "amount": 110,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387886e234f00544d52cf",
+                "expenseName": "Unknown ",
+                "amount": 110,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387c16e234f00544d52db",
+                "expenseName": "Unknown ",
+                "amount": 925,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387d96e234f00544d52e2",
+                "expenseName": "Unknown ",
+                "amount": 120,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668387f96e234f00544d52e9",
+                "expenseName": "Prabha garden",
+                "amount": 1300,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "6683882e6e234f00544d52f0",
+                "expenseName": "Unknown ",
+                "amount": 645,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668388586e234f00544d52f7",
+                "expenseName": "Petrol",
+                "amount": 3500,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "6683887e6e234f00544d52fe",
+                "expenseName": "Sameer dhawale",
+                "amount": 680,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "6683895b6e234f00544d532c",
+                "expenseName": "Car",
+                "amount": 11128,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "668389846e234f00544d5333",
+                "expenseName": "Ratnagiri Stay",
+                "amount": 2400,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "6683899d6e234f00544d533a",
+                "expenseName": "Mahabaleshwar Stay",
+                "amount": 2000,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            },
+            {
+                "members": [
+                    "6612b4e26e07050066ceb342"
+                ],
+                "_id": "6684187aad63f00055aa0969",
+                "expenseName": "Ratnagiri Food",
+                "amount": 350,
+                "paidBy": "65f3f99a94fec800457f7894",
+                "addedBy": "65f3f99a94fec800457f7894",
+                "groupId": "6683861c6e234f00544d5292",
+                "__v": 0
+            }
+        ]
+    }
+}

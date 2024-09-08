@@ -1,11 +1,10 @@
 import asyncHandler from 'express-async-handler';
-import Group from '../models/groupModel.js';
-import { deleteExpense } from './expenseController.js';
+import Group, { Group as groupModel } from '../models/groupModel';
 
-const addGroup = asyncHandler(async (req, res) => {
+const addGroup = asyncHandler(async (req: any, res: any) => {
     const { groupName, members } = req.body;
 
-    const groupExists = await Group.findOne({ groupName });
+    const groupExists = await Group.findOne({ groupName }).lean();
 
     if (groupExists) {
         return res.status(400).json({ status: 'error', message: "Group name already exist" });
@@ -31,10 +30,10 @@ const addGroup = asyncHandler(async (req, res) => {
     }
 })
 
-const getGroupById = asyncHandler(async (req, res) => {
+const getGroupById = asyncHandler(async (req: any, res) => {
     const { id } = req.params.id;
 
-    const group = await Group.find({ _id: id })
+    const group: groupModel = await Group.find({ _id: id }).lean()
 
     if (group) {
         res.status(201).json({
@@ -73,9 +72,9 @@ const getGroups = asyncHandler(async (req, res) => {
 
 const deleteGroupById = asyncHandler(async (req, res) => {
     const groupId = req.params.id;
-    let group;
+    let group: groupModel;
     if (groupId) {
-        group = await Group.deleteOne({ _id: groupId });
+        group = await Group.deleteOne({ _id: groupId }).lean();
     } else {
         res.status(400);
         throw new Error('Error in deleting records, Please try again');

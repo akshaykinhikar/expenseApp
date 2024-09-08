@@ -1,7 +1,73 @@
 
 import asyncHandler from 'express-async-handler';
-import Expense from '../models/expenseModel.js';
-import { retrieveMembers } from './memberController.js';
+import Expense from '../models/expenseModel';
+import { retrieveMembers } from './memberController';
+import { Request, Response } from 'express';
+
+
+interface data { name: string };
+type expenseModel = {
+    _id: string;
+    members: [string];
+    expenseName: string;
+    amount: number;
+    paidBy: string;
+    addedBy: string;
+    groupId: string;
+};
+
+type deleteExpenseModel = {
+    "deletedCount": number,
+    "availableRecords": Array<expenseModel>
+
+};
+type sharesModel = {
+    'owsTo': string;
+    'amount': number;
+    'owsBy': string;
+    'transactionTotalAmt': number;
+    'transactionOwner': string,
+    "primaryTransaction"?: true,
+    totalExpenseByMember?: number,
+    "member"?: {
+        "_id": string,
+        "label": string,
+        "value": string
+    },
+};
+type expenseSummaryPayModel = {
+    groupId: string
+};
+
+type groupTotalExpenseModel =
+    {
+        "_id": null,
+        "groupTotalExpense": number
+    };
+
+type memSharesModel = {
+    "amount"?: { [key: string]: number; }
+    "totalExpenseByMember"?: number,
+    "member": {
+        "_id": string,
+        "label": string,
+        "value": string
+    },
+    "owsBy"?: string
+};
+
+type expenseSummaryModel = {
+    shares: Array<sharesModel>,
+    groupTotalExpense: Array<groupTotalExpenseModel>,
+    memShares: Array<memSharesModel>
+};
+
+type memebersModel = { 'label': string, 'value': string };
+
+type queryStringModel = {
+    groupId?: string | number;
+};
+
 
 
 const addExpense = asyncHandler(async (req, res) => {
@@ -33,7 +99,13 @@ const getExpenses = asyncHandler(async (req, res) => {
 
     let { page, size, sort, searchString, groupId } = req.body;
 
-    const searchQuery = {
+    // TODO: 
+    type searchQueryModel = {
+        expenseName: { $regex: string };
+        groupId?: string | number
+    };
+
+    const searchQuery: searchQueryModel = {
         expenseName: { $regex: searchString },
     }
 
@@ -43,7 +115,7 @@ const getExpenses = asyncHandler(async (req, res) => {
     }
 
 
-    const expenseList = await Expense.find(searchQuery).sort({ createdAt: -1 });
+    const expenseList = await Expense.find(searchQuery as any).sort({ createdAt: -1 }).lean();
 
 
     if (!page) {
@@ -90,7 +162,7 @@ const getExpenseById = asyncHandler(async (req, res) => {
 const deleteExpense = asyncHandler(async (req, res) => {
     // handle delete by groupName
     const deletedExpenses = await Expense.deleteMany({});
-    if (deleteExpense) {
+    if (deletedExpenses) {
         res.status(201).json(deletedExpenses);
     } else {
         res.status(400);
@@ -98,18 +170,21 @@ const deleteExpense = asyncHandler(async (req, res) => {
     }
 })
 
+
 const deleteExpenseById = asyncHandler(async (req, res) => {
     const id = req.params.id;
-    let deletedExpense;
+
+    let deletedExpense: deleteExpenseModel;
     // handle delete by groupName
     if (id) {
-        deletedExpense = await Expense.deleteOne({ _id: id });
+        deletedExpense = await Expense.deleteOne({ _id: id }) as deleteExpenseModel;
     } else {
         res.status(400);
         throw new Error('Error in deleting records, Please try again');
     }
-    if (deleteExpense) {
-        const availableRecords = await Expense.find({});
+    if (deletedExpense) {
+        // TODO: 
+        const availableRecords = await Expense.find({}) as any;
         if (availableRecords) {
             deletedExpense.availableRecords = availableRecords;
         }
@@ -120,32 +195,34 @@ const deleteExpenseById = asyncHandler(async (req, res) => {
     }
 })
 
-const getExpenseSummary = asyncHandler(async (req, res) => {
+// TODO:
+const getExpenseSummary = asyncHandler(async (req: Request<{}, {}, expenseSummaryPayModel>,
+    res: any) => {
+    // res: Response<expenseSummaryModel | ErrorResponse>) => {
     let { groupId } = req.body;
-    const queryString = {}
+
+    const queryString: queryStringModel = {}
 
     if (groupId) {
         queryString.groupId = groupId;
-
     }
 
-    const expenseList = await Expense.find(queryString).sort({});
-
+    const expenseList: Array<expenseModel> = await Expense.find(queryString as any).sort({}).lean();
 
     // TODO: Need to add group and memberID check in future
 
 
     // const groupId = req.body.groupId;
-    const memberList = await retrieveMembers();
+    const memberList: Array<memebersModel> = await retrieveMembers();
 
-    let shares = [];
+    let shares: Array<sharesModel> = [];
     if (expenseList && expenseList.length > 0) {
-        expenseList.map((exp, i) => {
-            let splitAmount = exp.amount / exp.members.length;
+        expenseList.map((exp: expenseModel, i) => {
+            let splitAmount: number = exp.amount / exp.members.length as number;
             let primaryTransaction = true;
             exp.members.map(mem => {
                 if (mem !== exp['paidBy']) {
-                    let obj = {
+                    let obj: sharesModel = {
                         'owsTo': exp['paidBy'],
                         'amount': splitAmount,
                         'owsBy': mem,
@@ -173,26 +250,39 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
             aggragateGpTtlQuery.push(filterByGroupId);
         }
 
-        aggragateGpTtlQuery.push({ $group: { _id: null, groupTotalExpense: { $sum: "$amount" } } })
+        aggragateGpTtlQuery.push({ $group: { _id: null, groupTotalExpense: { $sum: "$amount" } } });
 
-        const groupTotalExpense = await Expense.aggregate(aggragateGpTtlQuery);
-        const expenseSummary = {};
+
+
+        const groupTotalExpense: groupTotalExpenseModel[] = await Expense.aggregate(aggragateGpTtlQuery);
+        const expenseSummary: expenseSummaryModel = {
+            shares: [],
+            groupTotalExpense: [],
+            memShares: [],
+        };
         expenseSummary.shares = shares;
         expenseSummary.groupTotalExpense = groupTotalExpense;
 
 
         // changes to calculate individual shares
-        let _memShares = memberList.map((mem, i) => {
+        let _memShares = memberList.map((mem: memebersModel, i) => {
             console.log("expenseList", expenseList);
-            return shares && shares.length > 0 && shares.reduce((acc, ele) => {
-                if (ele['owsBy'] == mem['value']) {
+            type accModel = {
+                owsBy?: string,
+                amount: { [key: string]: number; },
+                totalExpenseByMember: number,
+                member: memebersModel
+            }
+            // TODO: acc: accModel
+            return shares && shares.length > 0 && shares.reduce((acc: any, ele: sharesModel) => {
+                if (ele['owsBy'] == mem.value) {
                     acc['owsBy'] = mem['value'];
-
-                    if (acc['amount'][ele['owsTo']]) {
-                        acc['amount'][ele['owsTo']] = acc['amount'][ele['owsTo']] + ele['amount'];
+                    let keyOwsTo = ele['owsTo'];
+                    if (acc?.amount?.[keyOwsTo]) {
+                        acc.amount[keyOwsTo] = acc?.amount?.[keyOwsTo] + ele['amount'];
 
                     } else {
-                        acc['amount'][ele['owsTo']] = ele['amount'];
+                        acc.amount[keyOwsTo] = ele['amount'];
 
                     }
 
@@ -207,12 +297,12 @@ const getExpenseSummary = asyncHandler(async (req, res) => {
                 acc.member = mem;
 
                 return acc
-            }, { amount: {} }) || [];
+            }, { amount: {} });
 
 
         });
-
-        expenseSummary.memShares = _memShares;
+        // TODO:
+        expenseSummary.memShares = _memShares as any;
 
         return res.status(201).json(expenseSummary);
     } else {

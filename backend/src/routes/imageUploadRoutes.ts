@@ -1,7 +1,8 @@
 import express from 'express';
 const imageUploadRoutes = express.Router();
-import { getAllS3Images, uploadImage } from '../controllers/imageUploadController.js';
 import multer, { memoryStorage } from 'multer';
+import { getAllS3Images, uploadImage } from '../controllers/imageUploadController';
+
 const storage = memoryStorage();
 
 

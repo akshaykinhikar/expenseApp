@@ -3,14 +3,13 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import connectDB from './config/db.js';
+import connectDB from './config/db';
+// const dbConfig = require('./config/db');
 
-
-import memberRoutes from './routes/memberRoutes.js';
-import groupRoutes from './routes/groupRoutes.js';
-import expenseRoutes from './routes/expenseRoutes.js';
-import { memoryStorage } from 'multer';
-import imageUploadRoutes from './routes/imageUploadRoutes.js';
+import memberRoutes from './routes/memberRoutes';
+import groupRoutes from './routes/groupRoutes';
+import expenseRoutes from './routes/expenseRoutes';
+import imageUploadRoutes from './routes/imageUploadRoutes';
 
 dotenv.config();
 
@@ -31,7 +30,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-//GET POST  /api/members/
+// GET POST  /api/members/
 app.use('/api/members/', memberRoutes);
 
 
@@ -55,10 +54,14 @@ if (process.env.NODE_ENV === 'production') {
     })
 
 }
-
 app.listen(
-    PORT,
-    console.log(
-        `Server Running on ${process.env.NODE_ENV} mode on port ${PORT}`
-    )
+    PORT, ()=> {
+        return console.log(`Server Running on ${process.env.NODE_ENV} mode on port ${PORT}`);
+    }
 );
+// app.listen(
+//     PORT,
+//     console.log(
+//         `Server Running on ${process.env.NODE_ENV} mode on port ${PORT}`
+//     )
+// )

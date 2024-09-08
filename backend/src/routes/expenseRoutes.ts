@@ -1,6 +1,6 @@
 import express from 'express';
 const expenseRoutes = express.Router();
-import { addExpense, getExpenses, getExpenseById, deleteExpenseById, deleteExpense, getExpenseSummary } from '../controllers/expenseController.js';
+import { addExpense, getExpenses, getExpenseById, deleteExpenseById, deleteExpense, getExpenseSummary } from '../controllers/expenseController';
 
 expenseRoutes.route('/').post(addExpense)
 expenseRoutes.route('/getExpenses').post(getExpenses)

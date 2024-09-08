@@ -231,7 +231,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
         <>
             <Toaster />
             {isLoading ? <LoadingSpinner /> : (
-                membersAvailable && <>
+                membersAvailable ? <>
 
                     <Container fluid className={transaction?._id ? '' : 'background-add-exp'}>
                         <Container>
@@ -309,9 +309,8 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                 <div className={!transaction?._id ? 'col-xs-12 col-md-6 col-lg-6' : ''}>
                                     <div className="row justify-content-md-center">
                                         <div className="col-md-auto">
-                                            {/* <p>{JSON.stringify(expenseSummary)}</p> */}
-                                            {!transaction?._id && expenseList && expenseSummary && expenseList.length && membersList && membersList.length > 0 && <AnalyticsComponent
-                                                expenseSummary={expenseSummary} />}
+                                            {!transaction?._id && expenseList && expenseSummary && expenseList.length && membersList && membersList.length > 0 ? <AnalyticsComponent
+                                                expenseSummary={expenseSummary} /> : <p>No enough data available</p>}
                                         </div>
                                     </div>
                                 </div>
@@ -356,6 +355,10 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                             </Row>
                         </Container>
                     </Container>
+                </> : <>
+                <div>
+                    <h4 className='mt-3'>No records available</h4>
+                </div>
                 </>
             )
             }

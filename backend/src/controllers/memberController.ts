@@ -1,25 +1,25 @@
 import asyncHandler from 'express-async-handler';
-import Member from '../models/memberModel.js';
+import Member, { Member as memberModel } from '../models/memberModel';
 
 
 // @desc Add new member
 // @route POST /api/members
 // @access Public
-const addMember = asyncHandler(async (req, res) => {
+const addMember = asyncHandler(async (req: any, res: any) => {
     const { name, email } = req.body;
 
     //TODO: mapMemberID OR handle login scenario only that groups member should be visible
-    const memberExist = await Member.findOne({ email })
+    const memberExist = await Member.findOne({ email }).lean();
 
     if (memberExist) {
         return res.status(400).json({ status: 'error', message: "Member with same email already exist" });
         // throw new Error('Member already Exist');
     }
 
-    const member = await Member.create({
+    const member: memberModel = await Member.create({
         name,
         email
-    })
+    });
 
     if (member) {
         res.status(201).json({
@@ -45,7 +45,8 @@ const getMembers = asyncHandler(async (req, res) => {
 
 const deleteMemberById = asyncHandler(async (req, res) => {
     const memberId = req.params.id;
-    let member;
+    // TODO: 
+    let member: any;
     if (memberId) {
         member = await Member.deleteOne({ _id: memberId });
     } else {
@@ -86,7 +87,7 @@ const deleteMembers = asyncHandler(async (req, res) => {
     }
 })
 
-
+// type memebersModel = Array<{ label: string, value: string }>
 const retrieveMembers = async () => {
     const members = await Member.aggregate([{
         $match: {}
