@@ -3,7 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import *  as connectDB from './config/db';
+import connectDB from './config/db';
 // const dbConfig = require('./config/db');
 
 import memberRoutes from './routes/memberRoutes';
@@ -13,7 +13,7 @@ import imageUploadRoutes from './routes/imageUploadRoutes';
 
 dotenv.config();
 
-connectDB.default();
+connectDB();
 
 const app = express();
 
@@ -30,7 +30,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-// GET POST  /api/members/
 app.use('/api/members/', memberRoutes);
 
 
@@ -41,6 +40,8 @@ app.use('/api/expense/', expenseRoutes);
 app.use('/api/images', imageUploadRoutes);
 
 const PORT = process.env.PORT || 5000;
+
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
@@ -59,9 +60,3 @@ app.listen(
         return console.log(`Server Running on ${process.env.NODE_ENV} mode on port ${PORT}`);
     }
 );
-// app.listen(
-//     PORT,
-//     console.log(
-//         `Server Running on ${process.env.NODE_ENV} mode on port ${PORT}`
-//     )
-// )

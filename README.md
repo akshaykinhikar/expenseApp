@@ -76,6 +76,47 @@ cd expense-app && npm run start
 
 This will launch the application on a local development server. Open your web browser and visit `http://localhost:3000` to see the application in action.
 
+###  Docker MERN stack application 
+
+#### Create a network for the docker containers
+
+`docker network create app-network`
+
+#### Build the client 
+
+```sh
+cd expense-app/
+docker build -t img-client .
+
+```
+
+#### Run the client
+
+`docker run --name=cont-client --network=app-network -d -p 3000:3000 img-client`
+
+#### Verify the client is running
+
+Open your browser and type `http://localhost:3000`
+
+#### Run the mongodb container
+
+`docker run --network=app-network --name mongo -d -p 27017:27017 -v data-volume:/data/db mongo`
+
+#### Build the server
+
+```sh
+cd ..
+docker build -t img-server .
+```
+
+#### Run the server
+
+`docker run --name=server --network=app-network  -d -p 5000:5000 img-server`
+
+### Using Docker Compose
+
+`docker compose up -d`
+
 ## References: 
 
 ### Upload Images with React & Node JS to AWS S3
