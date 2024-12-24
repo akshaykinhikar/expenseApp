@@ -11,7 +11,7 @@
         "dev": "concurrently \"npm run server\" \"npm run client\"",
         "data:import": "node backend/seeder",
         "data:destroy": "node backend/seeder -d",
-        "build": "npm install && tsc --build && npm install --prefix expense-app && npm run build --prefix expense-app",
+        "build": "npm install && tsc --build && npm install --prefix expense-app && npm install && npm run build --prefix expense-app",
         "ts-build": "tsc --build",
         "ts-clean": "tsc --build --clean",
         "ts-rebuild": "npm run ts-build && npm run ts-clean"

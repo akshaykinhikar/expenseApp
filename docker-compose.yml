@@ -1,0 +1,71 @@
+version: '3.7'
+
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: img-server
+    container_name: cont-server
+    command: /usr/src/app/node_modules/.bin/nodemon /usr/src/app/backend/dist/server.js
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    env_file: ./.env
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    volumes:
+      - data-volume:/data/db
+  client:
+    build:
+      context: ./expense-app
+      dockerfile: ./Dockerfile
+    image: img-client
+    container_name: cont-client
+    command: npm start
+    volumes:
+      - ./expense-app/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  data-volume:
+    driver: local
+
+# version: '3'
+# services:
+#   backend:
+#     build: ./backend
+#     ports:
+#       - '5000:5000'
+#     depends_on:
+#       - database
+#   frontend:
+#     build: ./expense-app
+#     ports:
+#       - '3000:3000'
+#   database:
+#     image: mongo
+#     ports:
+#       - '27017:27017'
