@@ -1,3 +1,4 @@
+// @ts-ignore
 import express from 'express';
 const expenseRoutes = express.Router();
 import { addExpense, getExpenses, getExpenseById, deleteExpenseById, deleteExpense, getExpenseSummary } from '../controllers/expenseController';

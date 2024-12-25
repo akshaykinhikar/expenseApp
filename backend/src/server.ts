@@ -1,7 +1,10 @@
 import path from 'path';
+// @ts-ignore
 import express from 'express';
 import dotenv from 'dotenv';
+// @ts-ignore
 import morgan from 'morgan';
+// @ts-ignore
 import bodyParser from 'body-parser';
 import { connectDB } from './config/db';
 

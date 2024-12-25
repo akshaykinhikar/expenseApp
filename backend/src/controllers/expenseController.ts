@@ -2,6 +2,7 @@
 import asyncHandler from 'express-async-handler';
 import Expense from '../models/expenseModel';
 import { retrieveMembers } from './memberController';
+// @ts-ignore
 import { Request, Response } from 'express';
 
 

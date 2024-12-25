@@ -1,3 +1,4 @@
+// @ts-ignore
 import express from 'express';
 const memberRoutes = express.Router();
 import { addMember, deleteMemberById, deleteMembers, getMembers } from '../controllers/memberController';

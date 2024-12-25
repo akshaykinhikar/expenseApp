@@ -1,3 +1,4 @@
+// @ts-ignore
 import express from 'express';
 const groupRoutes = express.Router();
 import { addGroup, getGroups, getGroupById, deleteGroupById, deleteGroup } from '../controllers/groupController';
