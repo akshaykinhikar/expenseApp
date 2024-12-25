@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import connectDB from './config/db';
-// const dbConfig = require('./config/db');
 
 import memberRoutes from './routes/memberRoutes';
 import groupRoutes from './routes/groupRoutes';
