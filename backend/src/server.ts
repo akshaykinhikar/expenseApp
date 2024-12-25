@@ -13,7 +13,8 @@ import imageUploadRoutes from './routes/imageUploadRoutes';
 dotenv.config();
 
 console.log("process.env.NODE_ENV", process.env.NODE_ENV);
-await connectDB();
+
+connectDB();
 
 const app = express();
 

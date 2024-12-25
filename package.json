@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "expense tracking app",
     "main": "server.js",
-    "type": "module",
     "scripts": {
         "start": "node --es-module-specifier-resolution=node backend/dist/server.js",
         "server": "nodemon --es-module-specifier-resolution=node backend/dist/server.js",
