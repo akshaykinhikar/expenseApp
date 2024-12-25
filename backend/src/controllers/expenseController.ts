@@ -70,7 +70,7 @@ type queryStringModel = {
 
 
 
-const addExpense = asyncHandler(async (req, res) => {
+const addExpense = asyncHandler(async (req: any, res: any) => {
     console.log("req.body._id", req.body)
     if (req.body._id) {
         const expense = await Expense.findOneAndUpdate({ _id: req.body._id }, { $set: { ...req.body, updatedAt: new Date() } }, { useFindAndModify: false });
@@ -95,7 +95,7 @@ const addExpense = asyncHandler(async (req, res) => {
     }
 });
 
-const getExpenses = asyncHandler(async (req, res) => {
+const getExpenses = asyncHandler(async (req: any, res: any) => {
 
     let { page, size, sort, searchString, groupId } = req.body;
 
@@ -144,7 +144,7 @@ const getExpenses = asyncHandler(async (req, res) => {
     }
 });
 
-const getExpenseById = asyncHandler(async (req, res) => {
+const getExpenseById = asyncHandler(async (req: any, res: any) => {
     if (req.params.id) {
         const expenseList = await Expense.find({ _id: req.params.id });
         if (expenseList) {
@@ -159,7 +159,7 @@ const getExpenseById = asyncHandler(async (req, res) => {
     }
 })
 
-const deleteExpense = asyncHandler(async (req, res) => {
+const deleteExpense = asyncHandler(async (req: any, res: any) => {
     // handle delete by groupName
     const deletedExpenses = await Expense.deleteMany({});
     if (deletedExpenses) {
@@ -171,7 +171,7 @@ const deleteExpense = asyncHandler(async (req, res) => {
 })
 
 
-const deleteExpenseById = asyncHandler(async (req, res) => {
+const deleteExpenseById = asyncHandler(async (req: any, res: any) => {
     const id = req.params.id;
 
     let deletedExpense: deleteExpenseModel;

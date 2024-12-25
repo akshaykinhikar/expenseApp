@@ -49,10 +49,10 @@ console.log("process.env.NODE_ENV", process.env.NODE_ENV);
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, '/expense-app/build')));
 
-    app.get('*', (req, res) =>
+    app.get('*', (req: any, res: any) =>
         res.sendFile(path.resolve(__dirname, 'expense-app', 'build', 'index.html')));
 } else {
-    app.get('/', (req, res) => {
+    app.get('/', (req: any, res: any) => {
         res.send('App is Running....')
     })
 

@@ -38,12 +38,12 @@ const addMember = asyncHandler(async (req: any, res: any) => {
 // @desc Get all member
 // @route POST /api/members
 // @access Public
-const getMembers = asyncHandler(async (req, res) => {
+const getMembers = asyncHandler(async (req: any, res: any) => {
     const members = await retrieveMembers();
     res.json(members)
 })
 
-const deleteMemberById = asyncHandler(async (req, res) => {
+const deleteMemberById = asyncHandler(async (req: any, res: any) => {
     const memberId = req.params.id;
     // TODO: 
     let member: any;
@@ -76,7 +76,7 @@ const deleteMemberById = asyncHandler(async (req, res) => {
     }
 })
 
-const deleteMembers = asyncHandler(async (req, res) => {
+const deleteMembers = asyncHandler(async (req: any, res: any) => {
     // handle delete by groupName
     const deletedMembers = await Member.deleteMany({});
     if (deletedMembers) {

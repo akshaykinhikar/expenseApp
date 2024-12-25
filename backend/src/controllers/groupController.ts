@@ -30,7 +30,7 @@ const addGroup = asyncHandler(async (req: any, res: any) => {
     }
 })
 
-const getGroupById = asyncHandler(async (req: any, res) => {
+const getGroupById = asyncHandler(async (req: any, res: any) => {
     const { id } = req.params.id;
 
     const group: groupModel = await Group.find({ _id: id }).lean()
@@ -49,7 +49,7 @@ const getGroupById = asyncHandler(async (req: any, res) => {
 });
 
 
-const getGroups = asyncHandler(async (req, res) => {
+const getGroups = asyncHandler(async (req: any, res: any) => {
 
     const group = await Group.aggregate(
         [
@@ -70,7 +70,7 @@ const getGroups = asyncHandler(async (req, res) => {
     }
 });
 
-const deleteGroupById = asyncHandler(async (req, res) => {
+const deleteGroupById = asyncHandler(async (req: any, res: any) => {
     const groupId = req.params.id;
     let group: groupModel;
     if (groupId) {
@@ -102,7 +102,7 @@ const deleteGroupById = asyncHandler(async (req, res) => {
     }
 })
 
-const deleteGroup = asyncHandler(async (req, res) => {
+const deleteGroup = asyncHandler(async (req: any, res: any) => {
     // handle delete by groupName
     const deletedGroup = await Group.deleteMany({});
     if (deletedGroup) {
