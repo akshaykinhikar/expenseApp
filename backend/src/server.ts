@@ -3,7 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import connectDB from './config/db';
+import { connectDB } from './config/db';
 
 import memberRoutes from './routes/memberRoutes';
 import groupRoutes from './routes/groupRoutes';
@@ -12,7 +12,8 @@ import imageUploadRoutes from './routes/imageUploadRoutes';
 
 dotenv.config();
 
-connectDB();
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+await connectDB();
 
 const app = express();
 
@@ -42,7 +43,8 @@ const PORT = process.env.PORT || 5000;
 
 console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV) {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, '/expense-app/build')));
 
