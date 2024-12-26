@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "66dd49be1e10ca2347a69baf"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "groupName": "tetst",
+  "createdAt": {
+    "$date": "2024-09-08T06:52:46.219Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-08T06:52:46.219Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "66dd49a61e10ca2347a69ba5"
+  },
+  "name": "akshay",
+  "email": "akshay@gmail.com",
+  "createdAt": {
+    "$date": "2024-09-08T06:52:22.570Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-08T06:52:22.570Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66dd49b71e10ca2347a69baa"
+  },
+  "name": "nisha",
+  "email": "nisha@gmail.com",
+  "createdAt": {
+    "$date": "2024-09-08T06:52:39.695Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-08T06:52:39.695Z"
+  },
+  "__v": 0
+}]

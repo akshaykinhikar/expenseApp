@@ -310,7 +310,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
                                     <div className="row justify-content-md-center">
                                         <div className="col-md-auto">
                                             {!transaction?._id && expenseList && expenseSummary && expenseList.length && membersList && membersList.length > 0 ? <AnalyticsComponent
-                                                expenseSummary={expenseSummary} /> : <p>No enough data available</p>}
+                                                expenseSummary={expenseSummary} /> : <div><p>No enough data available</p></div>}
                                         </div>
                                     </div>
                                 </div>
@@ -328,6 +328,7 @@ const AddExpenseComponent = ({ transaction, closeModal, recordUpdated, setRecord
 
                                             {expenseList && expenseList.length && membersList && membersList.length > 0 ?
                                                 <ExpenseList deleteTransaction={deleteTransaction}
+                                                    key={ExpenseList}
                                                     membersList={membersList}
                                                     expenseList={expenseList}
                                                     transactions={transactions}

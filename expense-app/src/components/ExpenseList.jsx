@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, Fragment } from 'react';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -45,8 +45,8 @@ const ExpenseList = (props) => {
       <Row>
         <Col xs={12} md={12} lg={12} >
           <div className='mx-auto' style={{ 'width': '300px' }}>
-            {props.groupList && props.groupList.map(group => (
-              <span className={`badge mr-1 ${props.selectedGroupId === group.value ? "text-bg-primary" : "text-bg-primary-ext"}`} onClick={() => props.setSelectedGroupId(group.value)}><FontAwesomeIcon icon={faPeopleGroup} /> {group.label}</span>
+            {props.groupList && props.groupList.map((group, i) => (
+              <span key={'ex' + i} className={`badge mr-1 ${props.selectedGroupId === group.value ? "text-bg-primary" : "text-bg-primary-ext"}`} onClick={() => props.setSelectedGroupId(group.value)}><FontAwesomeIcon icon={faPeopleGroup} /> {group.label}</span>
             ))}
           </div>
         </Col>
@@ -69,20 +69,20 @@ const ExpenseList = (props) => {
             </thead>
             <tbody>
               {members && expenseList && expenseList.length > 0 && expenseList.map((expense, i) => (
-                <tr key={'tr' + i}>
-                  <td key={'td1' + i}>{((props.page - 1) * props.size) + i + 1}</td>
-                  <td key={'td2' + i}>{expense.expenseName} </td>
-                  <td key={'td3' + i}>{expense?.amount?.toFixed(2)} </td>
-                  <td key={'td3' + i}>
-                    <GetMemName key={'mem' + i} id={expense.paidBy} members={members} />
+                <tr key={expense.__id}>
+                  <td >{((props.page - 1) * props.size) + i + 1}</td>
+                  <td >{expense.expenseName} </td>
+                  <td >{expense?.amount?.toFixed(2)} </td>
+                  <td >
+                    <GetMemName  id={expense.paidBy} members={members} />
                   </td>
-                  <td key={'td4' + i}>
+                  <td key={expense.__id+ '-'}>
                     {members && members.length > 0 && expense.members && expense.members.map((e, i) => (
-                      <GetMemName key={'mem' + i} id={e} members={members} />
+                      <GetMemName key={i} id={e} members={members} />
 
                     ))}
                   </td>
-                  <td key={'td5' + i}>
+                  <td >
                     <FontAwesomeIcon onClick={() => props.deleteTransaction(expense._id)} icon={faTrash} /> &nbsp;
                     <FontAwesomeIcon icon={faPencil} onClick={() => props.handleShow(expense)} />
                   </td>
@@ -108,7 +108,7 @@ const ExpenseList = (props) => {
 
         {props.expenseSummary.memShares && props.expenseSummary.memShares.length > 0 && props.expenseSummary.memShares.map((shares, i) => (
 
-          <>
+          <Fragment key={'fra' + i}>
             <Col className="my-3" xs={12} md={3} lg={3} key={i} >
               <Card >
                 {/* <Card.Img variant="top" src="" /> */}
@@ -117,8 +117,8 @@ const ExpenseList = (props) => {
                     {members && members.length > 0 && shares?.amount && <span style={{ fontSize: "0.5em" }}> Ows to </span>}
                   </Card.Title>
                   {members && members.length > 0 && shares?.amount && (Object.keys(shares.amount)).map(((ele, i) => (
-                    <Card.Text>
-                      <div key={i}>
+                    <Card.Text key={i}>
+                      <div >
                         {ele && <GetMemName id={ele} members={members} shares={shares?.amount[ele]?.toFixed(2)} />}
                       </div>
                     </Card.Text>
@@ -133,7 +133,7 @@ const ExpenseList = (props) => {
                 </Card.Body>
               </Card>
             </Col>
-          </>
+          </Fragment>
         ))
         }
       </Row>

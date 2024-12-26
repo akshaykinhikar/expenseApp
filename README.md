@@ -28,16 +28,16 @@ To get started with this project, follow the steps below:
 2. Run the following command to install the required dependencies:
 
 ```js
-npm install
+npm run build // to install both frontend and backend packages and build both repo's
 ```
 
-### Build the Project
+<!-- ### Build the Project
 
 Before starting the project, it's recommended to build the application to ensure you have the latest changes. To build the project, run the following command:
 
 ```js
 npm run build
-```
+``` -->
 
 ### Start the Backend-end Project
 
@@ -54,11 +54,12 @@ mongosh
 
 ```
 
-To start the nodeJS application run the following command in expenseApp directory:
+To start the Both React and nodeJS application run the following command in expenseApp directory:
 
 ```js
-npm run dev
+npm run dev // will start both environments for frontend and backend
 ```
+
 This will start backend node server on PORT `5000` and you will get message 
 
 ```js

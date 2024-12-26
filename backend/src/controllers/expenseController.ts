@@ -133,7 +133,7 @@ const getExpenses = asyncHandler(async (req: any, res: any) => {
     if (expenseList) {
         setTimeout(() => {
             res.status(201).json({
-                "page": page,
+                "page": pageCount < page ? pageCount : page,
                 "pageCount": pageCount,
                 "totalPages": expenseList.length,
                 "data": expenseList.slice(page * size - size, page * size)

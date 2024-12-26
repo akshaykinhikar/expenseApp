@@ -1,0 +1,412 @@
+[{
+  "_id": {
+    "$oid": "67668677e93235b4b3d8b590"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "test",
+  "amount": 123,
+  "paidBy": "66dd49a61e10ca2347a69ba5",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-21T09:12:23.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d210d09e4982d232ef489"
+  },
+  "members": [
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "chai",
+  "amount": 12312,
+  "paidBy": "66dd49a61e10ca2347a69ba5",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:25:33.911Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d212209e4982d232ef490"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "pani",
+  "amount": 1000,
+  "paidBy": "66dd49a61e10ca2347a69ba5",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:25:54.174Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d213f09e4982d232ef497"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "parcel",
+  "amount": 12312,
+  "paidBy": "66dd49a61e10ca2347a69ba5",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:26:23.751Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d216009e4982d232ef49e"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5"
+  ],
+  "expenseName": "gift",
+  "amount": 1212121212,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49b71e10ca2347a69baa",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:26:56.741Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d218309e4982d232ef4a5"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "trip",
+  "amount": 121212111,
+  "paidBy": "66dd49a61e10ca2347a69ba5",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:27:31.243Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d21a709e4982d232ef4ac"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "tomato",
+  "amount": 12121212,
+  "paidBy": "66dd49a61e10ca2347a69ba5",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:28:07.133Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d246809e4982d232ef4c0"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Butter",
+  "amount": 12121212,
+  "paidBy": "66dd49a61e10ca2347a69ba5",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:39:52.348Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d251d09e4982d232ef4cf"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Pav",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:42:53.584Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d253709e4982d232ef4de"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "burger",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:43:19.697Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d253909e4982d232ef4e0"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "sandwitch",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:43:21.203Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d255b09e4982d232ef4ef"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Mobile",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:43:55.740Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d255d09e4982d232ef4f1"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "ATM",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:43:57.210Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d255e09e4982d232ef4f3"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Cell-recharge",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:43:58.525Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d255f09e4982d232ef4f5"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Electric bill",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:43:59.992Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256109e4982d232ef4f7"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Delhivery",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:01.356Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256309e4982d232ef4f9"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "movie",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:03.072Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256409e4982d232ef4fb"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Momo",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:04.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256509e4982d232ef4fd"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Pay and park",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:05.721Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256609e4982d232ef4ff"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Banana",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:06.881Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256809e4982d232ef501"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Sugar",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:08.141Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256909e4982d232ef503"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Movie",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:09.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676d256a09e4982d232ef505"
+  },
+  "members": [
+    "66dd49a61e10ca2347a69ba5",
+    "66dd49b71e10ca2347a69baa"
+  ],
+  "expenseName": "Breakfast",
+  "amount": 32322,
+  "paidBy": "66dd49b71e10ca2347a69baa",
+  "addedBy": "66dd49a61e10ca2347a69ba5",
+  "groupId": "66dd49be1e10ca2347a69baf",
+  "createdAt": {
+    "$date": "2024-12-26T09:44:10.559Z"
+  },
+  "__v": 0
+}]

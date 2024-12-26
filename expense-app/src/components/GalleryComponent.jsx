@@ -68,7 +68,7 @@ const GalleryComponent = () => {
                                 <img src={img} alt="" style={{ width: '100%' }} />
                             </div>
                         ))
-                        : <p>Please upload image</p>
+                        : <div><p>Please upload image</p></div>
 
                     }
                 </div>
