@@ -209,6 +209,7 @@ const getExpenseSummary = asyncHandler(async (req: Request<{}, {}, expenseSummar
     }
 
     const expenseList: Array<expenseModel> = await Expense.find(queryString as any).sort({}).lean();
+    console.log("*****expenseList", expenseList);
 
     // TODO: Need to add group and memberID check in future
 

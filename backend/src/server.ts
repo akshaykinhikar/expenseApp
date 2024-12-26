@@ -47,8 +47,7 @@ const PORT = process.env.PORT || 5000;
 
 console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
-// if (process.env.NODE_ENV === 'production') {
-    if (process.env.NODE_ENV) {
+if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, '/expense-app/build')));
 
