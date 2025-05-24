@@ -5,7 +5,7 @@ import AddExpenseComponent from "./components/AddExpenseComponent";
 import NavbarComponent from "./components/NavbarComponent";
 import TodoComponent from "./components/TodoComponent";
 import GalleryComponent from "./components/GalleryComponent";
-
+import Expenditure from "./components/Expenditure";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +15,7 @@ function App() {
           <Route path="group" element={<AddGroup />} />
           <Route path="todo" element={<TodoComponent />} />
           <Route path="gallery" element={<GalleryComponent />} />
+          <Route path="expenditure" element={<Expenditure />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>

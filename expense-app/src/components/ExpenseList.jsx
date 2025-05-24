@@ -35,7 +35,7 @@ const ExpenseList = (props) => {
       const mem = members.filter(e => e.value == id)
       return mem.length > 0 && <span>{mem[0]['label']}, </span>;
     } else {
-      return <span>{memObj[0]['label']}: {shares}</span>;
+      return <span>{memObj[0] && memObj[0]['label']}: {shares}</span>;
     }
   }
 

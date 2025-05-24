@@ -12,6 +12,7 @@ import memberRoutes from './routes/memberRoutes';
 import groupRoutes from './routes/groupRoutes';
 import expenseRoutes from './routes/expenseRoutes';
 import imageUploadRoutes from './routes/imageUploadRoutes';
+import expenditureRoutes from './routes/expenditureRoutes';
 
 dotenv.config();
 
@@ -40,6 +41,8 @@ app.use('/api/members/', memberRoutes);
 app.use('/api/group/', groupRoutes);
 
 app.use('/api/expense/', expenseRoutes);
+
+app.use('/api/expenditure/', expenditureRoutes);
 
 app.use('/api/images', imageUploadRoutes);
 

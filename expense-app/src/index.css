@@ -159,3 +159,11 @@ code {
   background-color: #fff;
   padding: 20px;
 }
+
+
+.border-red {
+  border: 2px solid red !important;
+}
+.border-green {
+  border: 2px solid green !important;
+}

@@ -7,7 +7,7 @@ import Select from 'react-select';
 import ExpenseList from './ExpenseList';
 import CONSTANTS from '../constants';
 import toast, { Toaster } from 'react-hot-toast';
-import ExpenseService from '../services/common-services';
+import {ExpenseService} from '../services/common-services';
 import LoadingSpinner from './LoadingSpinner';
 import AnalyticsComponent from './AnalyticsComponent';
 

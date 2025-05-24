@@ -3,7 +3,7 @@ import AddExpenseComponent from './AddExpenseComponent';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import '@testing-library/jest-dom';
-import ExpenseService from '../services/common-services';
+import {ExpenseService} from '../services/common-services';
 import { useForm } from 'react-hook-form';
 
 // Helper function to render the component
