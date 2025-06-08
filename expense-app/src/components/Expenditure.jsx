@@ -276,6 +276,18 @@ const AddExpenseComponent = () => {
               </Form.Select>
             </Form.Group>
 
+
+            <Form.Group className="mb-3">
+              <Form.Label>Recurring Till</Form.Label>
+              <Form.Control
+                type="date"
+                name="recurringTill"
+                value={formData.recurringTill}
+                placeholder="Enter recurring till date"
+                onChange={handleChange}
+              />
+            </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Label>Tag</Form.Label>
               <Form.Select

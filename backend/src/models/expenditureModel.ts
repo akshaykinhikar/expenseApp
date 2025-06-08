@@ -11,6 +11,7 @@ type Expenditure = {
     payee: { type: String, required: true },
     notes: { type: String, required: false },
     recurring: { type: string, required: true },
+    recurringTill: { type: Date | null, required: false },
     tags:{ type: string, required: false },
     status: { type: Boolean, required: true },
     // userId: { type: string, required: true },
@@ -29,7 +30,7 @@ const expenditureSchema = new Schema({
     payee: { type: String, required: true },
     notes: { type: String, required: false },
     recurring: { type: String, enum: ['Once', 'Daily', 'Monthly', 'Quarterly', 'Yearly'], required: true },
-    
+    recurringTill: { type: Date, required: false },
     tags:{ type: String, required: false },
     status: { type: Boolean, default: false, required: true },
     // userId: { type: String, required: true },

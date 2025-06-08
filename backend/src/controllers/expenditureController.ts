@@ -16,6 +16,7 @@ type expenditureModel = {
     payee: string;
     notes: string;
     recurring: string;
+    recurringTill: Date | null;
     tags: string;
     status: boolean;
     // userId: string;
@@ -73,7 +74,7 @@ const getExpenditures = asyncHandler(async (req: any, res: any) => {
     // Format dueDate to YYYY-MM-DD
     const formattedExpenditureList = expenditureList.map((expenditure) => ({
         ...expenditure,
-        dueDate: new Date(expenditure.dueDate).toISOString().split('T')[0], // Format dueDate
+        dueDate: expenditure.dueDate, // Format dueDate
     }));
 
     if (!page) {
@@ -126,7 +127,7 @@ const getFutureExpenditures = asyncHandler(async (req: any, res: any) => {
 
     };
 
-    const expenditureList = await Expenditure.find(searchQuery).sort({ createdAt: -1 }).lean();
+    const expenditureList = await Expenditure.find(searchQuery as any).sort({ createdAt: -1 }).lean();
 
     console.log("**** FUTUREexpenditureList", expenditureList);
     if (!page) {
