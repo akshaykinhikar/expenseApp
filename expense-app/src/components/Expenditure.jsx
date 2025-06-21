@@ -12,7 +12,9 @@ const AddExpenseComponent = () => {
     payee: "",
     notes: "",
     currency: "",
-    recurring: "Daily",
+    recurring: "Once",
+    recurringTill: "",
+    income: 0,
     tag: "Loan",
     expenseType: "",
     status: false, // false for Pending, true for Done
@@ -36,7 +38,7 @@ const AddExpenseComponent = () => {
       payee: "akshay",
       notes: "",
       currency: "",
-      recurring: "Daily",
+      recurring: "Once",
       tag: "Loan",
       expenseType: "",
       status: true,
@@ -269,7 +271,7 @@ const AddExpenseComponent = () => {
                 onChange={handleChange}
               >
                 <option value="Once">Once</option>
-                <option value="Daily">Daily</option>
+                {/* <option value="Daily">Daily</option> */}
                 <option value="Monthly">Monthly</option>
                 <option value="Quarterly">Quarterly</option>
                 <option value="Yearly">Yearly</option>

@@ -29,7 +29,7 @@ const expenditureSchema = new Schema({
     paymentMethod: { type: String, required: true },
     payee: { type: String, required: true },
     notes: { type: String, required: false },
-    recurring: { type: String, enum: ['Once', 'Daily', 'Monthly', 'Quarterly', 'Yearly'], required: true },
+    recurring: { type: String, enum: ['Once', 'Monthly', 'Quarterly', 'Yearly'], required: true },
     recurringTill: { type: Date, required: false },
     tags:{ type: String, required: false },
     status: { type: Boolean, default: false, required: true },

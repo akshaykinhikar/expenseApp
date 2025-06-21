@@ -74,7 +74,8 @@ const getExpenditures = asyncHandler(async (req: any, res: any) => {
     // Format dueDate to YYYY-MM-DD
     const formattedExpenditureList = expenditureList.map((expenditure) => ({
         ...expenditure,
-        dueDate: expenditure.dueDate, // Format dueDate
+        dueDate: expenditure.dueDate ? new Date(expenditure.dueDate as any).toISOString().split('T')[0] : null, // Format dueDate
+        recurringTill: expenditure.recurringTill ? new Date(expenditure.recurringTill as any).toISOString().split('T')[0] : null, // Format recurringTill
     }));
 
     if (!page) {
