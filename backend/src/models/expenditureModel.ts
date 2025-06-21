@@ -17,7 +17,7 @@ type Expenditure = {
     // userId: { type: string, required: true },
     createdAt: { type: Date, required: true },
     updatedAt: { type: Date, required: false },
-    income: { type: Number, default: 0, required: false },
+    amount: { type: Number, default: 0, required: false },
 
 
 };
@@ -36,7 +36,7 @@ const expenditureSchema = new Schema({
     // userId: { type: String, required: true },
     createdAt: { type: Date, required: true },
     updatedAt: { type: Date, required: false },
-    income: { type: Number, default: 0, required: false },
+    amount: { type: Number, default: 0, required: false },
 });
 
 const Expenditure = mongoose.model<Expenditure & mongoose.Document>('Expenditure', expenditureSchema);

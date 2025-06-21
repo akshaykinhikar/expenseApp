@@ -317,13 +317,13 @@ const AddExpenseComponent = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Income</Form.Label>
+              <Form.Label>Amount</Form.Label>
               <Form.Control
                 type="text"
-                name="income"
-                value={formData.income}
+                name="amount"
+                value={formData.amount}
                 onChange={handleChange}
-                placeholder="Enter income"
+                placeholder="Enter amount"
               />
             </Form.Group>
 

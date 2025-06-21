@@ -22,6 +22,7 @@ type expenditureModel = {
     // userId: string;
     createdAt: Date;
     updatedAt: Date;
+    amount: number;
 };
 
 type deleteExpenditureModel = {
